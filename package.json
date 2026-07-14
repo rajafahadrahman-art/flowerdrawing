@@ -1,0 +1,37 @@
+{
+  "name": "flowerdrawings",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FlowerDrawings.com — easy flower drawing tutorials for beginners",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "validate:content": "tsx scripts/validate-content.ts",
+    "assets:icons": "tsx scripts/generate-icons.ts",
+    "assets:worksheet": "tsx scripts/generate-worksheets.ts",
+    "assets:images": "tsx scripts/copy-images.ts",
+    "assets:all": "npm run assets:images && npm run assets:icons && npm run assets:worksheet",
+    "check": "npm run validate:content && npm run lint && npm run build"
+  },
+  "dependencies": {
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^22.18.6",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "eslint": "^9.36.0",
+    "eslint-config-next": "^15.5.4",
+    "pdf-lib": "^1.17.1",
+    "sharp": "^0.34.4",
+    "tailwindcss": "^4.1.13",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
