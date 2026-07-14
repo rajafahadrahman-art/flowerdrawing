@@ -1,0 +1,775 @@
+# AGENTS.md
+
+## Project Identity
+
+This repository contains the production website for **FlowerDrawings.com**.
+
+- Framework: Next.js App Router
+- Language: TypeScript
+- Styling: Tailwind CSS and project-level CSS
+- Deployment: GitHub → Vercel
+- Production domain: https://flowerdrawings.com
+- Contact email: ale298784@gmail.com
+- Content system: Local MDX files
+- Audience: Beginners, students, kids, parents, teachers, and hobby artists in the United States
+
+The repository root is the Next.js project root. Do not move the app into a nested `web`, `frontend`, or `website` directory.
+
+---
+
+## Read Before Editing
+
+Before creating, editing, moving, or deleting files:
+
+1. Read this file completely.
+2. Inspect the repository structure.
+3. Read `source-assets/homepage-content.txt`.
+4. Read the relevant files in `docs/`.
+5. Inspect current routes, components, metadata, assets, and content folders.
+6. Preserve approved content, URLs, and image paths.
+
+Do not begin implementation until the existing architecture is understood.
+
+---
+
+## Required Architecture
+
+Use:
+
+- Next.js App Router
+- TypeScript with strict mode
+- React Server Components by default
+- Client Components only for real browser interaction
+- `next/image`
+- Next.js Metadata API
+- Static generation wherever practical
+- Local MDX tutorial content
+- Semantic HTML
+- Minimal dependencies
+
+Never introduce:
+
+- WordPress
+- PHP
+- Kadence
+- Elementor
+- MySQL
+- A database in Phase 1
+- A CMS in Phase 1
+- jQuery
+- Bootstrap
+- Framer Motion
+- GSAP
+- Heavy UI libraries
+- Remote Google Fonts
+- Third-party image hotlinking
+- Auto-playing sliders
+- Carousels
+- Parallax effects
+
+The Vercel Root Directory must remain:
+
+```text
+.
+```
+
+---
+
+## Homepage Content Is Locked
+
+The homepage source of truth is:
+
+```text
+source-assets/homepage-content.txt
+```
+
+Unless the user explicitly requests a specific content edit, do not:
+
+- Rewrite text
+- Correct grammar
+- Paraphrase
+- Summarize
+- Shorten
+- Expand
+- Reorder sections
+- Replace keywords
+- Change headings
+- Change FAQ wording
+- Change button labels
+- Change the SEO title
+- Change the meta description
+- Insert new marketing paragraphs
+
+Preserve unusual grammar exactly.
+
+Allowed transformations:
+
+- Convert headings into semantic HTML
+- Convert source lists into HTML lists
+- Convert `Button: LABEL` into a working button using the exact label
+- Add layout wrappers and components
+- Add accessibility attributes
+- Add section IDs
+- Add schema matching visible content
+
+Run the homepage content validation script before finishing any homepage-related change.
+
+---
+
+## Brand and Design Rules
+
+The website must remain modern, premium, card-based, editorial, mobile-first, and lightweight.
+
+Black and white are the dominant theme.
+
+Approved palette:
+
+```css
+--color-black: #111111;
+--color-white: #FFFFFF;
+--color-background: #FFFFFF;
+--color-surface: #F7F7F4;
+--color-surface-strong: #ECECE7;
+--color-border: #DADAD4;
+--color-muted: #62625D;
+--color-sage-light: #E4EEE5;
+--color-sage: #819A89;
+--color-blush-light: #F6E2DE;
+--color-blush: #D98278;
+```
+
+Use:
+
+- White page background
+- Black primary text
+- Soft gray cards
+- Thin neutral borders
+- Light sage primary worksheet buttons
+- Soft blush only as a limited accent
+- Subtle shadows
+- Comfortable editorial spacing
+- Clear visual hierarchy
+
+Avoid:
+
+- Dark full-page themes
+- Heavy gradients
+- Excessive shadows
+- Oversized headings
+- Thick borders
+- Overly rounded cartoon interfaces
+- Visual clutter
+- Large decorative elements
+- Excessive animation
+
+Maximum main width: approximately `1240px`.
+
+Long-form reading width: approximately `720px–760px`.
+
+Use `clamp()` for fluid typography and spacing where practical.
+
+---
+
+## Fixed Routes and Permalinks
+
+Required routes:
+
+```text
+/
+/flower-drawing/
+/flower-drawing/[slug]/
+```
+
+Examples:
+
+```text
+/flower-drawing/rose-drawing/
+/flower-drawing/sunflower-drawing/
+/flower-drawing/hibiscus-flower-drawing/
+/flower-drawing/tulip-drawing/
+```
+
+Rules:
+
+- Lowercase URLs only
+- Hyphenated slugs
+- Trailing slashes enabled
+- One canonical URL per tutorial intent
+- Existing URLs must remain stable
+
+Never create competing routes such as:
+
+```text
+/easy-rose-drawing/
+/simple-rose-drawing/
+/rose-drawing-step-by-step/
+```
+
+Do not rename an existing slug without explicit user approval.
+
+---
+
+## Tutorial Content System
+
+Future tutorials must use the existing file-based MDX system.
+
+Expected structure:
+
+```text
+content/flower-drawing/[slug]/
+├── content.mdx
+├── meta.ts
+├── images/
+└── downloads/
+```
+
+Tutorial metadata must support:
+
+- `title`
+- `slug`
+- `focusKeyword`
+- `seoTitle`
+- `metaDescription`
+- `excerpt`
+- `difficulty`
+- `estimatedTime`
+- `stepCount`
+- `featuredImage`
+- `featuredImageAlt`
+- `featuredImageTitle`
+- `worksheetImage`
+- `worksheetPDF`
+- `publishedDate`
+- `updatedDate`
+- `faqs`
+- `relatedTutorials`
+
+Do not create fake tutorials, placeholder posts, fabricated dates, fake ratings, invented reviews, or sample flower pages unless the user explicitly asks for them.
+
+The archive must display only real tutorial folders.
+
+Read `docs/ADD-NEW-TUTORIAL.md` before adding a tutorial.
+
+---
+
+## Tutorial Image Rules
+
+Use:
+
+```text
+public/images/flower-drawing/[slug]/
+```
+
+Example:
+
+```text
+public/images/flower-drawing/rose-drawing/
+├── rose-drawing.webp
+├── rose-drawing-step-1.webp
+├── rose-drawing-step-2.webp
+├── rose-drawing-step-3.webp
+├── rose-drawing-step-4.webp
+├── rose-drawing-step-5.webp
+├── rose-drawing-step-6.webp
+├── rose-drawing-step-7.webp
+├── rose-drawing-step-8.webp
+└── rose-drawing-step-9.webp
+```
+
+Rules:
+
+- Use `.webp`, never `.web`
+- Use lowercase filenames
+- Use hyphens
+- Preserve aspect ratio
+- Use explicit width and height
+- Prevent layout shift
+- Lazy-load images below the fold
+- Use priority loading only where justified
+- Do not duplicate the final completed drawing
+- The final completed step image must also be the featured image
+
+Example featured image:
+
+```text
+rose-drawing.webp
+```
+
+Example featured alt:
+
+```text
+rose drawing
+```
+
+Example featured title:
+
+```text
+easy rose drawing
+```
+
+Alt text must be short, accurate, relevant, and free from keyword stuffing.
+
+Do not place multiple exact-match phrases in one alt attribute.
+
+Logo alt must remain:
+
+```text
+FlowerDrawings.com
+```
+
+---
+
+## Homepage Assets
+
+Approved paths:
+
+```text
+/public/images/brand/flowerdrawings-logo.webp
+/public/images/flower-drawing/home/flower-drawing-hero.webp
+/public/images/flower-drawing/home/flower-drawing.webp
+/public/downloads/flower-drawing-worksheet.webp
+/public/downloads/flower-drawing-worksheet.pdf
+```
+
+Required image SEO:
+
+Hero:
+
+```text
+Alt: simple flower drawing
+Title: flower drawing easy
+```
+
+Homepage featured image:
+
+```text
+Alt: flower drawing
+Title: easy flower drawing
+```
+
+Worksheet preview:
+
+```text
+Alt: flower drawing worksheets
+Title: download practice worksheets
+```
+
+Do not crop, recolor, regenerate, redraw, sharpen, blur, or add text to supplied images unless explicitly instructed.
+
+The supplied logo must be used for:
+
+- Header logo
+- Footer logo
+- Favicon
+- App icon
+- Apple touch icon
+- Site icon
+
+Do not design a separate favicon symbol.
+
+---
+
+## Homepage Section Order
+
+Keep this exact section order:
+
+1. Hero banner
+2. Main introduction
+3. Explore Easy Flower Drawing Tutorial
+4. How to Draw a Flower Step by Step
+5. Simple Flower Drawing Ideas to Practice
+6. Flower Drawing for Beginners
+7. From Basic Shapes to a Beautiful Flower Drawing
+8. Sketching Flowers with Pencil
+9. Download Worksheets for Practice
+10. Skill levels
+11. Drawing tips
+12. Explore More Easy Flowers Drawing Ideas
+13. FAQs
+14. Final CTA
+
+Do not rearrange sections without explicit approval.
+
+---
+
+## Button Labels and Destinations
+
+Keep every source button label exactly unchanged.
+
+Approved mapping:
+
+```text
+Explore Drawing Tutorials → /flower-drawing/
+Download Practice Worksheets → /downloads/flower-drawing-worksheet.pdf
+View Step-by-Step Drawing Guides → /flower-drawing/
+Browse Drawing Worksheets → /downloads/flower-drawing-worksheet.pdf
+Print a Practice Page → /downloads/flower-drawing-worksheet.pdf
+View All Flower Tutorials → /flower-drawing/
+Start Drawing → /flower-drawing/
+View Practice Worksheets → /#worksheets
+```
+
+Download buttons must download a real file.
+
+Print buttons must open the PDF in a new tab.
+
+Do not rename buttons without explicit instruction.
+
+---
+
+## SEO Rules
+
+Use the Next.js Metadata API.
+
+Required SEO foundations:
+
+- `metadataBase`
+- Canonical URLs
+- Open Graph metadata
+- Twitter card metadata
+- `sitemap.ts`
+- `robots.ts`
+- `manifest.ts`
+- WebSite JSON-LD
+- WebPage JSON-LD
+- FAQPage JSON-LD
+- BreadcrumbList schema for real tutorial pages
+- Article schema for real tutorial pages
+- Semantic heading hierarchy
+- Accurate internal links
+
+Homepage canonical:
+
+```text
+https://flowerdrawings.com/
+```
+
+Homepage Open Graph image:
+
+```text
+/images/flower-drawing/home/flower-drawing-hero.webp
+```
+
+Do not add:
+
+- Product schema
+- Course schema
+- Review schema
+- SoftwareApplication schema
+- Fake ratings
+- Fake testimonials
+- Fabricated author credentials
+
+FAQ schema must exactly match visible FAQ questions and answers.
+
+Never add hidden or nonexistent content to schema.
+
+---
+
+## Component Rules
+
+Use Server Components by default.
+
+Use Client Components only when browser state is needed, such as:
+
+- Mobile navigation
+- FAQ accordion
+- Back-to-top button
+- Lightweight reveal behavior
+- Print behavior
+
+Do not convert an entire page into a Client Component for one interactive element.
+
+Components must be focused, typed, reusable, accessible, and maintainable.
+
+Avoid excessive component fragmentation and duplicated content.
+
+---
+
+## Interaction Rules
+
+Allowed interactions:
+
+- Accessible mobile navigation
+- FAQ accordion
+- Smooth anchor scrolling
+- Subtle card hover
+- Subtle reveal-on-scroll
+- Back-to-top button
+- Worksheet download
+- Worksheet print/open
+
+Animations must:
+
+- Be subtle
+- Last about 150–250ms
+- Respect `prefers-reduced-motion`
+- Never block navigation
+- Never hide SEO content
+- Never make the page unusable without JavaScript
+
+Do not add autoplay, parallax, cursor-following effects, heavy motion, animated backgrounds, or large animation libraries.
+
+---
+
+## Accessibility Requirements
+
+Target WCAG 2.2 AA where practical.
+
+Always preserve:
+
+- Skip-to-content link
+- Semantic landmarks
+- Correct heading hierarchy
+- Visible focus states
+- Minimum 44px touch targets
+- Keyboard-accessible mobile menu
+- Keyboard-accessible FAQ controls
+- Correct `aria-expanded`
+- Correct `aria-controls`
+- Sufficient color contrast
+- Meaningful link text
+- Accurate image alt text
+- Reduced-motion support
+
+Use native buttons and links instead of clickable `div` elements.
+
+Do not remove labels or focus outlines.
+
+---
+
+## Performance Requirements
+
+Targets:
+
+- Lighthouse Performance: 90+
+- Accessibility: 95+
+- Best Practices: 95+
+- SEO: 95+
+
+Use:
+
+- Static rendering where possible
+- Server Components
+- `next/image`
+- Explicit image dimensions
+- Minimal Client Components
+- System fonts
+- Minimal JavaScript
+- Minimal dependencies
+- Local assets
+- No layout shifts
+- No unnecessary tracking code
+- No external font requests
+
+Do not use the hero as a CSS background. Use a real `Image` element.
+
+---
+
+## Responsive Requirements
+
+Test important changes at:
+
+- 320px
+- 360px
+- 390px
+- 430px
+- 768px
+- 1024px
+- 1280px
+- 1440px
+- 1920px
+
+Confirm:
+
+- No horizontal scrolling
+- No cropped hero text
+- No cropped worksheet
+- No overlapping cards
+- No cut-off buttons
+- No tiny tap targets
+- No oversized mobile heading
+- Navigation remains usable
+- Images preserve aspect ratio
+- FAQ controls remain usable
+- Footer does not overflow
+
+---
+
+## Future Drawing Tool Compatibility
+
+The long-term goal includes an interactive flower drawing tool.
+
+Preserve this integration shell:
+
+```html
+<div id="flower-drawing-tool-root" hidden></div>
+```
+
+Do not:
+
+- Remove the shell
+- Display a public “coming soon” message
+- Rebuild the site architecture around a future tool
+- Add a tool framework before the user requests it
+
+The future tool must be addable without changing existing tutorial URLs or content architecture.
+
+---
+
+## Security and Code Quality
+
+Use strict TypeScript.
+
+Avoid:
+
+- `any` unless fully justified
+- Unchecked HTML
+- Unsafe URL construction
+- Hardcoded localhost URLs
+- Secrets committed to Git
+- Unnecessary environment variables
+- Dead code
+- Abandoned commented-out code
+- Console errors
+- Hydration mismatches
+
+Render MDX safely.
+
+Do not add analytics, ads, or trackers unless explicitly requested.
+
+---
+
+## Required Commands
+
+Before finishing meaningful development work, run:
+
+```bash
+npm install
+npm run validate:content
+npm run lint
+npm run build
+```
+
+When available, prefer:
+
+```bash
+npm run check
+```
+
+The `check` script should run content validation, linting, and the production build.
+
+Do not claim completion while the build fails.
+
+Fix all TypeScript errors, ESLint errors, broken imports, missing assets, invalid routes, metadata errors, hydration warnings, and console errors.
+
+---
+
+## Final Verification Checklist
+
+Before reporting completion, confirm:
+
+1. Homepage loads.
+2. Homepage content is unchanged.
+3. SEO title is unchanged.
+4. Meta description is unchanged.
+5. Logo loads.
+6. Hero image loads.
+7. Featured image loads.
+8. Worksheet WebP loads.
+9. Worksheet PDF downloads.
+10. Print link opens the PDF.
+11. `/flower-drawing/` loads.
+12. No fake tutorials appear.
+13. Mobile navigation works.
+14. FAQ accordion works.
+15. Canonical URLs are correct.
+16. JSON-LD matches visible content.
+17. `sitemap.xml` works.
+18. `robots.txt` works.
+19. Favicon loads.
+20. No horizontal overflow appears at 320px.
+21. `npm run lint` passes.
+22. `npm run build` passes.
+23. No WordPress or PHP dependency exists.
+24. Vercel can deploy from the repository root.
+
+---
+
+## Git and File Safety
+
+Do not:
+
+- Delete user files without explicit approval
+- Rewrite Git history
+- Force-push
+- Change the production branch
+- Remove source assets
+- Rename approved public URLs
+- Remove documentation
+- Commit secrets
+- Replace working code without understanding it
+
+Preserve unrelated work.
+
+Use clear commit messages.
+
+If Git authentication is unavailable, leave the repository ready for manual commit and push.
+
+---
+
+## Documentation Rules
+
+Keep these files accurate:
+
+```text
+README.md
+README-VERCEL.md
+docs/ADD-NEW-TUTORIAL.md
+docs/IMAGE-NAMING.md
+docs/CONTENT-RULES.md
+```
+
+Update documentation when architecture, routes, content format, or publishing steps change.
+
+Do not leave documentation describing WordPress, PHP, Kadence, or another obsolete architecture.
+
+---
+
+## Completion Response
+
+When finishing a task, report:
+
+- What changed
+- Files created or updated
+- Validation commands run
+- Build status
+- Any unresolved issue
+- Exact preview or deployment steps when relevant
+
+Do not report completion when validation has not passed.
+
+---
+
+## Instruction Priority
+
+When instructions conflict, use this priority:
+
+1. The user’s latest explicit instruction
+2. This `AGENTS.md`
+3. Approved source content
+4. Existing repository documentation
+5. Existing implementation conventions
+6. General framework conventions
+
+The following rules remain mandatory unless the user explicitly changes them:
+
+- Next.js only
+- GitHub → Vercel deployment
+- Repository root as project root
+- Homepage content unchanged
+- Fixed `/flower-drawing/[slug]/` permalinks
+- Final step image used as featured image
+- No fake tutorial posts
+- No WordPress or PHP
+- Lint and build must pass
