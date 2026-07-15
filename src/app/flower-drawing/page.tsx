@@ -36,7 +36,7 @@ export default async function FlowerDrawingArchivePage() {
           url: `${siteConfig.url}/flower-drawing/`,
         })}
       />
-      <Section>
+      <Section tone="paper">
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },

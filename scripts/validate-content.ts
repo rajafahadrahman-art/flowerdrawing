@@ -64,7 +64,7 @@ async function validateHomepage() {
   assert(source.includes(homepageSeo.title), "Homepage SEO title matches source");
   assert(source.includes(homepageSeo.description), "Homepage meta description matches source");
 
-  const requiredButtons = [
+  const sourceButtons = [
     "Explore Drawing Tutorials",
     "Download Practice Worksheets",
     "View Step-by-Step Drawing Guides",
@@ -75,9 +75,20 @@ async function validateHomepage() {
     "View Practice Worksheets",
   ];
 
-  for (const label of requiredButtons) {
+  for (const label of sourceButtons) {
     assert(source.includes(`Button: ${label}`), `Homepage source includes button: ${label}`);
   }
+
+  const pageButtons = [
+    "Explore Drawing Tutorials",
+    "Download Practice Worksheets",
+    "View Step-by-Step Drawing Guides",
+    "Download Free Worksheet",
+    "Print Now",
+    "View All Flower Tutorials",
+    "Start Drawing",
+    "View Practice Worksheets",
+  ];
 
   assert(homepageFaqs.length === 7, "Homepage has 7 FAQs");
   for (const faq of homepageFaqs) {
@@ -93,9 +104,51 @@ async function validateHomepage() {
   assert(!("image" in (homepageSteps[6] ?? {})), "Homepage Step 7 has no fabricated image");
 
   const pageSource = await read("src/app/page.tsx");
-  for (const label of requiredButtons) {
+  for (const label of pageButtons) {
     assert(pageSource.includes(label), `Homepage page includes button label: ${label}`);
   }
+
+  assert(
+    pageSource.includes("About the Author"),
+    "Homepage includes About the Author section",
+  );
+  assert(pageSource.includes("AlexArts"), "Homepage includes AlexArts author name");
+  assert(
+    !pageSource.includes("ale298784@gmail.com"),
+    "Homepage does not display raw contact email",
+  );
+  assert(
+    pageSource.includes("FlowerDrawings.org") || pageSource.includes("siteConfig.name"),
+    "Homepage uses FlowerDrawings.org brand",
+  );
+
+  const footerSource = await read("src/components/layout/Footer.tsx");
+  assert(
+    !footerSource.includes("{siteConfig.email}"),
+    "Footer does not render visible raw email",
+  );
+  assert(
+    !footerSource.includes("ale298784@gmail.com"),
+    "Footer source does not hardcode visible email",
+  );
+
+  const siteSource = await read("src/lib/site.ts");
+  assert(siteSource.includes("FlowerDrawings.org"), "siteConfig brand is FlowerDrawings.org");
+  assert(
+    siteSource.includes("https://flowerdrawings.org"),
+    "siteConfig URL uses flowerdrawings.org",
+  );
+  assert(
+    !siteSource.includes("flowerdrawings.com"),
+    "siteConfig no longer references flowerdrawings.com",
+  );
+
+  const rosePage = await read("src/app/flower-drawing/[slug]/page.tsx");
+  assert(
+    rosePage.includes("Download Free Worksheet"),
+    "Rose worksheet section uses Download Free Worksheet",
+  );
+  assert(rosePage.includes("Print Now"), "Rose worksheet section uses Print Now");
 
   assert(pageSource.includes('id="worksheets"'), "Homepage worksheets section id exists");
   assert(pageSource.includes('id="faq"'), "Homepage FAQ section id exists");

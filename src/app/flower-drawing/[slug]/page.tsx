@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { PaperTape } from "@/components/decorations/PaperTape";
+import { PencilStroke } from "@/components/decorations/PencilStroke";
 import { Breadcrumbs } from "@/components/tutorials/Breadcrumbs";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
@@ -84,6 +86,38 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+const stepBadgeTones = [
+  "step-badge--coral",
+  "step-badge--sky",
+  "step-badge--mint",
+  "step-badge--yellow",
+  "step-badge--lavender",
+  "step-badge--peach",
+  "step-badge--coral",
+  "step-badge--sky",
+  "step-badge--mint",
+] as const;
+
+const stepCardTones = [
+  "surface-card--coral",
+  "surface-card--sky",
+  "surface-card--mint",
+  "surface-card--yellow",
+  "surface-card--lavender",
+  "surface-card--peach",
+  "surface-card--coral",
+  "surface-card--sky",
+  "surface-card--mint",
+] as const;
+
+const infoCardTones = [
+  "surface-card--mint",
+  "surface-card--sky",
+  "surface-card--lavender",
+  "surface-card--yellow",
+  "surface-card--coral",
+] as const;
+
 export default async function TutorialPage({ params }: PageProps) {
   const { slug } = await params;
   const meta = await getTutorialMeta(slug);
@@ -123,7 +157,7 @@ export default async function TutorialPage({ params }: PageProps) {
       />
       <JsonLd data={buildFaqJsonLd(meta.faqs)} />
 
-      <Section>
+      <Section tone="paper">
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
@@ -135,21 +169,27 @@ export default async function TutorialPage({ params }: PageProps) {
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="prose-exact max-w-[760px]">
             <h1 className="heading-display">{meta.title}</h1>
+            <PencilStroke className="mt-2 mb-4" color="#F38C7A" />
             {roseIntro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <div className="surface-card overflow-hidden p-4">
-            <Image
-              src={meta.featuredImage}
-              alt={meta.featuredImageAlt}
-              title={meta.featuredImageTitle}
-              width={1448}
-              height={1086}
-              className="h-auto w-full rounded-xl"
-              sizes="(max-width: 1024px) 100vw, 520px"
-              priority
-            />
+          <div className="relative">
+            <div className="decoration-hide-mobile pointer-events-none absolute -right-2 -top-3 z-10">
+              <PaperTape rotate={10} />
+            </div>
+            <div className="surface-card overflow-hidden p-4 shadow-[var(--shadow-feature)]">
+              <Image
+                src={meta.featuredImage}
+                alt={meta.featuredImageAlt}
+                title={meta.featuredImageTitle}
+                width={1448}
+                height={1086}
+                className="h-auto w-full rounded-xl"
+                sizes="(max-width: 1024px) 100vw, 520px"
+                priority
+              />
+            </div>
           </div>
         </div>
 
@@ -164,8 +204,8 @@ export default async function TutorialPage({ params }: PageProps) {
                 ["Main subject", roseInfo.mainSubject],
                 ["Best for", roseInfo.bestFor],
               ] as const
-            ).map(([label, value]) => (
-              <div key={label} className="surface-card p-4">
+            ).map(([label, value], index) => (
+              <div key={label} className={`surface-card p-4 ${infoCardTones[index]}`}>
                 <p className="text-sm text-muted">{label}</p>
                 <p className="mt-1 font-semibold">{value}</p>
               </div>
@@ -174,7 +214,7 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section surface>
+      <Section tone="mint">
         <div className="mx-auto max-w-[760px] prose-exact">
           <h2 className="heading-section">Materials You Need</h2>
           <p>{roseMaterialsNote}</p>
@@ -201,7 +241,7 @@ export default async function TutorialPage({ params }: PageProps) {
           {roseSteps.map((step, index) => (
             <article
               key={step.title}
-              className="surface-card overflow-hidden lg:grid lg:grid-cols-[0.95fr_1.05fr]"
+              className={`surface-card overflow-hidden lg:grid lg:grid-cols-[0.95fr_1.05fr] ${stepCardTones[index]}`}
             >
               {step.image ? (
                 <div className="border-b border-border bg-white p-4 lg:border-b-0 lg:border-r">
@@ -217,7 +257,10 @@ export default async function TutorialPage({ params }: PageProps) {
                 </div>
               ) : null}
               <div className="prose-exact p-6">
-                <h3 className="heading-card">{step.title}</h3>
+                <div className="mb-3 flex items-start gap-3">
+                  <span className={`step-badge ${stepBadgeTones[index]}`}>{index + 1}</span>
+                  <h3 className="heading-card">{step.title}</h3>
+                </div>
                 {step.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -236,18 +279,20 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section surface>
+      <Section tone="yellow">
         <div className="mx-auto max-w-[760px] prose-exact">
-          <h2 className="heading-section">Simple Rose Drawing Tips for Beginners</h2>
-          {roseTipsIntro.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-          <ul>
-            {roseTips.map((tip) => (
-              <li key={tip}>{tip}</li>
+          <div className="surface-card surface-card--yellow border border-yellow p-6 sm:p-8">
+            <h2 className="heading-section">Simple Rose Drawing Tips for Beginners</h2>
+            {roseTipsIntro.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
-          </ul>
-          <p>{roseTipsClosing}</p>
+            <ul className="checklist">
+              {roseTips.map((tip) => (
+                <li key={tip}>{tip}</li>
+              ))}
+            </ul>
+            <p>{roseTipsClosing}</p>
+          </div>
         </div>
       </Section>
 
@@ -258,7 +303,7 @@ export default async function TutorialPage({ params }: PageProps) {
             <p key={paragraph}>{paragraph}</p>
           ))}
           {roseOutlineSection.versions.map((version) => (
-            <div key={version.title} className="mt-6">
+            <div key={version.title} className="surface-card mt-6 p-5">
               <h3 className="heading-card">{version.title}</h3>
               <p>{version.text}</p>
             </div>
@@ -267,14 +312,14 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section surface>
+      <Section tone="lavender">
         <div className="mx-auto max-w-[760px] prose-exact">
           <h2 className="heading-section">How to Make a Realistic Rose Drawing</h2>
           {roseRealisticSection.intro.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
           {roseRealisticSection.areas.map((area) => (
-            <div key={area.title} className="mt-6">
+            <div key={area.title} className="surface-card mt-6 p-5">
               <h3 className="heading-card">{area.title}</h3>
               <p>{area.text}</p>
             </div>
@@ -284,7 +329,10 @@ export default async function TutorialPage({ params }: PageProps) {
       </Section>
 
       {roseColorSections.map((section, sectionIndex) => (
-        <Section key={section.title} surface={sectionIndex % 2 === 0}>
+        <Section
+          key={section.title}
+          tone={sectionIndex % 2 === 0 ? "surface" : "default"}
+        >
           <div className="mx-auto max-w-[760px] prose-exact">
             <h2 className="heading-section">{section.title}</h2>
             {section.paragraphs.map((paragraph) => (
@@ -305,9 +353,14 @@ export default async function TutorialPage({ params }: PageProps) {
       <Section>
         <div className="mx-auto max-w-[760px] prose-exact">
           <h2 className="heading-section">Common Mistakes When Drawing a Rose</h2>
-          <div className="mt-6 space-y-5">
-            {roseMistakes.map((mistake) => (
-              <div key={mistake.title}>
+          <div className="mt-6 space-y-4">
+            {roseMistakes.map((mistake, index) => (
+              <div
+                key={mistake.title}
+                className={`surface-card p-5 ${
+                  index % 2 === 0 ? "surface-card--coral" : "surface-card--peach"
+                }`}
+              >
                 <h3 className="heading-card">{mistake.title}</h3>
                 <p>{mistake.text}</p>
               </div>
@@ -316,18 +369,23 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section id="worksheets" surface>
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="surface-card overflow-hidden p-4">
-            <Image
-              src={meta.worksheetImage}
-              alt="rose drawing worksheet"
-              title="download rose drawing worksheet"
-              width={1055}
-              height={1491}
-              className="mx-auto h-auto w-full max-w-[420px]"
-              sizes="(max-width: 1024px) 100vw, 420px"
-            />
+      <Section id="worksheets" tone="sky">
+        <div className="feature-frame grid gap-10 overflow-hidden bg-gradient-to-br from-mint-light/55 via-white to-sky-light/70 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="relative mx-auto w-full max-w-[420px]">
+            <div className="decoration-hide-mobile pointer-events-none absolute -left-2 -top-3 z-10">
+              <PaperTape rotate={-10} />
+            </div>
+            <div className="image-frame overflow-hidden p-3 shadow-[var(--shadow-feature)]">
+              <Image
+                src={meta.worksheetImage}
+                alt="rose drawing worksheet"
+                title="download rose drawing worksheet"
+                width={1055}
+                height={1491}
+                className="mx-auto h-auto w-full"
+                sizes="(max-width: 1024px) 100vw, 420px"
+              />
+            </div>
           </div>
           <div className="prose-exact">
             <h2 className="heading-section">Downloadable Worksheet</h2>
@@ -343,18 +401,18 @@ export default async function TutorialPage({ params }: PageProps) {
               <p key={paragraph}>{paragraph}</p>
             ))}
             <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink href={meta.worksheetPDF} variant="sage" download>
-                Download Rose Drawing Worksheet
+              <ButtonLink href={meta.worksheetPDF} variant="download" download>
+                Download Free Worksheet
               </ButtonLink>
-              <ButtonLink href={meta.worksheetPDF} variant="ghost" newTab>
-                Print Practice Page
+              <ButtonLink href={meta.worksheetPDF} variant="print" newTab>
+                Print Now
               </ButtonLink>
             </div>
           </div>
         </div>
       </Section>
 
-      <Section id="faq">
+      <Section id="faq" tone="lavender">
         <div className="mx-auto mb-8 max-w-[760px]">
           <h2 className="heading-section">Frequently Asked Questions</h2>
         </div>
@@ -363,17 +421,21 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section surface>
-        <div className="surface-card mx-auto max-w-[860px] px-6 py-10 text-center sm:px-10">
-          <h2 className="heading-section">Start Your Roses Drawing</h2>
+      <Section tone="paper">
+        <div className="surface-card mx-auto max-w-[860px] overflow-hidden border border-border bg-ink px-6 py-10 text-center text-paper shadow-[var(--shadow-feature)] sm:px-10">
+          <div
+            aria-hidden="true"
+            className="mb-5 h-1.5 rounded-full bg-gradient-to-r from-coral via-yellow to-mint"
+          />
+          <h2 className="heading-section text-paper">Start Your Roses Drawing</h2>
           {roseConclusion.map((paragraph) => (
-            <p key={paragraph} className="mx-auto mt-4 max-w-[640px] text-muted">
+            <p key={paragraph} className="mx-auto mt-4 max-w-[640px] text-white/75">
               {paragraph}
             </p>
           ))}
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/flower-drawing/">Start Drawing</ButtonLink>
-            <ButtonLink href={meta.worksheetPDF} variant="sage" download>
+            <ButtonLink href={meta.worksheetPDF} variant="download" download>
               Download Worksheet
             </ButtonLink>
           </div>
@@ -383,7 +445,7 @@ export default async function TutorialPage({ params }: PageProps) {
           {previous ? (
             <Link
               href={`/flower-drawing/${previous.slug}/`}
-              className="btn btn-ghost justify-start"
+              className="btn btn-sky justify-start"
             >
               Previous: {previous.title}
             </Link>
@@ -391,11 +453,11 @@ export default async function TutorialPage({ params }: PageProps) {
             <span />
           )}
           {next ? (
-            <Link href={`/flower-drawing/${next.slug}/`} className="btn btn-ghost justify-end">
+            <Link href={`/flower-drawing/${next.slug}/`} className="btn btn-coral justify-end">
               Next: {next.title}
             </Link>
           ) : (
-            <Link href="/flower-drawing/" className="btn btn-ghost justify-end">
+            <Link href="/flower-drawing/" className="btn btn-coral justify-end">
               View All Flower Tutorials
             </Link>
           )}

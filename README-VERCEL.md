@@ -1,6 +1,6 @@
 # Vercel Deployment Guide
 
-FlowerDrawings.com deploys from GitHub to Vercel with the Next.js application at the repository root.
+FlowerDrawings.org deploys from GitHub to Vercel with the Next.js application at the repository root.
 
 ## Framework settings
 
@@ -41,16 +41,16 @@ Production deploys from the primary production branch (usually `main`).
 
 After a production deploy:
 
-1. Open https://flowerdrawings.com/
+1. Open https://flowerdrawings.org/
 2. Confirm logo, hero, featured image, and worksheets load
 3. Confirm `/flower-drawing/rose-drawing/` loads
-4. Confirm `https://flowerdrawings.com/sitemap.xml`
-5. Confirm `https://flowerdrawings.com/robots.txt`
+4. Confirm `https://flowerdrawings.org/sitemap.xml`
+5. Confirm `https://flowerdrawings.org/robots.txt`
 
 ## Domain connection
 
 1. Open the Vercel project **Settings → Domains**
-2. Add `flowerdrawings.com` and `www.flowerdrawings.com`
+2. Add `flowerdrawings.org` and `www.flowerdrawings.org`
 3. Follow Vercel DNS instructions at your DNS provider
 4. Prefer redirecting `www` to the apex domain or the reverse, consistently
 5. Wait for SSL certificates to become active
@@ -88,3 +88,4 @@ The archive page updates automatically from registered tutorial metadata.
 - Do not set the Vercel Root Directory to `web`, `frontend`, or another nested folder.
 - Do not add Phase 1 environment variables.
 - Do not introduce WordPress, PHP, databases, or a CMS for this deployment model.
+- FlowerDrawings.com is obsolete. The official brand and production domain are FlowerDrawings.org / https://flowerdrawings.org.

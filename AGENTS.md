@@ -2,16 +2,17 @@
 
 ## Project Identity
 
-This repository contains the production website for **FlowerDrawings.com**.
+This repository contains the production website for **FlowerDrawings.org**.
 
 - Framework: Next.js App Router
 - Language: TypeScript
 - Styling: Tailwind CSS and project-level CSS
 - Deployment: GitHub → Vercel
-- Production domain: https://flowerdrawings.com
+- Production domain: https://flowerdrawings.org
 - Contact email: ale298784@gmail.com
 - Content system: Local MDX files
-- Audience: Beginners, students, kids, parents, teachers, and hobby artists in the United States
+- Audience: Children, kids, toddlers with parent supervision, primary-school students, school children, beginners, parents, teachers, and hobby artists in the United States
+- Official brand note: FlowerDrawings.com is obsolete; use FlowerDrawings.org only
 
 The repository root is the Next.js project root. Do not move the app into a nested `web`, `frontend`, or `website` directory.
 
@@ -95,12 +96,17 @@ Unless the user explicitly requests a specific content edit, do not:
 - Replace keywords
 - Change headings
 - Change FAQ wording
-- Change button labels
+- Change button labels (except approved worksheet labels: Download Free Worksheet / Print Now)
 - Change the SEO title
 - Change the meta description
 - Insert new marketing paragraphs
 
 Preserve unusual grammar exactly.
+
+Approved exceptions:
+
+- Replace FlowerDrawings.com / flowerdrawings.com with FlowerDrawings.org / flowerdrawings.org
+- Worksheet section buttons use Download Free Worksheet and Print Now
 
 Allowed transformations:
 
@@ -118,49 +124,74 @@ Run the homepage content validation script before finishing any homepage-related
 
 ## Brand and Design Rules
 
-The website must remain modern, premium, card-based, editorial, mobile-first, and lightweight.
+The website must remain modern, premium, colorful, art-focused, card-based, editorial, mobile-first, and lightweight.
 
-Black and white are the dominant theme.
+White and paper backgrounds are the base. Sky blue, yellow, coral, mint, lavender, and peach are the approved accents.
 
 Approved palette:
 
 ```css
---color-black: #111111;
+--color-ink: #202124;
 --color-white: #FFFFFF;
---color-background: #FFFFFF;
---color-surface: #F7F7F4;
---color-surface-strong: #ECECE7;
---color-border: #DADAD4;
---color-muted: #62625D;
---color-sage-light: #E4EEE5;
---color-sage: #819A89;
---color-blush-light: #F6E2DE;
---color-blush: #D98278;
+--color-paper: #FFFEFA;
+--color-background: #FFFDF8;
+--color-surface: #F8F7F2;
+--color-border: #DDDCD5;
+--color-muted: #686964;
+--color-sky-light: #E5F4FF;
+--color-sky: #75C9F5;
+--color-sky-dark: #247EAA;
+--color-yellow-light: #FFF5C7;
+--color-yellow: #F5CF58;
+--color-yellow-dark: #8B6812;
+--color-coral-light: #FFE3DD;
+--color-coral: #F38C7A;
+--color-coral-dark: #A94D40;
+--color-mint-light: #E3F5E8;
+--color-mint: #8CCFA0;
+--color-mint-dark: #356F46;
+--color-lavender-light: #EEE8FF;
+--color-lavender: #B9A7EA;
+--color-lavender-dark: #625095;
+--color-peach-light: #FFECD9;
+--color-peach: #F2B278;
 ```
+
+Design direction:
+
+- Colorful, creative, friendly, premium, and modern
+- Suitable for children, kids, toddlers, school students, parents, and teachers
+- Related to drawing, coloring, crayons, pencils, and art practice
+- Clean white/paper base with controlled cheerful accents
+- Cards use soft layered shadows (`--shadow-card`, `--shadow-card-hover`, `--shadow-feature`)
+- Drawing-related decorations must be lightweight inline SVG or CSS only
+- Uploaded images must never be cropped, recolored, regenerated, filtered, or otherwise edited
 
 Use:
 
-- White page background
-- Black primary text
-- Soft gray cards
+- White or paper page backgrounds
+- Charcoal primary text
+- Soft colorful card tints (sky, yellow, coral, mint, lavender, peach)
 - Thin neutral borders
-- Light sage primary worksheet buttons
-- Soft blush only as a limited accent
-- Subtle shadows
+- Mint download buttons and pale-yellow print buttons
+- Subtle premium shadows
 - Comfortable editorial spacing
 - Clear visual hierarchy
 
 Avoid:
 
 - Dark full-page themes
+- Dull plain-gray corporate looks
 - Heavy gradients
+- Neon or casino-like styling
+- Extremely childish cartoon-app interfaces
 - Excessive shadows
 - Oversized headings
 - Thick borders
-- Overly rounded cartoon interfaces
 - Visual clutter
-- Large decorative elements
+- Large decorative elements that cover content
 - Excessive animation
+- Editing uploaded artwork
 
 Maximum main width: approximately `1240px`.
 
@@ -314,7 +345,7 @@ Do not place multiple exact-match phrases in one alt attribute.
 Logo alt must remain:
 
 ```text
-FlowerDrawings.com
+FlowerDrawings.org
 ```
 
 ---
@@ -387,6 +418,7 @@ Keep this exact section order:
 12. Explore More Easy Flowers Drawing Ideas
 13. FAQs
 14. Final CTA
+15. About the Author (homepage only; after Final CTA, before footer)
 
 Do not rearrange sections without explicit approval.
 
@@ -402,18 +434,32 @@ Approved mapping:
 Explore Drawing Tutorials → /flower-drawing/
 Download Practice Worksheets → /downloads/flower-drawing-worksheet.pdf
 View Step-by-Step Drawing Guides → /flower-drawing/
-Browse Drawing Worksheets → /downloads/flower-drawing-worksheet.pdf
-Print a Practice Page → /downloads/flower-drawing-worksheet.pdf
+Download Free Worksheet → matching worksheet PDF
+Print Now → matching worksheet PDF (new tab)
 View All Flower Tutorials → /flower-drawing/
 Start Drawing → /flower-drawing/
 View Practice Worksheets → /#worksheets
 ```
+
+Worksheet sections on the homepage and tutorial pages must use:
+
+- `Download Free Worksheet`
+- `Print Now`
 
 Download buttons must download a real file.
 
 Print buttons must open the PDF in a new tab.
 
 Do not rename buttons without explicit instruction.
+
+## Footer and Author Rules
+
+- Do not display the raw contact email address as visible footer text.
+- A Contact navigation link may keep the mailto destination internally.
+- About the Author appears on the homepage only, after the Final CTA and before the global footer.
+- Author name: AlexArts
+- Author heading: About the Author
+- Do not invent credentials, social profiles, or biography beyond the approved text.
 
 ---
 
@@ -441,7 +487,7 @@ Required SEO foundations:
 Homepage canonical:
 
 ```text
-https://flowerdrawings.com/
+https://flowerdrawings.org/
 ```
 
 Homepage Open Graph image:

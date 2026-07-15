@@ -62,6 +62,14 @@ Preserve unusual grammar exactly.
 12. Explore More Easy Flowers Drawing Ideas
 13. FAQs
 14. Final CTA
+15. About the Author (homepage only; after Final CTA, before the global footer)
+
+About the Author:
+
+- Heading: `About the Author`
+- Name: `AlexArts`
+- Appears on the homepage only
+- Do not add social links, email, or invented credentials
 
 ## Button destinations
 
@@ -70,11 +78,25 @@ Preserve unusual grammar exactly.
 | Explore Drawing Tutorials | `/flower-drawing/` |
 | Download Practice Worksheets | `/downloads/flower-drawing-worksheet.pdf` |
 | View Step-by-Step Drawing Guides | `/flower-drawing/` |
-| Browse Drawing Worksheets | `/downloads/flower-drawing-worksheet.pdf` |
-| Print a Practice Page | `/downloads/flower-drawing-worksheet.pdf` (new tab) |
+| Download Free Worksheet | `/downloads/flower-drawing-worksheet.pdf` (or the tutorial worksheet PDF) |
+| Print Now | matching worksheet PDF (new tab) |
 | View All Flower Tutorials | `/flower-drawing/` |
 | Start Drawing | `/flower-drawing/` |
 | View Practice Worksheets | `/#worksheets` |
+
+Worksheet sections on the homepage and tutorial pages must use:
+
+- `Download Free Worksheet`
+- `Print Now`
+
+Do not display the raw contact email address in the footer. A Contact navigation link may still use the mailto destination internally.
+
+## Brand and domain
+
+Official brand: FlowerDrawings.org  
+Official production URL: https://flowerdrawings.org  
+
+FlowerDrawings.com is obsolete. Do not use it as an active brand, production URL, canonical host, or metadata value.
 
 ## SEO
 
