@@ -773,3 +773,13 @@ The following rules remain mandatory unless the user explicitly changes them:
 - No fake tutorial posts
 - No WordPress or PHP
 - Lint and build must pass
+
+---
+
+## Cursor Cloud specific instructions
+
+Environment: Node 22 with npm. The startup update script runs `npm install`; no other services, databases, or environment variables are required.
+
+- Standard commands live in `package.json` scripts and `README.md`. Use `npm run check` (validate:content + lint + build), and `npm run dev` for the dev server on `http://localhost:3000`.
+- Generated assets under `public/images/`, `public/icons/`, `public/downloads/`, and `src/app/*icon*` are already committed. You do NOT need to run `npm run assets:all` for a normal dev/build; only run it after changing files in `source-assets/`.
+- Gotcha: `npm run assets:all` (specifically `assets:worksheet`) rewrites `public/downloads/**/*.pdf` non-deterministically, so the PDFs show as modified in git even when content is unchanged. Do not commit that PDF churn unless the worksheet actually changed.
