@@ -9,8 +9,10 @@ public/images/brand/flowerdrawings-logo.webp
 Logo alt text must remain:
 
 ```text
-FlowerDrawings.com
+FlowerDrawings.org
 ```
+
+Note: the supplied logo artwork may still contain `.com` inside the raster image. Do not edit the image. Display the correct FlowerDrawings.org brand as styled HTML text beside it.
 
 ## Homepage
 

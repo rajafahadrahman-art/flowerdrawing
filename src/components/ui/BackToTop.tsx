@@ -17,7 +17,7 @@ export function BackToTop() {
   return (
     <button
       type="button"
-      className="btn btn-ghost fixed bottom-5 right-5 z-40 shadow-soft"
+      className="btn btn-sky fixed bottom-5 right-5 z-40 !rounded-full shadow-[var(--shadow-button)]"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
     >

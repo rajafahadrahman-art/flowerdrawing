@@ -1,6 +1,12 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { importantPages, siteConfig } from "@/lib/site";
 import { getAllTutorials } from "@/lib/tutorials/get-tutorials";
+
+const noIndexImportantPaths = new Set([
+  "/privacy-policy/",
+  "/disclaimer/",
+  "/terms-and-conditions/",
+]);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const tutorials = await getAllTutorials();
@@ -25,5 +31,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    ...importantPages
+      .filter((page) => !noIndexImportantPaths.has(page.path))
+      .map((page) => ({
+        url: `${siteConfig.url}${page.path}`,
+        lastModified,
+        changeFrequency: "yearly" as const,
+        priority: 0.4,
+      })),
   ];
 }

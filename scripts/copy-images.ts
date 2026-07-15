@@ -47,7 +47,14 @@ async function main() {
       "source-assets/flower-drawing.webp",
       "public/images/flower-drawing/home/flower-drawing.webp",
     ],
+    [
+      "source-assets/homepagebanner2.webp",
+      "public/images/flower-drawing/home/homepagebanner2.webp",
+    ],
   ];
+
+  // flower-drawing-step-7.webp is identical to flower-drawing.webp.
+  // Reuse the featured public file; do not create a duplicate public copy.
 
   for (const [src, dest] of copies) {
     await copy(path.join(root, src), path.join(root, dest));

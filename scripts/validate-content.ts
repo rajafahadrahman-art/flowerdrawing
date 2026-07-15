@@ -64,7 +64,7 @@ async function validateHomepage() {
   assert(source.includes(homepageSeo.title), "Homepage SEO title matches source");
   assert(source.includes(homepageSeo.description), "Homepage meta description matches source");
 
-  const requiredButtons = [
+  const sourceButtons = [
     "Explore Drawing Tutorials",
     "Download Practice Worksheets",
     "View Step-by-Step Drawing Guides",
@@ -75,9 +75,20 @@ async function validateHomepage() {
     "View Practice Worksheets",
   ];
 
-  for (const label of requiredButtons) {
+  for (const label of sourceButtons) {
     assert(source.includes(`Button: ${label}`), `Homepage source includes button: ${label}`);
   }
+
+  const pageButtons = [
+    "Explore Drawing Tutorials",
+    "Download Practice Worksheets",
+    "View Step-by-Step Drawing Guides",
+    "Download Free Worksheet",
+    "Print Now",
+    "View All Flower Tutorials",
+    "Start Drawing",
+    "View Practice Worksheets",
+  ];
 
   assert(homepageFaqs.length === 7, "Homepage has 7 FAQs");
   for (const faq of homepageFaqs) {
@@ -90,12 +101,123 @@ async function validateHomepage() {
     homepageSteps[5]?.image?.src === "/images/flower-drawing/home/flower-drawing.webp",
     "Homepage Step 6 uses flower-drawing.webp",
   );
-  assert(!("image" in (homepageSteps[6] ?? {})), "Homepage Step 7 has no fabricated image");
+  assert(
+    homepageSteps[6]?.image?.src === "/images/flower-drawing/home/flower-drawing.webp",
+    "Homepage Step 7 reuses featured flower-drawing.webp (identical artwork)",
+  );
+  assert(
+    homepageSteps[6]?.image?.alt === "How to Draw flower",
+    "Homepage Step 7 alt text is exact",
+  );
+  assert(
+    homepageSteps[6]?.image?.title === "Draw a flower",
+    "Homepage Step 7 title attribute is exact",
+  );
 
   const pageSource = await read("src/app/page.tsx");
-  for (const label of requiredButtons) {
+  for (const label of pageButtons) {
     assert(pageSource.includes(label), `Homepage page includes button label: ${label}`);
   }
+
+  assert(pageSource.includes("Table of Contents"), "Homepage includes Table of Contents");
+  assert(
+    pageSource.includes("homepagebanner2.webp"),
+    "Homepage includes homepagebanner2.webp",
+  );
+  assert(
+    pageSource.includes('alt="Realistic Flower Drawing"'),
+    "Homepage banner 2 alt text is exact",
+  );
+  assert(
+    pageSource.includes('title="flowers drawing"'),
+    "Homepage banner 2 title attribute is exact",
+  );
+  assert(
+    !pageSource.includes("bg-gradient-to-b from-sky via-mint to-coral"),
+    "Homepage does not include the unwanted vertical connector line",
+  );
+
+  assert(
+    pageSource.includes("<AboutAuthor") || pageSource.includes("AboutAuthor"),
+    "Homepage includes About the Author section",
+  );
+  const aboutAuthorSource = await read("src/components/ui/AboutAuthor.tsx");
+  assert(
+    aboutAuthorSource.includes("About the Author"),
+    "AboutAuthor component includes About the Author heading",
+  );
+  assert(
+    aboutAuthorSource.includes("AlexArts") ||
+      (await read("src/lib/site.ts")).includes("AlexArts"),
+    "Homepage includes AlexArts author name",
+  );
+  assert(
+    pageSource.includes("FlowerDrawings.org") || pageSource.includes("siteConfig.name"),
+    "Homepage uses FlowerDrawings.org brand",
+  );
+
+  const footerSource = await read("src/components/layout/Footer.tsx");
+  assert(
+    !footerSource.includes("{siteConfig.email}"),
+    "Footer does not render visible raw email",
+  );
+  assert(
+    !footerSource.includes("ale298784@gmail.com"),
+    "Footer source does not hardcode visible email",
+  );
+
+  const siteSource = await read("src/lib/site.ts");
+  assert(siteSource.includes("FlowerDrawings.org"), "siteConfig brand is FlowerDrawings.org");
+  assert(
+    siteSource.includes("https://flowerdrawings.org"),
+    "siteConfig URL uses flowerdrawings.org",
+  );
+  assert(
+    !siteSource.includes("flowerdrawings.com"),
+    "siteConfig no longer references flowerdrawings.com",
+  );
+
+  const rosePage = await read("src/app/flower-drawing/[slug]/page.tsx");
+  assert(
+    rosePage.includes("Download Free Worksheet"),
+    "Rose worksheet section uses Download Free Worksheet",
+  );
+  assert(rosePage.includes("Print Now"), "Rose worksheet section uses Print Now");
+  assert(rosePage.includes("TableOfContents"), "Rose tutorial includes Table of Contents");
+
+  const importantRoutes = [
+    "src/app/about/page.tsx",
+    "src/app/contact/page.tsx",
+    "src/app/privacy-policy/page.tsx",
+    "src/app/disclaimer/page.tsx",
+    "src/app/terms-and-conditions/page.tsx",
+  ];
+  for (const route of importantRoutes) {
+    assert(await exists(route), `Important page exists: ${route}`);
+  }
+
+  const contactPage = await read("src/app/contact/page.tsx");
+  assert(contactPage.includes("Contact AlexArts"), "Contact page has Contact AlexArts label");
+  assert(
+    !contactPage.includes(">ale298784@gmail.com<"),
+    "Contact page does not display raw email as visible text",
+  );
+
+  const siteSourceForFooter = await read("src/lib/site.ts");
+  assert(
+    siteSourceForFooter.includes("/privacy-policy/"),
+    "Footer links to Privacy Policy",
+  );
+  assert(siteSourceForFooter.includes("/disclaimer/"), "Footer links to Disclaimer");
+  assert(
+    siteSourceForFooter.includes("/terms-and-conditions/"),
+    "Footer links to Terms and Conditions",
+  );
+  const footerComponent = await read("src/components/layout/Footer.tsx");
+  assert(
+    footerComponent.includes("footerLegalLinks"),
+    "Footer renders important-page legal links",
+  );
 
   assert(pageSource.includes('id="worksheets"'), "Homepage worksheets section id exists");
   assert(pageSource.includes('id="faq"'), "Homepage FAQ section id exists");
@@ -118,6 +240,7 @@ async function validateHomepage() {
     "public/images/flower-drawing/home/flower-drawing-step-4.webp",
     "public/images/flower-drawing/home/flower-drawing-step-5.webp",
     "public/images/flower-drawing/home/flower-drawing.webp",
+    "public/images/flower-drawing/home/homepagebanner2.webp",
     "public/downloads/flower-drawing-worksheet.webp",
     "public/downloads/flower-drawing-worksheet.pdf",
   ];
@@ -129,6 +252,10 @@ async function validateHomepage() {
   assert(
     !(await exists("public/images/flower-drawing/home/flower-drawing-step-6.webp")),
     "Homepage does not publish a duplicate step-6 file",
+  );
+  assert(
+    !(await exists("public/images/flower-drawing/home/flower-drawing-step-7.webp")),
+    "Homepage does not publish a duplicate step-7 file when artwork matches featured image",
   );
 
   // Spot-check key exact phrases still appear in rendered content module

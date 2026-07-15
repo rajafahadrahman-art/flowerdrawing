@@ -8,7 +8,7 @@ type TutorialCardProps = {
 
 export function TutorialCard({ tutorial }: TutorialCardProps) {
   return (
-    <article className="surface-card overflow-hidden transition duration-200 hover:-translate-y-0.5">
+    <article className="surface-card surface-card--hover overflow-hidden">
       <Link href={`/flower-drawing/${tutorial.slug}/`} className="block">
         <div className="border-b border-border bg-white p-4">
           <Image
@@ -24,22 +24,11 @@ export function TutorialCard({ tutorial }: TutorialCardProps) {
         <div className="space-y-3 p-5">
           <h3 className="heading-card">{tutorial.title}</h3>
           <p className="text-muted">{tutorial.excerpt}</p>
-          <dl className="flex flex-wrap gap-3 text-sm text-muted">
-            <div>
-              <dt className="sr-only">Difficulty</dt>
-              <dd>{tutorial.difficulty}</dd>
-            </div>
-            <div aria-hidden="true">·</div>
-            <div>
-              <dt className="sr-only">Steps</dt>
-              <dd>{tutorial.stepCount} steps</dd>
-            </div>
-            <div aria-hidden="true">·</div>
-            <div>
-              <dt className="sr-only">Time</dt>
-              <dd>{tutorial.estimatedTime}</dd>
-            </div>
-          </dl>
+          <div className="flex flex-wrap gap-2">
+            <span className="meta-badge meta-badge--mint">{tutorial.difficulty}</span>
+            <span className="meta-badge meta-badge--sky">{tutorial.stepCount} steps</span>
+            <span className="meta-badge meta-badge--lavender">{tutorial.estimatedTime}</span>
+          </div>
         </div>
       </Link>
     </article>

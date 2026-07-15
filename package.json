@@ -2,7 +2,7 @@
   "name": "flowerdrawings",
   "version": "1.0.0",
   "private": true,
-  "description": "FlowerDrawings.com — easy flower drawing tutorials for beginners",
+  "description": "FlowerDrawings.org — easy flower drawing tutorials for beginners",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

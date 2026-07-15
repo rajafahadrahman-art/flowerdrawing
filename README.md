@@ -1,6 +1,6 @@
-# FlowerDrawings.com
+# FlowerDrawings.org
 
-Production website for [FlowerDrawings.com](https://flowerdrawings.com) — easy flower drawing tutorials for beginners, students, kids, parents, teachers, and hobby artists.
+Production website for [FlowerDrawings.org](https://flowerdrawings.org) — easy flower drawing tutorials for beginners, students, kids, parents, teachers, and hobby artists.
 
 ## Stack
 
@@ -26,6 +26,11 @@ Open [http://localhost:3000](http://localhost:3000).
 - `/` — Homepage
 - `/flower-drawing/` — Tutorial archive
 - `/flower-drawing/rose-drawing/` — Rose Drawing tutorial
+- `/about/` — About FlowerDrawings.org
+- `/contact/` — Contact
+- `/privacy-policy/` — Privacy Policy
+- `/disclaimer/` — Disclaimer
+- `/terms-and-conditions/` — Terms and Conditions
 
 ## Source content
 
@@ -46,6 +51,11 @@ source-assets/homepage-content.txt
 ```
 
 Do not rewrite, paraphrase, shorten, expand, or reorder approved content unless explicitly requested.
+
+Worksheet action buttons use:
+
+- `Download Free Worksheet`
+- `Print Now`
 
 See:
 
@@ -95,4 +105,4 @@ src/app/
 
 ## Contact
 
-ale298784@gmail.com
+Use the Contact navigation link (mailto). Do not display the raw email address in the footer.

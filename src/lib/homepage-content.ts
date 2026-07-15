@@ -123,6 +123,69 @@ export const homepageSteps = [
       "Finish the drawing with light pencil shading, colored pencils, markers, or another medium you enjoy.",
       "Place darker values near overlapping petals and underneath the flower center. Leave some areas lighter to create contrast.",
     ],
+    // Identical to featured flower-drawing.webp — reuse that public file (no duplicate copy).
+    image: {
+      src: "/images/flower-drawing/home/flower-drawing.webp",
+      alt: "How to Draw flower",
+      title: "Draw a flower",
+      width: 1254,
+      height: 1254,
+    },
+  },
+] as const;
+
+export const homepageTocItems = [
+  {
+    id: "explore-easy-flower-drawing-tutorial",
+    label: "Explore Easy Flower Drawing Tutorial",
+  },
+  {
+    id: "how-to-draw-a-flower-step-by-step",
+    label: "How to Draw a Flower Step by Step",
+  },
+  {
+    id: "simple-flower-drawing-ideas-to-practice",
+    label: "Simple Flower Drawing Ideas to Practice",
+  },
+  {
+    id: "flower-drawing-for-beginners",
+    label: "Flower Drawing for Beginners",
+  },
+  {
+    id: "from-basic-shapes-to-a-beautiful-flower-drawing",
+    label: "From Basic Shapes to a Beautiful Flower Drawing",
+  },
+  {
+    id: "sketching-flowers-with-pencil",
+    label: "Sketching Flowers with Pencil",
+  },
+  {
+    id: "worksheets",
+    label: "Download Worksheets for Practice",
+  },
+  {
+    id: "find-a-flower-drawing-that-matches-your-skill-level",
+    label: "Find a Flower Drawing That Matches Your Skill Level",
+  },
+  {
+    id: "tips-for-better-drawing-of-flower",
+    label: "Tips for Better Drawing of Flower",
+  },
+  {
+    id: "explore-more-easy-flowers-drawing-ideas",
+    label: "Explore More Easy Flowers Drawing Ideas",
+  },
+  {
+    id: "faq",
+    label: "Frequently Asked Questions",
+  },
+  {
+    id: "start-your-next-flower-drawing",
+    label: "Start Your Next Flower Drawing",
+  },
+  {
+    id: "about-the-author",
+    label: "About the Author",
   },
 ] as const;
 
