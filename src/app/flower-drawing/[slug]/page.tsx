@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { TableOfContents } from "@/components/tutorial/TableOfContents";
 import { PaperTape } from "@/components/decorations/PaperTape";
 import { PencilStroke } from "@/components/decorations/PencilStroke";
 import { Breadcrumbs } from "@/components/tutorials/Breadcrumbs";
@@ -37,6 +38,7 @@ import {
   buildWebPageJsonLd,
 } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
+import { roseTocItems } from "@/lib/tutorials/rose-toc";
 import {
   getAdjacentTutorials,
   getAllTutorials,
@@ -193,7 +195,11 @@ export default async function TutorialPage({ params }: PageProps) {
           </div>
         </div>
 
-        <div className="mt-12">
+        <div className="mx-auto mt-10 max-w-[860px]">
+          <TableOfContents items={[...roseTocItems]} />
+        </div>
+
+        <div id="rose-drawing-tutorial-information" className="mt-12">
           <h2 className="heading-section">Rose Drawing Tutorial Information</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
             {(
@@ -214,7 +220,7 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section tone="mint">
+      <Section id="materials-you-need" tone="mint">
         <div className="mx-auto max-w-[760px] prose-exact">
           <h2 className="heading-section">Materials You Need</h2>
           <p>{roseMaterialsNote}</p>
@@ -227,7 +233,7 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section>
+      <Section id="rose-drawing-step-by-step">
         <div className="mx-auto mb-8 max-w-[760px]">
           <h2 className="heading-section">Rose Drawing Step by Step</h2>
           {roseStepsIntro.map((paragraph) => (
@@ -279,7 +285,7 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section tone="yellow">
+      <Section id="simple-rose-drawing-tips-for-beginners" tone="yellow">
         <div className="mx-auto max-w-[760px] prose-exact">
           <div className="surface-card surface-card--yellow border border-yellow p-6 sm:p-8">
             <h2 className="heading-section">Simple Rose Drawing Tips for Beginners</h2>
@@ -296,14 +302,18 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section>
+      <Section id="how-to-create-outline">
         <div className="mx-auto max-w-[760px] prose-exact">
           <h2 className="heading-section">How to Create Outline</h2>
           {roseOutlineSection.intro.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
           {roseOutlineSection.versions.map((version) => (
-            <div key={version.title} className="surface-card mt-6 p-5">
+            <div
+              key={version.title}
+              id={version.title === "Basic Outline" ? "basic-outline" : "detailed-outline"}
+              className="surface-card mt-6 p-5"
+            >
               <h3 className="heading-card">{version.title}</h3>
               <p>{version.text}</p>
             </div>
@@ -312,14 +322,18 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section tone="lavender">
+      <Section id="how-to-make-a-realistic-rose-drawing" tone="lavender">
         <div className="mx-auto max-w-[760px] prose-exact">
           <h2 className="heading-section">How to Make a Realistic Rose Drawing</h2>
           {roseRealisticSection.intro.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
           {roseRealisticSection.areas.map((area) => (
-            <div key={area.title} className="surface-card mt-6 p-5">
+            <div
+              key={area.title}
+              id={area.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/g, "")}
+              className="surface-card mt-6 p-5"
+            >
               <h3 className="heading-card">{area.title}</h3>
               <p>{area.text}</p>
             </div>
@@ -331,6 +345,7 @@ export default async function TutorialPage({ params }: PageProps) {
       {roseColorSections.map((section, sectionIndex) => (
         <Section
           key={section.title}
+          id={section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/g, "")}
           tone={sectionIndex % 2 === 0 ? "surface" : "default"}
         >
           <div className="mx-auto max-w-[760px] prose-exact">
@@ -350,13 +365,14 @@ export default async function TutorialPage({ params }: PageProps) {
         </Section>
       ))}
 
-      <Section>
+      <Section id="common-mistakes-when-drawing-a-rose">
         <div className="mx-auto max-w-[760px] prose-exact">
           <h2 className="heading-section">Common Mistakes When Drawing a Rose</h2>
           <div className="mt-6 space-y-4">
             {roseMistakes.map((mistake, index) => (
               <div
                 key={mistake.title}
+                id={mistake.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/g, "")}
                 className={`surface-card p-5 ${
                   index % 2 === 0 ? "surface-card--coral" : "surface-card--peach"
                 }`}
@@ -421,7 +437,7 @@ export default async function TutorialPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section tone="paper">
+      <Section id="start-your-roses-drawing" tone="paper">
         <div className="surface-card mx-auto max-w-[860px] overflow-hidden border border-border bg-ink px-6 py-10 text-center text-paper shadow-[var(--shadow-feature)] sm:px-10">
           <div
             aria-hidden="true"

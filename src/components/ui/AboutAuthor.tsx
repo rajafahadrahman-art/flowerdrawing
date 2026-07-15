@@ -6,7 +6,11 @@ export function AboutAuthor() {
   const { author } = siteConfig;
 
   return (
-    <section className="section-space bg-lavender-light/35" aria-labelledby="about-author-heading">
+    <section
+      id="about-the-author"
+      className="section-space bg-lavender-light/35"
+      aria-labelledby="about-author-heading"
+    >
       <div className="container-main">
         <div className="mx-auto max-w-[760px]">
           <div className="surface-card overflow-hidden border border-border bg-white p-6 shadow-[var(--shadow-feature)] sm:p-8">

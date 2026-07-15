@@ -420,6 +420,13 @@ Keep this exact section order:
 14. Final CTA
 15. About the Author (homepage only; after Final CTA, before footer)
 
+Additional homepage structural elements (do not remove):
+
+- Table of Contents appears after the introduction and before homepagebanner2 / the first H2
+- `homepagebanner2.webp` appears immediately before the first homepage H2
+- Homepage Step 7 must display its real uploaded image (reuse the featured public file when the artwork is identical; do not create a duplicate copy)
+- Every real tutorial page includes a generated Table of Contents built from real H2/H3 headings
+
 Do not rearrange sections without explicit approval.
 
 ---
@@ -763,6 +770,29 @@ Use clear commit messages.
 If Git authentication is unavailable, leave the repository ready for manual commit and push.
 
 ---
+
+## Important Pages and Internal Linking
+
+Fixed important-page routes:
+
+```text
+/about/
+/contact/
+/privacy-policy/
+/disclaimer/
+/terms-and-conditions/
+```
+
+Rules:
+
+- Footer contains compact links to these important pages
+- Header Contact links to `/contact/` (not a visible raw email address)
+- Contact page uses a `Contact AlexArts` control with the mailto destination internally
+- Internal linking should use existing buttons, cards, breadcrumbs, TOCs, navigation, and footer links
+- Do not insert promotional paragraphs into approved homepage or Rose content merely to add links
+- Homepage and every real tutorial must keep a Table of Contents
+- Uploaded images must remain unchanged
+- Existing colorful design, card colors, shadows, header, footer, and approved content remain protected unless the user requests a specific change
 
 ## Documentation Rules
 

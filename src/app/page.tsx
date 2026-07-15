@@ -14,11 +14,13 @@ import { ShapeConceptIcon } from "@/components/ui/Icons";
 import { Section } from "@/components/ui/Section";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { TutorialCard } from "@/components/tutorials/TutorialCard";
+import { TableOfContents } from "@/components/tutorial/TableOfContents";
 import {
   beginnerHabits,
   drawingTips,
   homepageFaqs,
   homepageSteps,
+  homepageTocItems,
   pencilTechniques,
   practiceIdeas,
   shapeElements,
@@ -198,8 +200,28 @@ export default async function HomePage() {
         </div>
       </Section>
 
+      {/* Table of Contents */}
+      <Section>
+        <div className="mx-auto max-w-[860px]">
+          <TableOfContents items={[...homepageTocItems]} />
+        </div>
+      </Section>
+
+      {/* Homepage banner 2 */}
+      <section className="w-full">
+        <Image
+          src="/images/flower-drawing/home/homepagebanner2.webp"
+          alt="Realistic Flower Drawing"
+          title="flowers drawing"
+          width={1774}
+          height={887}
+          className="h-auto w-full"
+          sizes="100vw"
+        />
+      </section>
+
       {/* 3. Explore Easy Flower Drawing Tutorial */}
-      <Section tone="sky">
+      <Section id="explore-easy-flower-drawing-tutorial" tone="sky">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="prose-exact">
             <h2 className="heading-section">Explore Easy Flower Drawing Tutorial</h2>
@@ -247,7 +269,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 4. How to Draw a Flower Step by Step */}
-      <Section>
+      <Section id="how-to-draw-a-flower-step-by-step">
         <div className="mx-auto mb-10 max-w-[760px] text-center">
           <h2 className="heading-section">How to Draw a Flower Step by Step</h2>
           <p className="mt-4 lead">
@@ -256,12 +278,7 @@ export default async function HomePage() {
           </p>
         </div>
 
-        <div className="relative">
-          <div
-            aria-hidden="true"
-            className="decoration-hide-mobile pointer-events-none absolute left-1/2 top-8 hidden h-[calc(100%-4rem)] w-px -translate-x-1/2 bg-gradient-to-b from-sky via-mint to-coral xl:block"
-          />
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {homepageSteps.map((step, index) => (
               <article
                 key={step.title}
@@ -293,7 +310,6 @@ export default async function HomePage() {
                 </div>
               </article>
             ))}
-          </div>
         </div>
 
         <div className="mt-8 flex justify-center">
@@ -304,7 +320,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 5. Simple Flower Drawing Ideas to Practice */}
-      <Section tone="paper">
+      <Section id="simple-flower-drawing-ideas-to-practice" tone="paper">
         <div className="mx-auto mb-8 max-w-[760px]">
           <div className="mb-2 flex items-center gap-3">
             <h2 className="heading-section">Simple Flower Drawing Ideas to Practice</h2>
@@ -341,7 +357,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 6. Flower Drawing for Beginners */}
-      <Section>
+      <Section id="flower-drawing-for-beginners">
         <div className="feature-frame mx-auto grid max-w-[960px] overflow-hidden lg:grid-cols-[1fr_0.35fr]">
           <div className="prose-exact bg-white p-6 sm:p-8">
             <div className="mb-2 flex items-start justify-between gap-4">
@@ -375,7 +391,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 7. From Basic Shapes to a Beautiful Flower Drawing */}
-      <Section tone="mint">
+      <Section id="from-basic-shapes-to-a-beautiful-flower-drawing" tone="mint">
         <div className="mx-auto mb-8 max-w-[760px] prose-exact">
           <h2 className="heading-section">From Basic Shapes to a Beautiful Flower Drawing</h2>
           <p>
@@ -414,7 +430,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 8. Sketching Flowers with Pencil */}
-      <Section>
+      <Section id="sketching-flowers-with-pencil">
         <div className="graphite-paper mx-auto max-w-[860px] overflow-hidden rounded-[1.4rem] border border-border p-6 shadow-[var(--shadow-card)] sm:p-8">
           <div className="prose-exact rounded-[1.1rem] border border-border bg-lavender-light/50 p-5 sm:p-6">
             <h2 className="heading-section">Sketching Flowers with Pencil</h2>
@@ -512,7 +528,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 10. Skill levels */}
-      <Section>
+      <Section id="find-a-flower-drawing-that-matches-your-skill-level">
         <div className="mx-auto mb-8 max-w-[760px]">
           <h2 className="heading-section">Find a Flower Drawing That Matches Your Skill Level</h2>
           <p className="mt-4">
@@ -538,7 +554,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 11. Drawing tips */}
-      <Section tone="paper">
+      <Section id="tips-for-better-drawing-of-flower" tone="paper">
         <div className="mx-auto max-w-[760px]">
           <div className="surface-card surface-card--yellow border border-yellow p-6 sm:p-8">
             <h2 className="heading-section">Tips for Better Drawing of Flower</h2>
@@ -556,7 +572,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 12. Explore More Easy Flowers Drawing Ideas */}
-      <Section>
+      <Section id="explore-more-easy-flowers-drawing-ideas">
         <div className="mx-auto mb-8 max-w-[760px]">
           <h2 className="heading-section">Explore More Easy Flowers Drawing Ideas</h2>
           <p className="mt-4">
@@ -592,7 +608,7 @@ export default async function HomePage() {
       </Section>
 
       {/* 14. Final CTA */}
-      <Section>
+      <Section id="start-your-next-flower-drawing">
         <div className="relative mx-auto max-w-[860px] overflow-hidden rounded-[1.5rem] border border-border bg-ink px-6 py-10 text-center text-paper shadow-[var(--shadow-feature)] sm:px-10">
           <div className="decoration-hide-mobile pointer-events-none absolute left-6 top-6 opacity-70">
             <FlowerDoodle />

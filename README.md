@@ -26,6 +26,11 @@ Open [http://localhost:3000](http://localhost:3000).
 - `/` — Homepage
 - `/flower-drawing/` — Tutorial archive
 - `/flower-drawing/rose-drawing/` — Rose Drawing tutorial
+- `/about/` — About FlowerDrawings.org
+- `/contact/` — Contact
+- `/privacy-policy/` — Privacy Policy
+- `/disclaimer/` — Disclaimer
+- `/terms-and-conditions/` — Terms and Conditions
 
 ## Source content
 

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { importantPages, siteConfig } from "@/lib/site";
 import { getAllTutorials } from "@/lib/tutorials/get-tutorials";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -24,6 +24,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(tutorial.updatedDate),
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    ...importantPages.map((page) => ({
+      url: `${siteConfig.url}${page.path}`,
+      lastModified,
+      changeFrequency: "yearly" as const,
+      priority: 0.4,
     })),
   ];
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FlowerDoodle } from "@/components/decorations/FlowerDoodle";
 import { PaintDots } from "@/components/decorations/PaintDots";
 import { BrandMark } from "@/components/ui/BrandMark";
-import { navLinks, siteConfig } from "@/lib/site";
+import { footerLegalLinks, navLinks, siteConfig } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -17,7 +17,7 @@ export function Footer() {
         <PaintDots />
       </div>
 
-      <div className="container-main section-space grid gap-10 md:grid-cols-[1.2fr_1fr]">
+      <div className="container-main section-space grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
         <div className="space-y-4">
           <Link href="/" className="inline-flex items-center gap-3">
             <span className="inline-flex rounded-2xl bg-white p-1.5 shadow-[var(--shadow-button)]">
@@ -38,6 +38,22 @@ export function Footer() {
           <h2 className="mb-4 text-base font-semibold text-white">Explore</h2>
           <ul className="space-y-1">
             {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="inline-flex min-h-11 items-center text-white/85 transition hover:text-yellow"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="mb-4 text-base font-semibold text-white">Important</h2>
+          <ul className="space-y-1">
+            {footerLegalLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
