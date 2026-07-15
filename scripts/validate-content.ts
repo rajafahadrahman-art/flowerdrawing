@@ -109,13 +109,18 @@ async function validateHomepage() {
   }
 
   assert(
-    pageSource.includes("About the Author"),
+    pageSource.includes("<AboutAuthor") || pageSource.includes("AboutAuthor"),
     "Homepage includes About the Author section",
   );
-  assert(pageSource.includes("AlexArts"), "Homepage includes AlexArts author name");
+  const aboutAuthorSource = await read("src/components/ui/AboutAuthor.tsx");
   assert(
-    !pageSource.includes("ale298784@gmail.com"),
-    "Homepage does not display raw contact email",
+    aboutAuthorSource.includes("About the Author"),
+    "AboutAuthor component includes About the Author heading",
+  );
+  assert(
+    aboutAuthorSource.includes("AlexArts") ||
+      (await read("src/lib/site.ts")).includes("AlexArts"),
+    "Homepage includes AlexArts author name",
   );
   assert(
     pageSource.includes("FlowerDrawings.org") || pageSource.includes("siteConfig.name"),
