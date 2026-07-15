@@ -13,6 +13,14 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: "/privacy-policy/" },
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
   openGraph: {
     title,
     description,
