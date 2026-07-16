@@ -23,11 +23,11 @@ type DrawAlongLauncherProps = {
  */
 export function DrawAlongLauncher({ tutorial }: DrawAlongLauncherProps) {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [active, setActive] = useState(false);
   const startButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleOpen = useCallback(() => {
-    setMounted(true);
+    setActive(true);
     setOpen(true);
   }, []);
 
@@ -36,12 +36,13 @@ export function DrawAlongLauncher({ tutorial }: DrawAlongLauncherProps) {
   }, []);
 
   useEffect(() => {
-    if (open || !mounted) return;
+    if (open || !active) return;
     const frame = window.requestAnimationFrame(() => {
       startButtonRef.current?.focus();
+      setActive(false);
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [open, mounted]);
+  }, [open, active]);
 
   return (
     <aside className="da-launcher" aria-label="Draw Along">
@@ -68,7 +69,7 @@ export function DrawAlongLauncher({ tutorial }: DrawAlongLauncherProps) {
         Start Drawing
       </button>
 
-      {mounted ? (
+      {active ? (
         <DrawAlongModal
           tutorial={tutorial}
           open={open}

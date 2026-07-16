@@ -438,7 +438,17 @@
 
 .da-launcher__cta {
   grid-area: cta;
+  position: relative;
+  z-index: 1;
   width: 100%;
+}
+
+/* Keep Start Drawing clear of the fixed Back to Top control on narrow phones */
+@media (max-width: 639px) {
+  .da-launcher__cta {
+    width: calc(100% - 4.75rem);
+    max-width: 100%;
+  }
 }
 
 @media (min-width: 640px) {
@@ -452,6 +462,10 @@
     width: auto;
     min-width: 9.5rem;
   }
+}
+
+body[data-draw-along-open="true"] .back-to-top-btn {
+  display: none;
 }
 
 /* All Drawings page */

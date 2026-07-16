@@ -108,6 +108,7 @@ export function DrawAlongModal({
     if (!open) {
       if (dialog.open) dialog.close();
       document.body.style.overflow = "";
+      delete document.body.dataset.drawAlongOpen;
       return;
     }
 
@@ -119,6 +120,7 @@ export function DrawAlongModal({
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    document.body.dataset.drawAlongOpen = "true";
     setStepIndex(0);
     setCompleted(false);
     setImageFailed(false);
@@ -127,6 +129,7 @@ export function DrawAlongModal({
 
     return () => {
       document.body.style.overflow = previousOverflow;
+      delete document.body.dataset.drawAlongOpen;
       if (dialog.open) dialog.close();
     };
     // Reset only when the popup opens.
