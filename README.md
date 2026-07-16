@@ -35,6 +35,31 @@ Open [http://localhost:3000](http://localhost:3000).
 - `/privacy-policy/` — Privacy Policy
 - `/disclaimer/` — Disclaimer
 - `/terms-and-conditions/` — Terms and Conditions
+- `/tools/draw-along-preview/` — Isolated Draw Along player prototype (noindex; not linked in navigation)
+
+## Draw Along prototype
+
+Open the isolated preview at `/tools/draw-along-preview/`.
+
+Tutorial data is configured in:
+
+```text
+src/lib/draw-along/
+├── types.ts
+├── registry.ts
+├── rose.ts
+└── tulip.ts
+```
+
+Optional calm background music belongs at:
+
+```text
+public/audio/calm-drawing.mp3
+```
+
+If that file is missing, the player still works and shows “Music unavailable”.
+
+To add another tutorial later: create a data file under `src/lib/draw-along/`, register it in `registry.ts`, and only enable it when real step images exist. Do not add the prototype to production navigation without approval.
 
 ## Source content
 

@@ -953,3 +953,20 @@ The following rules remain mandatory unless the user explicitly changes them:
 - No fake tutorial posts
 - No WordPress or PHP
 - Lint and build must pass
+
+---
+
+## Draw Along Tutorial Player Prototype
+
+Isolated prototype for review only. Do not treat it as a live production feature until explicitly approved.
+
+- Preview route: `/tools/draw-along-preview/`
+- Must remain noindex, nofollow and out of the sitemap
+- Do not link it from header, footer, homepage, archive, or tutorial articles
+- Tutorial data lives in `src/lib/draw-along/` and stays separate from player UI
+- Interactive player code lives in `src/components/tutorial-player/`
+- Keep interactive code isolated; do not convert existing static tutorial pages into large client components
+- Existing SEO content, routes, images, worksheets, and schema must not be changed for this prototype
+- Future integration into the live website requires explicit approval
+- Optional music path: `/audio/calm-drawing.mp3` — local royalty-free only; never add copyrighted music
+- Keep the prototype lightweight: dynamic import the player, no heavy libraries, no analytics
