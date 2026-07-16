@@ -229,39 +229,38 @@ export function TutorialPlayer({
     }
 
     let cancelled = false;
-    const audio = new Audio();
-    audio.preload = "metadata";
-    audio.loop = true;
-    audio.volume = prefs.muted ? 0 : prefs.volume;
-
-    const markAvailable = () => {
-      if (cancelled) return;
-      audioRef.current = audio;
-      setMusicAvailable(true);
-    };
 
     const markUnavailable = () => {
       if (cancelled) return;
       setMusicAvailable(false);
       setMusicPlaying(false);
-      if (audioRef.current === audio) {
-        audioRef.current = null;
-      }
-      audio.removeAttribute("src");
-      audio.load();
+      cleanupAudio();
     };
 
-    audio.addEventListener("loadedmetadata", markAvailable);
-    audio.addEventListener("canplay", markAvailable);
-    audio.addEventListener("error", markUnavailable);
-    audio.src = musicUrl;
-    audio.load();
+    // Probe availability before attaching src to avoid noisy console 404s
+    void fetch(musicUrl, { method: "HEAD", cache: "no-store" })
+      .then((response) => {
+        if (cancelled) return;
+        if (!response.ok) {
+          markUnavailable();
+          return;
+        }
+
+        const audio = new Audio();
+        audio.preload = "metadata";
+        audio.loop = true;
+        audio.volume = prefs.muted ? 0 : prefs.volume;
+        audio.addEventListener("error", markUnavailable);
+        audio.src = musicUrl;
+        audioRef.current = audio;
+        setMusicAvailable(true);
+      })
+      .catch(() => {
+        markUnavailable();
+      });
 
     return () => {
       cancelled = true;
-      audio.removeEventListener("loadedmetadata", markAvailable);
-      audio.removeEventListener("canplay", markAvailable);
-      audio.removeEventListener("error", markUnavailable);
       cleanupAudio();
     };
   }, [cleanupAudio, open, tutorial.musicUrl]);
