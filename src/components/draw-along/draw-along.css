@@ -1,6 +1,9 @@
 /* Draw Along — dark immersive UI (scoped .da-* classes) */
 
-.da-dialog {
+/* Shared tokens — available on launchers, home cards, and the popup */
+.da-dialog,
+.da-launcher,
+.da-home-page {
   --da-bg: #1c2129;
   --da-panel: #262c36;
   --da-panel-2: #303845;
@@ -11,8 +14,14 @@
   --da-accent: #75c9f5;
   --da-accent-strong: #8ccfa0;
   --da-accent-warm: #f5cf58;
+  --da-ink: #202124;
+  --da-cta: #f5cf58;
+  --da-cta-hover: #fff5c7;
+  --da-cta-border: #8b6812;
   --da-danger-soft: rgba(243, 140, 122, 0.18);
+}
 
+.da-dialog {
   margin: 0;
   padding: 0;
   border: none;
@@ -309,9 +318,25 @@
 }
 
 .da-btn--primary {
-  background: var(--da-accent-strong);
+  background: #8ccfa0;
   color: #173223;
-  border-color: color-mix(in srgb, var(--da-accent-strong) 70%, #173223);
+  border: 1px solid #356f46;
+}
+
+.da-btn--primary:hover:not(:disabled) {
+  background: #a3dbb4;
+  color: #173223;
+}
+
+.da-btn--primary:active:not(:disabled) {
+  background: #6fba88;
+  color: #173223;
+  transform: translateY(0);
+}
+
+.da-btn--primary:focus-visible {
+  outline: 2px solid #75c9f5;
+  outline-offset: 3px;
 }
 
 .da-btn--secondary {
@@ -441,6 +466,31 @@
   position: relative;
   z-index: 1;
   width: 100%;
+  /* High-contrast CTA on the dark launcher — solid brand yellow + ink text */
+  background: #f5cf58 !important;
+  color: #202124 !important;
+  border: 1px solid #8b6812 !important;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 2px 0 rgba(32, 33, 36, 0.18);
+}
+
+.da-launcher__cta:hover:not(:disabled) {
+  background: #fff5c7 !important;
+  color: #202124 !important;
+  border-color: #8b6812 !important;
+}
+
+.da-launcher__cta:active:not(:disabled) {
+  background: #e8c04a !important;
+  color: #202124 !important;
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.da-launcher__cta:focus-visible {
+  outline: 2px solid #75c9f5;
+  outline-offset: 3px;
 }
 
 /* Keep Start Drawing clear of the fixed Back to Top control on narrow phones */
@@ -470,15 +520,6 @@ body[data-draw-along-open="true"] .back-to-top-btn {
 
 /* All Drawings page */
 .da-home-page {
-  --da-bg: #1c2129;
-  --da-panel: #262c36;
-  --da-text: #f5f4f0;
-  --da-muted: #b4b8c0;
-  --da-border: rgba(255, 255, 255, 0.12);
-  --da-accent: #75c9f5;
-  --da-accent-strong: #8ccfa0;
-  --da-canvas: #fffefa;
-
   background:
     radial-gradient(1200px 500px at 10% -10%, rgba(117, 201, 245, 0.16), transparent 60%),
     radial-gradient(900px 420px at 90% 0%, rgba(140, 207, 160, 0.12), transparent 55%),

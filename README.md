@@ -49,7 +49,71 @@ src/lib/draw-along/
 └── get-draw-along.ts
 ```
 
-When a new tutorial is added to `src/lib/tutorials/get-tutorials.ts` and `get-tutorial-body.ts` with real step images, it appears on Draw Along automatically. Do not hardcode separate Draw Along card lists.
+`getAllDrawAlongTutorials()` and `getDrawAlongTutorialBySlug()` read the same tutorial meta + body registries used by article pages. There is no separate Draw Along card list.
+
+### Adding a Tutorial to Draw Along
+
+Add the tutorial once through the normal publishing flow. Draw Along picks it up automatically when step images exist.
+
+1. **Where to add tutorial data**
+   - `content/flower-drawing/[slug]/meta.ts` — metadata
+   - `content/flower-drawing/[slug]/tutorial-content.ts` — body including `steps.items` with images
+   - Register the meta export in `src/lib/tutorials/get-tutorials.ts`
+   - Register the body export in `src/lib/tutorials/get-tutorial-body.ts`
+   - Follow `docs/ADD-NEW-TUTORIAL.md` for the full article publishing checklist
+
+2. **Required fields for Draw Along**
+   - From meta: `slug`, `focusKeyword` (used as the short title), `featuredImage`, `featuredImageAlt`, optional `worksheetPDF`
+   - From body steps: ordered items each with `title`, `image.src`, and `image.alt`
+   - Article URL is derived as `/flower-drawing/[slug]/`
+   - Step count is always `tutorial.steps.length` — never store a separate `numberOfSteps`
+
+3. **Where step images must be stored**
+
+```text
+public/images/flower-drawing/[slug]/
+├── [slug]-step-1.webp
+├── [slug]-step-2.webp
+├── …
+├── [slug]-step-(N-1).webp
+└── [slug].webp          # final step + featured image
+```
+
+4. **Image filename rules**
+   - Lowercase, hyphenated, `.webp` only
+   - Steps `1..(N-1)` use `[slug]-step-K.webp`
+   - Final step uses `[slug].webp` (do not create `[slug]-step-N.webp`)
+
+5. **Article URL connection**
+   - Route: `/flower-drawing/[slug]/` via `src/app/flower-drawing/[slug]/page.tsx`
+   - That page calls `getDrawAlongTutorialBySlug(slug)` and passes the result into `TutorialArticle`
+
+6. **How the launcher appears on the post**
+   - `TutorialArticle` renders shared `DrawAlongLauncher` when Draw Along data is complete
+   - No per-flower launcher component is required
+
+7. **How the card appears on `/tools/draw-along/`**
+   - `src/app/tools/draw-along/page.tsx` calls `getAllDrawAlongTutorials()`
+   - Cards are generated from that list by `DrawAlongHomeClient`
+   - Incomplete tutorials (missing steps/images/title/slug) are excluded safely
+
+8. **Step count**
+   - Always calculated as `tutorial.steps.length` inside the shared popup
+
+9. **How to test the popup**
+   - Open `/flower-drawing/[slug]/` and click **Start Drawing**
+   - Also open `/tools/draw-along/` and click **Start Drawing** on the new card
+   - Confirm Step 1, thumbnails, Previous/Next/Finish, and completion image
+
+10. **Commands that must pass**
+
+```bash
+npm run validate:content
+npm run lint
+npm run build
+```
+
+Do not create a separate Draw Along registry, card array, or flower-specific popup.
 
 ## Source content
 
