@@ -107,10 +107,24 @@ async function validateHomepage() {
     "Download Practice Worksheets points toward worksheets collection",
   );
   assert(pageSource.includes("Table of Contents"), "Homepage includes Table of Contents");
+  assert(
+    pageSource.includes("defaultOpen={false}"),
+    "Homepage TOC starts collapsed",
+  );
+  assert(
+    pageSource.includes("DrawAlongLauncher") &&
+      pageSource.includes("getFlowerDrawingTutorial"),
+    "Homepage includes Flower Drawing Draw Along launcher",
+  );
+  assert(
+    pageSource.includes('href="/tools/draw-along/"'),
+    "Homepage Draw Along category card links to /tools/draw-along/",
+  );
   assert(pageSource.includes("homepagebanner2.webp"), "Homepage includes homepagebanner2.webp");
 
   const tocSource = await read("src/components/tutorial/TableOfContents.tsx");
-  assert(tocSource.includes("<details open"), "TOC uses open details element");
+  assert(tocSource.includes("defaultOpen"), "TOC supports defaultOpen prop");
+  assert(tocSource.includes("<details"), "TOC uses details element");
   assert(tocSource.includes("<summary"), "TOC uses summary element");
   assert(tocSource.includes("Table of Contents"), "TOC summary text is Table of Contents");
 

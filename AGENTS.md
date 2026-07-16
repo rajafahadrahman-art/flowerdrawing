@@ -962,11 +962,12 @@ Public feature name: **Draw Along** (never “Tutorial Player”, “Draw Along 
 
 - Public route: `/tools/draw-along/` (included in sitemap)
 - Legacy `/tools/draw-along-preview/` permanently redirects to `/tools/draw-along/`
-- Do not add Draw Along to the main header, footer, homepage, or legal pages
-- A compact launcher appears near the top of each individual drawing tutorial post and shows only that post’s drawing
-- Shared data is built from the existing tutorial meta + body registries via `src/lib/draw-along/get-draw-along.ts`
-- Future tutorials registered in `get-tutorials` / `get-tutorial-body` with real step images appear automatically on `/tools/draw-along/` and receive a launcher
-- Interactive UI lives in `src/components/draw-along/` and is dynamically imported; keep article pages as Server Components
+- Do not add Draw Along to the main header or footer navigation
+- Homepage: Flower Drawing launcher above a **collapsed** TOC opens the Flower Drawing popup; a separate Draw Along category card links to `/tools/draw-along/`
+- Each `/flower-drawing/[slug]/` post shows only that post’s launcher (focus keyword + its own steps)
+- Shared data via `src/lib/draw-along/get-draw-along.ts` (tutorial registries + homepage `homepageSteps` for Flower Drawing)
+- Future tutorials registered in `get-tutorials` / `get-tutorial-body` with real step images appear automatically
+- Interactive UI lives in `src/components/draw-along/` and is dynamically imported
 - Popup shows only images, step titles, Step X of Y, and navigation — no descriptions, tips, music, or autoplay
 - Main step images must use `object-contain` on a light canvas; never crop or stretch artwork
 - Keep Draw Along lightweight: no modal/carousel/animation libraries, no audio, no analytics

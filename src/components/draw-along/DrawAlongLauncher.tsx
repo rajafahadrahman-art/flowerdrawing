@@ -58,7 +58,9 @@ export function DrawAlongLauncher({ tutorial }: DrawAlongLauncherProps) {
       </div>
       <div className="da-launcher__copy">
         <p className="da-launcher__label">Draw Along</p>
-        <p className="da-launcher__title">{tutorial.title}</p>
+        <p className="da-launcher__title">
+          {tutorial.focusKeyword || tutorial.title}
+        </p>
       </div>
       <button
         ref={startButtonRef}

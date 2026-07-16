@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
+import { DrawAlongLauncher } from "@/components/draw-along/DrawAlongLauncher";
 import { ColoredPencils } from "@/components/decorations/ColoredPencils";
 import { CrayonCluster } from "@/components/decorations/CrayonCluster";
 import { FlowerDoodle } from "@/components/decorations/FlowerDoodle";
@@ -15,6 +17,7 @@ import { Section } from "@/components/ui/Section";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { TutorialCard } from "@/components/tutorials/TutorialCard";
 import { TableOfContents } from "@/components/tutorial/TableOfContents";
+import { getFlowerDrawingTutorial } from "@/lib/draw-along/get-draw-along";
 import {
   beginnerHabits,
   drawingTips,
@@ -111,6 +114,7 @@ const skillCardTones = [
 
 export default async function HomePage() {
   const tutorials = await getAllTutorials();
+  const flowerDrawing = getFlowerDrawingTutorial();
 
   return (
     <>
@@ -196,10 +200,16 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Table of Contents */}
+      {/* Flower Drawing Draw Along launcher, then collapsed Table of Contents */}
       <Section>
-        <div className="mx-auto max-w-[860px]">
-          <TableOfContents items={[...homepageTocItems]} />
+        <div className="mx-auto max-w-[860px] space-y-6">
+          {flowerDrawing ? (
+            <DrawAlongLauncher tutorial={flowerDrawing} />
+          ) : null}
+          <TableOfContents
+            items={[...homepageTocItems]}
+            defaultOpen={false}
+          />
         </div>
       </Section>
 
@@ -583,6 +593,15 @@ export default async function HomePage() {
             New tutorials will be added regularly, giving you more petal shapes, plant forms,
             sketching ideas, and floral designs to explore.
           </p>
+        </div>
+        <div className="mb-6">
+          <article className="surface-card surface-card--hover surface-card--mint overflow-hidden">
+            <Link href="/tools/draw-along/" className="block p-5 sm:p-6">
+              <p className="eyebrow text-mint-dark">Interactive steps</p>
+              <h3 className="heading-card mt-2">Draw Along</h3>
+              <span className="btn btn-primary mt-4 !min-h-11">All Drawings</span>
+            </Link>
+          </article>
         </div>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {tutorials.map((tutorial) => (

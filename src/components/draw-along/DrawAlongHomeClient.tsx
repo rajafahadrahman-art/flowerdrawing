@@ -69,7 +69,9 @@ export function DrawAlongHomeClient({ tutorials }: DrawAlongHomeClientProps) {
               />
             </div>
             <div className="da-home-card__body">
-              <h2 className="da-home-card__title">{tutorial.title}</h2>
+              <h2 className="da-home-card__title">
+                {tutorial.focusKeyword || tutorial.title}
+              </h2>
               <div className="da-home-card__actions">
                 <button
                   type="button"

@@ -49,7 +49,11 @@ src/lib/draw-along/
 └── get-draw-along.ts
 ```
 
-`getAllDrawAlongTutorials()` and `getDrawAlongTutorialBySlug()` read the same tutorial meta + body registries used by article pages. There is no separate Draw Along card list.
+`getAllDrawAlongTutorials()` and `getDrawAlongTutorialBySlug()` read the same tutorial meta + body registries used by article pages, plus the homepage Flower Drawing tutorial from `homepageSteps`. There is no separate Draw Along card list.
+
+- Homepage launcher (above TOC) opens **Flower Drawing** steps in the popup
+- Homepage **Draw Along** category card links to `/tools/draw-along/`
+- Each `/flower-drawing/[slug]/` page launches only that tutorial’s steps
 
 ### Adding a Tutorial to Draw Along
 

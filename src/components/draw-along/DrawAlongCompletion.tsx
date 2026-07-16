@@ -43,7 +43,9 @@ export function DrawAlongCompletion({
 
       <div className="da-completion__copy">
         <p className="da-completion__eyebrow">Drawing Complete</p>
-        <h3 className="da-completion__title">{tutorial.title}</h3>
+        <h3 className="da-completion__title">
+          {tutorial.focusKeyword || tutorial.title}
+        </h3>
       </div>
 
       <div className="da-completion__actions">

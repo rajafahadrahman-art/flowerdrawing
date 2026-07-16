@@ -7,6 +7,7 @@ export type DrawingStep = {
 
 export type DrawingTutorial = {
   slug: string;
+  focusKeyword: string;
   title: string;
   featuredImage: string;
   featuredImageAlt: string;
@@ -14,3 +15,6 @@ export type DrawingTutorial = {
   worksheetUrl?: string;
   steps: DrawingStep[];
 };
+
+/** Homepage Flower Drawing tutorial slug used by Draw Along. */
+export const FLOWER_DRAWING_SLUG = "flower-drawing";

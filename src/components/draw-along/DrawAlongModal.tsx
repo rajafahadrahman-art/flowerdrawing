@@ -196,7 +196,7 @@ export function DrawAlongModal({
           </Link>
           <div className="da-header__center">
             <h2 id={titleId} className="da-header__title">
-              {tutorial.title}
+              {tutorial.focusKeyword || tutorial.title}
             </h2>
             <p className="da-header__step da-header__step--desktop">
               {completed
