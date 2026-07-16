@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../components/draw-along/draw-along.css";
 
 @theme {
   --color-ink: #202124;

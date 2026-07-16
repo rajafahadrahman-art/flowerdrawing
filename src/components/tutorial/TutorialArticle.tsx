@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { DrawAlongLauncher } from "@/components/draw-along/DrawAlongLauncher";
-import "@/components/draw-along/draw-along.css";
 import { PaperTape } from "@/components/decorations/PaperTape";
 import { PencilStroke } from "@/components/decorations/PencilStroke";
 import { TableOfContents } from "@/components/tutorial/TableOfContents";

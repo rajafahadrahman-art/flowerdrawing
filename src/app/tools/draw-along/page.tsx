@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { DrawAlongHomeClient } from "@/components/draw-along/DrawAlongHomeClient";
-import "@/components/draw-along/draw-along.css";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getAllDrawAlongTutorials } from "@/lib/draw-along/get-draw-along";
 import { buildBreadcrumbJsonLd, buildWebPageJsonLd } from "@/lib/seo";
