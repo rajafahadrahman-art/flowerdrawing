@@ -115,6 +115,17 @@ Also:
 - Update `relatedTutorials` on sibling tutorials
 - Confirm previous/next navigation uses the deterministic collection order
 
+### Draw Along (automatic)
+
+After the tutorial is registered in `get-tutorials.ts` and `get-tutorial-body.ts` with real step images in `body.steps.items`, Draw Along updates automatically:
+
+- Card on `/tools/draw-along/` via `getAllDrawAlongTutorials()`
+- Compact launcher on `/flower-drawing/[slug]/` via `getDrawAlongTutorialBySlug(slug)`
+- Shared popup (`DrawAlongModal`) — no new player component
+- Step count from `tutorial.steps.length`
+
+Do not create a separate Draw Along registry, card list, or flower-specific popup. Incomplete tutorials (missing step images/titles) are excluded safely. See README → **Adding a Tutorial to Draw Along**.
+
 ## 8. Schema and sitemap
 
 The shared tutorial page adds:

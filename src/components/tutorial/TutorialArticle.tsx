@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DrawAlongLauncher } from "@/components/draw-along/DrawAlongLauncher";
 import { PaperTape } from "@/components/decorations/PaperTape";
 import { PencilStroke } from "@/components/decorations/PencilStroke";
 import { TableOfContents } from "@/components/tutorial/TableOfContents";
@@ -8,6 +9,7 @@ import { TutorialCard } from "@/components/tutorials/TutorialCard";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { Section } from "@/components/ui/Section";
+import type { DrawingTutorial } from "@/lib/draw-along/types";
 import type {
   TutorialBody,
   TutorialProseSection,
@@ -21,6 +23,7 @@ type TutorialArticleProps = {
   previous: TutorialMeta | null;
   next: TutorialMeta | null;
   related: TutorialMeta[];
+  drawAlong?: DrawingTutorial | null;
 };
 
 const stepBadgeTones = [
@@ -151,6 +154,7 @@ export function TutorialArticle({
   previous,
   next,
   related,
+  drawAlong = null,
 }: TutorialArticleProps) {
   return (
     <>
@@ -189,6 +193,12 @@ export function TutorialArticle({
             </div>
           </div>
         </div>
+
+        {drawAlong ? (
+          <div className="mx-auto mt-8 max-w-[860px]">
+            <DrawAlongLauncher tutorial={drawAlong} />
+          </div>
+        ) : null}
 
         <div className="mx-auto mt-10 max-w-[860px]">
           <TableOfContents items={body.toc} />
