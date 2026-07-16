@@ -16,6 +16,22 @@ const worksheets = [
     webpOut: "public/downloads/rose-drawing/rose-drawing-worksheet.webp",
     pdfOut: "public/downloads/rose-drawing/rose-drawing-worksheet.pdf",
   },
+  {
+    source: "source-assets/tulip-drawing/tulip-drawing-worksheet.webp",
+    webpOut: "public/downloads/tulip-drawing/tulip-drawing-worksheet.webp",
+    pdfOut: "public/downloads/tulip-drawing/tulip-drawing-worksheet.pdf",
+  },
+  {
+    source: "source-assets/sunflower-drawing/sunflower-drawing-worksheet.webp",
+    webpOut: "public/downloads/sunflower-drawing/sunflower-drawing-worksheet.webp",
+    pdfOut: "public/downloads/sunflower-drawing/sunflower-drawing-worksheet.pdf",
+  },
+  {
+    source: "source-assets/Hibiscus-flower-drawing/hibiscus-flower-drawing-worksheet.webp",
+    webpOut:
+      "public/downloads/hibiscus-flower-drawing/hibiscus-flower-drawing-worksheet.webp",
+    pdfOut: "public/downloads/hibiscus-flower-drawing/hibiscus-flower-drawing-worksheet.pdf",
+  },
 ];
 
 async function ensureDir(dir: string) {

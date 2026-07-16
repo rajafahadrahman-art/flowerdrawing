@@ -78,6 +78,54 @@ Featured SEO:
 
 Step 9 uses `rose-drawing.webp` as the completed drawing.
 
+## Tulip Drawing
+
+```text
+public/images/flower-drawing/tulip-drawing/tulip-drawing.webp
+public/images/flower-drawing/tulip-drawing/tulip-drawing-step-1.webp
+...
+public/images/flower-drawing/tulip-drawing/tulip-drawing-step-7.webp
+```
+
+Featured SEO:
+
+- Alt: `Tulip Drawing`
+- Title: `easy tulip drawing`
+
+Step 8 uses `tulip-drawing.webp`. Do not create `tulip-drawing-step-8.webp`.
+
+## Sunflower Drawing
+
+```text
+public/images/flower-drawing/sunflower-drawing/sunflower-drawing.webp
+public/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-1.webp
+...
+public/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-8.webp
+```
+
+Featured SEO:
+
+- Alt: `Sunflower drawing`
+- Title: `easy sunflower drawing`
+
+Step 9 uses `sunflower-drawing.webp`. Do not create `sunflower-drawing-step-9.webp`.
+
+## Hibiscus Flower Drawing
+
+```text
+public/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing.webp
+public/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-1.webp
+...
+public/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-8.webp
+```
+
+Featured SEO:
+
+- Alt: `Hibiscus Flower Drawing`
+- Title: `easy hibiscus flower drawing`
+
+Step 9 uses `hibiscus-flower-drawing.webp`. Do not create `hibiscus-flower-drawing-step-9.webp`.
+
 ## Worksheets
 
 ```text
@@ -85,7 +133,15 @@ public/downloads/flower-drawing-worksheet.webp
 public/downloads/flower-drawing-worksheet.pdf
 public/downloads/rose-drawing/rose-drawing-worksheet.webp
 public/downloads/rose-drawing/rose-drawing-worksheet.pdf
+public/downloads/tulip-drawing/tulip-drawing-worksheet.webp
+public/downloads/tulip-drawing/tulip-drawing-worksheet.pdf
+public/downloads/sunflower-drawing/sunflower-drawing-worksheet.webp
+public/downloads/sunflower-drawing/sunflower-drawing-worksheet.pdf
+public/downloads/hibiscus-flower-drawing/hibiscus-flower-drawing-worksheet.webp
+public/downloads/hibiscus-flower-drawing/hibiscus-flower-drawing-worksheet.pdf
 ```
+
+The `/worksheets/` collection page lists every real worksheet automatically.
 
 PDF requirements:
 

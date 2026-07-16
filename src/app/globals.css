@@ -83,6 +83,50 @@
     outline-offset: 3px;
   }
 
+  /* Sticky header offset for in-page TOC and section anchors */
+  :target,
+  .toc-target,
+  section[id],
+  h2[id],
+  h3[id],
+  [id].toc-target {
+    scroll-margin-top: 5.5rem;
+  }
+
+  @keyframes toc-target-pop {
+    0% {
+      box-shadow: 0 0 0 0 rgba(116, 201, 245, 0);
+      background-color: transparent;
+      transform: scale(1);
+    }
+    15% {
+      box-shadow: 0 10px 28px rgba(36, 126, 170, 0.18);
+      background-color: color-mix(in srgb, var(--color-sky-light) 70%, transparent);
+      transform: scale(1.01);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(116, 201, 245, 0);
+      background-color: transparent;
+      transform: scale(1);
+    }
+  }
+
+  :target {
+    animation: toc-target-pop 1.6s ease;
+    border-radius: 1rem;
+    outline: 2px solid color-mix(in srgb, var(--color-sky) 55%, transparent);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :target {
+      animation: none;
+      outline: 2px solid var(--color-sky-dark);
+      outline-offset: 4px;
+      background-color: color-mix(in srgb, var(--color-sky-light) 45%, transparent);
+    }
+  }
+
   img {
     max-width: 100%;
     height: auto;
@@ -93,6 +137,48 @@
   .container-main {
     width: min(100% - 2rem, 1240px);
     margin-inline: auto;
+  }
+
+  .toc-panel {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .toc-summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding: 1.15rem 1.25rem;
+    user-select: none;
+  }
+
+  .toc-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .toc-summary::after {
+    content: "";
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid var(--color-sky-dark);
+    border-bottom: 2px solid var(--color-sky-dark);
+    transform: rotate(45deg);
+    transition: transform 180ms ease;
+    flex-shrink: 0;
+  }
+
+  details[open] > .toc-summary::after {
+    transform: rotate(225deg);
+  }
+
+  @media (min-width: 640px) {
+    .toc-summary {
+      padding: 1.35rem 1.5rem;
+    }
   }
 
   .container-prose {

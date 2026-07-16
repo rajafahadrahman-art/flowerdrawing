@@ -27,7 +27,7 @@ export const homepageSeo = {
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Drawing Tutorials", href: "/flower-drawing/" },
-  { label: "Worksheets", href: "/#worksheets" },
+  { label: "Worksheets", href: "/worksheets/" },
   { label: "About", href: "/about/" },
   { label: "FAQ", href: "/#faq" },
   { label: "Contact", href: "/contact/" },

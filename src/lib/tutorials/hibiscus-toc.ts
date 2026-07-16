@@ -1,0 +1,61 @@
+export const hibiscusTocItems = [
+  { id: "quick-tutorial-details", label: "Quick Tutorial Details" },
+  {
+    id: "what-makes-a-hibiscus-flower-easy-to-recognize",
+    label: "What Makes a Hibiscus Flower Easy to Recognize?",
+  },
+  { id: "observe-the-flower-before-you-draw", label: "Observe the Flower Before You Draw" },
+  { id: "hibiscus-flower-drawing-step-by-step", label: "Hibiscus Flower Drawing Step by Step" },
+  { id: "simple-hibiscus-drawing-tips", label: "Simple Hibiscus Drawing Tips" },
+  {
+    id: "create-an-outline-hibiscus-flower-drawing",
+    label: "Create an Outline Hibiscus Flower Drawing",
+  },
+  { id: "minimal-outline", label: "Minimal Outline", level: 3 as const },
+  { id: "detailed-outline", label: "Detailed Outline", level: 3 as const },
+  {
+    id: "easy-hawaiian-hibiscus-flower-drawing",
+    label: "Easy Hawaiian Hibiscus Flower Drawing",
+  },
+  {
+    id: "how-to-make-a-realistic-hibiscus-flower-drawing",
+    label: "How to Make a Realistic Hibiscus Flower Drawing",
+  },
+  { id: "study-the-petal-folds", label: "Study the Petal Folds", level: 3 as const },
+  { id: "add-depth-near-the-center", label: "Add Depth Near the Center", level: 3 as const },
+  { id: "vary-the-petal-edges", label: "Vary the Petal Edges", level: 3 as const },
+  { id: "shade-the-stamen-carefully", label: "Shade the Stamen Carefully", level: 3 as const },
+  { id: "use-uneven-highlights", label: "Use Uneven Highlights", level: 3 as const },
+  {
+    id: "colored-hibiscus-flower-drawing-ideas",
+    label: "Colored Hibiscus Flower Drawing Ideas",
+  },
+  { id: "small-hibiscus-flower-drawing", label: "Small Hibiscus Flower Drawing" },
+  { id: "common-mistakes-to-avoid", label: "Common Mistakes to Avoid" },
+  {
+    id: "drawing-more-than-five-main-petals",
+    label: "Drawing More Than Five Main Petals",
+    level: 3 as const,
+  },
+  {
+    id: "making-the-petals-too-narrow",
+    label: "Making the Petals Too Narrow",
+    level: 3 as const,
+  },
+  { id: "forgetting-the-stamen", label: "Forgetting the Stamen", level: 3 as const },
+  {
+    id: "using-a-perfectly-straight-stem",
+    label: "Using a Perfectly Straight Stem",
+    level: 3 as const,
+  },
+  { id: "making-every-petal-identical", label: "Making Every Petal Identical", level: 3 as const },
+  {
+    id: "adding-dark-shading-too-early",
+    label: "Adding Dark Shading Too Early",
+    level: 3 as const,
+  },
+  { id: "ignoring-leaf-structure", label: "Ignoring Leaf Structure", level: 3 as const },
+  { id: "worksheets", label: "Downloadable Worksheet" },
+  { id: "faq", label: "Frequently Asked Questions" },
+  { id: "complete-your-drawing", label: "Complete Your Drawing" },
+] as const;

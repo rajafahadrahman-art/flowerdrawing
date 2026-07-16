@@ -13,7 +13,12 @@ Key files:
 ```text
 source-assets/homepage-content.txt
 source-assets/rose-drawing/rose-drawing-content.txt
+source-assets/tulip-drawing/tulip-drawing-content.txt
+source-assets/sunflower-drawing/sunflower-drawing-content.txt
+source-assets/Hibiscus-flower-drawing/hibiscus-flower-drawing-content.txt
 ```
+
+`source-assets/` is read-only. Never edit, rename, move, or delete files there.
 
 ## Strict rules
 
@@ -76,18 +81,21 @@ About the Author:
 | Label | Destination |
 | --- | --- |
 | Explore Drawing Tutorials | `/flower-drawing/` |
-| Download Practice Worksheets | `/downloads/flower-drawing-worksheet.pdf` |
+| Download Practice Worksheets | `/worksheets/` |
 | View Step-by-Step Drawing Guides | `/flower-drawing/` |
-| Download Free Worksheet | `/downloads/flower-drawing-worksheet.pdf` (or the tutorial worksheet PDF) |
+| Browse Drawing Worksheets | `/worksheets/` |
+| Download Free Worksheet | matching worksheet PDF |
 | Print Now | matching worksheet PDF (new tab) |
 | View All Flower Tutorials | `/flower-drawing/` |
 | Start Drawing | `/flower-drawing/` |
-| View Practice Worksheets | `/#worksheets` |
+| View Practice Worksheets | `/worksheets/` |
 
 Worksheet sections on the homepage and tutorial pages must use:
 
 - `Download Free Worksheet`
 - `Print Now`
+
+Header and footer Worksheets links go to `/worksheets/`.
 
 Do not display the raw contact email address in the footer. A Contact navigation link may still use the mailto destination internally.
 

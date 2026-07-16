@@ -1,4 +1,8 @@
-export type TutorialDifficulty = "Easy" | "Beginner" | "Intermediate";
+export type TutorialDifficulty =
+  | "Easy"
+  | "Beginner"
+  | "Intermediate"
+  | "Beginner to intermediate";
 
 export type TutorialFaq = {
   question: string;

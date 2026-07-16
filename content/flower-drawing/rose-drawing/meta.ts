@@ -67,5 +67,9 @@ export const meta: TutorialMeta = {
         "Add a light red or pink base, deepen the shadows with darker red, and leave small highlights on the petals. Build the color gradually rather than pressing hard immediately.",
     },
   ],
-  relatedTutorials: [],
+  relatedTutorials: [
+    "tulip-drawing",
+    "sunflower-drawing",
+    "hibiscus-flower-drawing",
+  ],
 };

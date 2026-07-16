@@ -66,7 +66,7 @@ export function Header() {
               />
             </Link>
           ))}
-          <Link href="/#worksheets" className="btn btn-download ml-2 !min-h-10 !px-4 !text-sm">
+          <Link href="/worksheets/" className="btn btn-download ml-2 !min-h-10 !px-4 !text-sm">
             Worksheets
           </Link>
         </nav>
@@ -99,7 +99,7 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="/#worksheets"
+              href="/worksheets/"
               className="btn btn-download mt-2 w-full"
               onClick={() => setOpen(false)}
             >
