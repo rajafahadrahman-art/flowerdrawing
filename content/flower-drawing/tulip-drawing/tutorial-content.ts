@@ -400,6 +400,16 @@ export const tulipConclusion = [
 
 export const tulipBody: TutorialBody = {
   intro: [...tulipIntro],
+  preInfoSections: [
+    {
+      id: "why-drawing-tulips-are-beginner-friendly",
+      title: "Why Drawing Tulips Are Beginner-Friendly",
+      tone: "sky",
+      intro: [...tulipWhyIntro],
+      bullets: [...tulipWhyBullets],
+      closing: tulipWhyClosing,
+    },
+  ],
   info: {
     id: "quick-drawing-plan",
     title: "Quick Drawing Plan",
@@ -411,6 +421,7 @@ export const tulipBody: TutorialBody = {
       { label: "Main tools", value: tulipInfo.mainTools },
       { label: "Optional tools", value: tulipInfo.optionalTools },
     ],
+    closing: tulipInfoClosing,
   },
   materials: {
     id: "materials-you-will-need",
@@ -428,6 +439,13 @@ export const tulipBody: TutorialBody = {
     ],
     extra: tulipMaterialsExtra,
   },
+  preStepSections: [
+    {
+      id: "understand-the-tulip-shape-first",
+      title: "Understand the Tulip Shape First",
+      paragraphs: [...tulipShapeParagraphs],
+    },
+  ],
   steps: {
     id: "tulip-drawing-step-by-step",
     title: "Tulip Drawing Step by Step",
@@ -435,19 +453,6 @@ export const tulipBody: TutorialBody = {
     items: tulipSteps,
   },
   sections: [
-    {
-      id: "why-drawing-tulips-are-beginner-friendly",
-      title: "Why Drawing Tulips Are Beginner-Friendly",
-      tone: "sky",
-      intro: [...tulipWhyIntro],
-      bullets: [...tulipWhyBullets],
-      closing: tulipWhyClosing,
-    },
-    {
-      id: "understand-the-tulip-shape-first",
-      title: "Understand the Tulip Shape First",
-      paragraphs: [...tulipShapeParagraphs],
-    },
     {
       id: "create-a-clean-tulip-outline-drawing",
       title: "Create a Clean Tulip Outline Drawing",
@@ -522,7 +527,7 @@ export const tulipBody: TutorialBody = {
     intro: [...tulipWorksheetIntro],
     includes: [...tulipWorksheetIncludes],
     closing: [...tulipWorksheetClosing],
-    imageAlt: "tulip drawing worksheet",
+    imageAlt: "Tulip Drawing worksheet",
     imageTitle: "download tulip drawing worksheet",
     imageWidth: 1055,
     imageHeight: 1491,

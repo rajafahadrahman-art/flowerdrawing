@@ -51,6 +51,7 @@ export type TutorialInfoBlock = {
   id: string;
   title: string;
   items: { label: string; value: string }[];
+  closing?: string;
 };
 
 export type TutorialMaterialsBlock = {
@@ -88,9 +89,15 @@ export type TutorialCtaBlock = {
 
 export type TutorialBody = {
   intro: string[];
+  /** Sections that appear after the intro and before the info grid. */
+  preInfoSections?: TutorialProseSection[];
   info: TutorialInfoBlock;
-  materials: TutorialMaterialsBlock;
+  /** Optional materials block. Omit when the source has no materials heading. */
+  materials?: TutorialMaterialsBlock;
+  /** Sections that appear after materials (or info) and before the step-by-step block. */
+  preStepSections?: TutorialProseSection[];
   steps: TutorialStepsBlock;
+  /** Sections that appear after the step-by-step block. */
   sections: TutorialProseSection[];
   worksheet: TutorialWorksheetBlock;
   faqTitle: string;

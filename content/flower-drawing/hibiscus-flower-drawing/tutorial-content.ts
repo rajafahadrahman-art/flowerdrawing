@@ -376,27 +376,9 @@ export const hibiscusBody: TutorialBody = {
       { label: "Drawing style", value: hibiscusInfo.drawingStyle },
       { label: "Number of steps", value: hibiscusInfo.numberOfSteps },
     ],
+    closing: hibiscusInfoClosing,
   },
-  materials: {
-    id: "materials",
-    title: "Materials",
-    note: "This tutorial can be completed with basic drawing supplies:",
-    items: [
-      "Pencil",
-      "Eraser",
-      "Paper",
-      "Sharpener",
-      "Fineliner, colored pencils, or markers",
-    ],
-    extra: hibiscusInfoClosing,
-  },
-  steps: {
-    id: "hibiscus-flower-drawing-step-by-step",
-    title: "Hibiscus Flower Drawing Step by Step",
-    intro: [...hibiscusStepsIntro],
-    items: hibiscusSteps,
-  },
-  sections: [
+  preStepSections: [
     {
       id: "what-makes-a-hibiscus-flower-easy-to-recognize",
       title: "What Makes a Hibiscus Flower Easy to Recognize?",
@@ -411,6 +393,14 @@ export const hibiscusBody: TutorialBody = {
       intro: [...hibiscusObserveIntro],
       bullets: [...hibiscusObserveBullets],
     },
+  ],
+  steps: {
+    id: "hibiscus-flower-drawing-step-by-step",
+    title: "Hibiscus Flower Drawing Step by Step",
+    intro: [...hibiscusStepsIntro],
+    items: hibiscusSteps,
+  },
+  sections: [
     {
       id: "simple-hibiscus-drawing-tips",
       title: "Simple Hibiscus Drawing Tips",

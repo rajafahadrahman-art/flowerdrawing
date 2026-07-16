@@ -151,11 +151,7 @@ export default async function HomePage() {
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <ButtonLink href="/flower-drawing/">Explore Drawing Tutorials</ButtonLink>
-                  <ButtonLink
-                    href="/downloads/flower-drawing-worksheet.pdf"
-                    variant="download"
-                    download
-                  >
+                  <ButtonLink href="/worksheets/" variant="download">
                     Download Practice Worksheets
                   </ButtonLink>
                 </div>
@@ -522,6 +518,9 @@ export default async function HomePage() {
               <ButtonLink href="/downloads/flower-drawing-worksheet.pdf" variant="print" newTab>
                 Print Now
               </ButtonLink>
+              <ButtonLink href="/worksheets/" variant="sky">
+                Browse Drawing Worksheets
+              </ButtonLink>
             </div>
           </div>
         </div>
@@ -632,7 +631,7 @@ export default async function HomePage() {
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/flower-drawing/">Start Drawing</ButtonLink>
-            <ButtonLink href="/#worksheets" variant="sky">
+            <ButtonLink href="/worksheets/" variant="sky">
               View Practice Worksheets
             </ButtonLink>
           </div>

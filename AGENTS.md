@@ -209,6 +209,7 @@ Required routes:
 /
 /flower-drawing/
 /flower-drawing/[slug]/
+/worksheets/
 ```
 
 Examples:
@@ -218,6 +219,7 @@ Examples:
 /flower-drawing/sunflower-drawing/
 /flower-drawing/hibiscus-flower-drawing/
 /flower-drawing/tulip-drawing/
+/worksheets/
 ```
 
 Rules:
@@ -240,6 +242,27 @@ Do not rename an existing slug without explicit user approval.
 
 ---
 
+## Source Assets Are Read-Only
+
+The entire `source-assets/` directory is strictly read-only.
+
+Do not:
+
+- Rename, move, edit, delete, crop, recolor, regenerate, retouch, or recompress source files
+- Change worksheet artwork or image dimensions inside `source-assets/`
+- Create duplicate source files
+
+You may only:
+
+- Read and parse approved metadata and content
+- Copy contents into the production content system
+- Copy images into the appropriate `public/` folders
+- Generate PDF copies of worksheet images outside `source-assets/` when necessary
+
+Approved content and source assets must never be changed.
+
+---
+
 ## Tutorial Content System
 
 Future tutorials must use the existing file-based MDX system.
@@ -250,8 +273,8 @@ Expected structure:
 content/flower-drawing/[slug]/
 ├── content.mdx
 ├── meta.ts
-├── images/
-└── downloads/
+├── tutorial-content.ts
+└── body.ts   # optional adapter for the shared TutorialBody renderer
 ```
 
 Tutorial metadata must support:
@@ -275,9 +298,17 @@ Tutorial metadata must support:
 - `faqs`
 - `relatedTutorials`
 
+Focus keyword, SEO title, and meta description come from the source content file and must be preserved exactly.
+
+The final completed step image is also the featured image, archive card image, and Open Graph image. Do not create or require a duplicate final-step file such as `[slug]-step-N.webp`.
+
 Do not create fake tutorials, placeholder posts, fabricated dates, fake ratings, invented reviews, or sample flower pages unless the user explicitly asks for them.
 
 The archive must display only real tutorial folders.
+
+Every genuine tutorial receives Article and BreadcrumbList schema. FAQPage schema is used only when visible FAQs exist.
+
+New tutorials must be added to internal linking, related tutorials, previous/next navigation, the worksheet collection, and the sitemap.
 
 Read `docs/ADD-NEW-TUTORIAL.md` before adding a tutorial.
 
@@ -439,13 +470,14 @@ Approved mapping:
 
 ```text
 Explore Drawing Tutorials → /flower-drawing/
-Download Practice Worksheets → /downloads/flower-drawing-worksheet.pdf
+Download Practice Worksheets → /worksheets/
 View Step-by-Step Drawing Guides → /flower-drawing/
+Browse Drawing Worksheets → /worksheets/
 Download Free Worksheet → matching worksheet PDF
 Print Now → matching worksheet PDF (new tab)
 View All Flower Tutorials → /flower-drawing/
 Start Drawing → /flower-drawing/
-View Practice Worksheets → /#worksheets
+View Practice Worksheets → /worksheets/
 ```
 
 Worksheet sections on the homepage and tutorial pages must use:
@@ -453,11 +485,79 @@ Worksheet sections on the homepage and tutorial pages must use:
 - `Download Free Worksheet`
 - `Print Now`
 
+The header Worksheets button and navigation link must go to `/worksheets/`.
+The footer Worksheets link must go to `/worksheets/`.
+
+Homepage collection buttons (`Download Practice Worksheets`, `Browse Drawing Worksheets`, `View Practice Worksheets`) link to `/worksheets/`.
+
+Specific tutorial download buttons still use their matching worksheet PDFs.
+
 Download buttons must download a real file.
 
 Print buttons must open the PDF in a new tab.
 
 Do not rename buttons without explicit instruction.
+
+---
+
+## Table of Contents Rules
+
+Homepage and every real tutorial must include an open-by-default, closable Table of Contents.
+
+Requirements:
+
+- Prefer semantic `<details open>` and `<summary>Table of Contents</summary>`
+- Open by default
+- Closable and reopenable by the visitor
+- Accessible without JavaScript
+- Server-rendered
+- Keyboard accessible
+- Screen-reader friendly
+- Keep the approved colorful card design
+
+TOC entries:
+
+- Homepage: real homepage H2 sections, including About the Author where present
+- Tutorials: real H2 and H3 headings only (never invent, never include the H1)
+
+TOC click behavior:
+
+- Smooth-scroll to the selected section
+- Account for the sticky header with `scroll-margin-top`
+- Briefly highlight the target with lightweight CSS (`:target` pop emphasis)
+- Respect `prefers-reduced-motion`
+
+---
+
+## Worksheet Collection
+
+`/worksheets/` is the worksheet collection route.
+
+SEO title:
+
+```text
+Printable Flower Drawing Worksheets | FlowerDrawings.org
+```
+
+Meta description:
+
+```text
+Browse free printable flower drawing worksheets for rose, tulip, sunflower, hibiscus, and beginner flower drawing practice.
+```
+
+Canonical:
+
+```text
+https://flowerdrawings.org/worksheets/
+```
+
+Worksheet collection cards are generated from real worksheet metadata and tutorial data, including the general homepage worksheet. Do not create fake worksheet cards.
+
+Use CollectionPage and ItemList schema that matches visible cards.
+
+Keep the page index, follow, and include it in `sitemap.xml`.
+
+Privacy, Disclaimer, and Terms remain noindex, nofollow and excluded from sitemap.
 
 ## Footer and Author Rules
 
@@ -781,18 +881,22 @@ Fixed important-page routes:
 /privacy-policy/
 /disclaimer/
 /terms-and-conditions/
+/worksheets/
 ```
 
 Rules:
 
 - Footer contains compact links to these important pages
 - Header Contact links to `/contact/` (not a visible raw email address)
+- Header and footer Worksheets links go to `/worksheets/`
 - Contact page uses a `Contact AlexArts` control with the mailto destination internally
-- Internal linking should use existing buttons, cards, breadcrumbs, TOCs, navigation, and footer links
+- Internal linking should use existing buttons, cards, breadcrumbs, TOCs, navigation, related tutorials, previous/next links, and footer links
 - Do not insert promotional paragraphs into approved homepage or Rose content merely to add links
 - Homepage and every real tutorial must keep a Table of Contents
 - Uploaded images must remain unchanged
 - Existing colorful design, card colors, shadows, header, footer, and approved content remain protected unless the user requests a specific change
+- Privacy, Disclaimer, and Terms remain noindex, nofollow and excluded from sitemap
+- Approved content and source assets must never be changed
 
 ## Documentation Rules
 

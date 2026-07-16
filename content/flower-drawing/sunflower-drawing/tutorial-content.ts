@@ -430,6 +430,16 @@ const slug = (value: string) =>
 
 export const sunflowerBody: TutorialBody = {
   intro: [...sunflowerIntro],
+  preInfoSections: [
+    {
+      id: "sunflower-anatomy-at-a-glance",
+      title: "Sunflower Anatomy at a Glance",
+      tone: "sky",
+      intro: [...sunflowerAnatomyIntro],
+      bullets: [...sunflowerAnatomyBullets],
+      closing: [...sunflowerAnatomyClosing],
+    },
+  ],
   info: {
     id: "tutorial-overview",
     title: "Tutorial Overview",
@@ -458,6 +468,13 @@ export const sunflowerBody: TutorialBody = {
     ],
     extra: sunflowerMaterialsExtra,
   },
+  preStepSections: [
+    {
+      id: "build-the-flower-with-basic-shapes",
+      title: "Build the Flower with Basic Shapes",
+      paragraphs: [...sunflowerBasicShapesParagraphs],
+    },
+  ],
   steps: {
     id: "sunflower-drawing-step-by-step",
     title: "Sunflower Drawing Step by Step",
@@ -465,19 +482,6 @@ export const sunflowerBody: TutorialBody = {
     items: sunflowerSteps,
   },
   sections: [
-    {
-      id: "sunflower-anatomy-at-a-glance",
-      title: "Sunflower Anatomy at a Glance",
-      tone: "sky",
-      intro: [...sunflowerAnatomyIntro],
-      bullets: [...sunflowerAnatomyBullets],
-      closing: [...sunflowerAnatomyClosing],
-    },
-    {
-      id: "build-the-flower-with-basic-shapes",
-      title: "Build the Flower with Basic Shapes",
-      paragraphs: [...sunflowerBasicShapesParagraphs],
-    },
     {
       id: "how-to-draw-sunflower-seeds",
       title: "How to Draw Sunflower Seeds",
@@ -556,7 +560,7 @@ export const sunflowerBody: TutorialBody = {
     intro: [...sunflowerWorksheetIntro],
     includes: [...sunflowerWorksheetIncludes],
     closing: [...sunflowerWorksheetClosing],
-    imageAlt: "sunflower drawing worksheet",
+    imageAlt: "Sunflower drawing worksheet",
     imageTitle: "download sunflower drawing worksheet",
     imageWidth: 1054,
     imageHeight: 1492,

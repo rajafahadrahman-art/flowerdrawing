@@ -26,6 +26,10 @@ Open [http://localhost:3000](http://localhost:3000).
 - `/` — Homepage
 - `/flower-drawing/` — Tutorial archive
 - `/flower-drawing/rose-drawing/` — Rose Drawing tutorial
+- `/flower-drawing/tulip-drawing/` — Tulip Drawing tutorial
+- `/flower-drawing/sunflower-drawing/` — Sunflower Drawing tutorial
+- `/flower-drawing/hibiscus-flower-drawing/` — Hibiscus Flower Drawing tutorial
+- `/worksheets/` — Printable worksheet collection
 - `/about/` — About FlowerDrawings.org
 - `/contact/` — Contact
 - `/privacy-policy/` — Privacy Policy
@@ -40,7 +44,7 @@ Approved raw source files live in:
 source-assets/
 ```
 
-Do not use `source-assets/` as the public website folder. Public assets are copied into `public/`.
+`source-assets/` is read-only. Do not edit, rename, move, or delete files there. Public assets are copied into `public/`.
 
 ## Content rules
 
@@ -73,7 +77,7 @@ See:
 | `npm run build` | Production build |
 | `npm run start` | Serve production build |
 | `npm run lint` | ESLint |
-| `npm run validate:content` | Validate homepage and Rose content/assets |
+| `npm run validate:content` | Validate homepage, tutorials, worksheets, and assets |
 | `npm run assets:images` | Copy source images into `public/` |
 | `npm run assets:icons` | Generate favicon and app icons from the logo |
 | `npm run assets:worksheet` | Copy worksheets and generate A4 PDFs |
@@ -95,6 +99,7 @@ public/
 
 src/app/
 ├── page.tsx
+├── worksheets/page.tsx
 ├── flower-drawing/
 │   ├── page.tsx
 │   └── [slug]/page.tsx
