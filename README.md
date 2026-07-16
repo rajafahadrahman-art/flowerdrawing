@@ -35,31 +35,21 @@ Open [http://localhost:3000](http://localhost:3000).
 - `/privacy-policy/` — Privacy Policy
 - `/disclaimer/` — Disclaimer
 - `/terms-and-conditions/` — Terms and Conditions
-- `/tools/draw-along-preview/` — Isolated Draw Along player prototype (noindex; not linked in navigation)
+- `/tools/draw-along/` — Draw Along (all drawings; also launched from each tutorial post)
 
-## Draw Along prototype
+## Draw Along
 
-Open the isolated preview at `/tools/draw-along-preview/`.
+Open `/tools/draw-along/` or use the Draw Along launcher near the top of any tutorial post.
 
-Tutorial data is configured in:
+Data is derived automatically from the shared tutorial registry:
 
 ```text
 src/lib/draw-along/
 ├── types.ts
-├── registry.ts
-├── rose.ts
-└── tulip.ts
+└── get-draw-along.ts
 ```
 
-Optional calm background music belongs at:
-
-```text
-public/audio/calm-drawing.mp3
-```
-
-If that file is missing, the player still works and shows “Music unavailable”.
-
-To add another tutorial later: create a data file under `src/lib/draw-along/`, register it in `registry.ts`, and only enable it when real step images exist. Do not add the prototype to production navigation without approval.
+When a new tutorial is added to `src/lib/tutorials/get-tutorials.ts` and `get-tutorial-body.ts` with real step images, it appears on Draw Along automatically. Do not hardcode separate Draw Along card lists.
 
 ## Source content
 

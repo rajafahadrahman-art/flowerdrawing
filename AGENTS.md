@@ -956,17 +956,17 @@ The following rules remain mandatory unless the user explicitly changes them:
 
 ---
 
-## Draw Along Tutorial Player Prototype
+## Draw Along
 
-Isolated prototype for review only. Do not treat it as a live production feature until explicitly approved.
+Public feature name: **Draw Along** (never “Tutorial Player”, “Draw Along Tool”, or “Interactive App” in visitor-facing UI).
 
-- Preview route: `/tools/draw-along-preview/`
-- Must remain noindex, nofollow and out of the sitemap
-- Do not link it from header, footer, homepage, archive, or tutorial articles
-- Tutorial data lives in `src/lib/draw-along/` and stays separate from player UI
-- Interactive player code lives in `src/components/tutorial-player/`
-- Keep interactive code isolated; do not convert existing static tutorial pages into large client components
-- Existing SEO content, routes, images, worksheets, and schema must not be changed for this prototype
-- Future integration into the live website requires explicit approval
-- Optional music path: `/audio/calm-drawing.mp3` — local royalty-free only; never add copyrighted music
-- Keep the prototype lightweight: dynamic import the player, no heavy libraries, no analytics
+- Public route: `/tools/draw-along/` (included in sitemap)
+- Legacy `/tools/draw-along-preview/` permanently redirects to `/tools/draw-along/`
+- Do not add Draw Along to the main header, footer, homepage, or legal pages
+- A compact launcher appears near the top of each individual drawing tutorial post and shows only that post’s drawing
+- Shared data is built from the existing tutorial meta + body registries via `src/lib/draw-along/get-draw-along.ts`
+- Future tutorials registered in `get-tutorials` / `get-tutorial-body` with real step images appear automatically on `/tools/draw-along/` and receive a launcher
+- Interactive UI lives in `src/components/draw-along/` and is dynamically imported; keep article pages as Server Components
+- Popup shows only images, step titles, Step X of Y, and navigation — no descriptions, tips, music, or autoplay
+- Main step images must use `object-contain` on a light canvas; never crop or stretch artwork
+- Keep Draw Along lightweight: no modal/carousel/animation libraries, no audio, no analytics

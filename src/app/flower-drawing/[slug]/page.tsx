@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { TutorialArticle } from "@/components/tutorial/TutorialArticle";
+import { getDrawAlongTutorialBySlug } from "@/lib/draw-along/get-draw-along";
 import {
   buildArticleJsonLd,
   buildBreadcrumbJsonLd,
@@ -66,9 +67,10 @@ export default async function TutorialPage({ params }: PageProps) {
   const body = await getTutorialBody(slug);
   if (!meta || !body) notFound();
 
-  const [{ previous, next }, related] = await Promise.all([
+  const [{ previous, next }, related, drawAlong] = await Promise.all([
     getAdjacentTutorials(slug),
     getRelatedTutorials(slug),
+    getDrawAlongTutorialBySlug(slug),
   ]);
   const pageUrl = `${siteConfig.url}/flower-drawing/${meta.slug}/`;
 
@@ -106,6 +108,7 @@ export default async function TutorialPage({ params }: PageProps) {
         previous={previous}
         next={next}
         related={related}
+        drawAlong={drawAlong}
       />
     </>
   );
