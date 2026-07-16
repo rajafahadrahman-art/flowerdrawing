@@ -6,6 +6,7 @@ import {
   useCallback,
   useEffect,
   useId,
+  useLayoutEffect,
   useRef,
   useState,
   type SyntheticEvent,
@@ -100,7 +101,7 @@ export function DrawAlongModal({
     goToStep(0);
   }, [goToStep]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
@@ -110,17 +111,23 @@ export function DrawAlongModal({
       return;
     }
 
-    if (!dialog.open) dialog.showModal();
+    try {
+      if (!dialog.open) dialog.showModal();
+    } catch {
+      // Ignore duplicate showModal calls during strict-mode remounts.
+    }
+
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     setStepIndex(0);
     setCompleted(false);
     setImageFailed(false);
     announce(0);
-    window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+    closeButtonRef.current?.focus();
 
     return () => {
       document.body.style.overflow = previousOverflow;
+      if (dialog.open) dialog.close();
     };
     // Reset only when the popup opens.
     // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional open-only reset
