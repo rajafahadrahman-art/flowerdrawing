@@ -14,7 +14,7 @@ export const meta: TutorialMeta = {
   stepCount: 9,
   featuredImage: "/images/flower-drawing/rose-drawing/rose-drawing.webp",
   featuredImageAlt: "rose drawing",
-  featuredImageTitle: "easy rose drawing",
+  featuredImageTitle: "rose drawing easy",
   worksheetImage: "/downloads/rose-drawing/rose-drawing-worksheet.webp",
   worksheetPDF: "/downloads/rose-drawing/rose-drawing-worksheet.pdf",
   publishedDate: "2026-07-14",
@@ -69,7 +69,7 @@ export const meta: TutorialMeta = {
   ],
   relatedTutorials: [
     "tulip-drawing",
-    "sunflower-drawing",
+    "lily-flower-drawing",
     "hibiscus-flower-drawing",
   ],
 };

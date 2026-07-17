@@ -8,6 +8,7 @@ import { Breadcrumbs } from "@/components/tutorials/Breadcrumbs";
 import { TutorialCard } from "@/components/tutorials/TutorialCard";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
+import { ProseText } from "@/components/ui/ProseText";
 import { Section } from "@/components/ui/Section";
 import type { DrawingTutorial } from "@/lib/draw-along/types";
 import type {
@@ -68,8 +69,18 @@ function sectionTone(
 
 function renderClosing(closing?: string | string[]) {
   if (!closing) return null;
-  if (typeof closing === "string") return <p>{closing}</p>;
-  return closing.map((paragraph) => <p key={paragraph}>{paragraph}</p>);
+  if (typeof closing === "string") {
+    return (
+      <p>
+        <ProseText text={closing} />
+      </p>
+    );
+  }
+  return closing.map((paragraph) => (
+    <p key={paragraph}>
+      <ProseText text={paragraph} />
+    </p>
+  ));
 }
 
 function ProseSectionBlock({
@@ -98,14 +109,20 @@ function ProseSectionBlock({
           <div className="surface-card surface-card--yellow border border-yellow p-6 sm:p-8">
             <h2 className="heading-section toc-target">{section.title}</h2>
             {section.intro?.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}>
+                <ProseText text={paragraph} />
+              </p>
             ))}
             {section.paragraphs?.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}>
+                <ProseText text={paragraph} />
+              </p>
             ))}
             <ul className="checklist">
               {section.checklist.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}>
+                  <ProseText text={item} />
+                </li>
               ))}
             </ul>
             {renderClosing(section.closing)}
@@ -114,15 +131,21 @@ function ProseSectionBlock({
           <>
             <h2 className="heading-section toc-target">{section.title}</h2>
             {section.intro?.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}>
+                <ProseText text={paragraph} />
+              </p>
             ))}
             {section.paragraphs?.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}>
+                <ProseText text={paragraph} />
+              </p>
             ))}
             {section.bullets ? (
               <ul>
                 {section.bullets.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item}>
+                    <ProseText text={item} />
+                  </li>
                 ))}
               </ul>
             ) : null}
@@ -135,7 +158,9 @@ function ProseSectionBlock({
                     className={`surface-card toc-target p-5 ${cardTone(cardIndex)}`}
                   >
                     <h3 className="heading-card">{card.title}</h3>
-                    <p>{card.text}</p>
+                    <p>
+                      <ProseText text={card.text} />
+                    </p>
                   </div>
                 ))}
               </div>
@@ -172,7 +197,9 @@ export function TutorialArticle({
             <h1 className="heading-display">{meta.title}</h1>
             <PencilStroke className="mt-2 mb-4" color="#F38C7A" />
             {body.intro.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}>
+                <ProseText text={paragraph} />
+              </p>
             ))}
           </div>
           <div className="relative">
@@ -186,7 +213,7 @@ export function TutorialArticle({
                 title={meta.featuredImageTitle}
                 width={1448}
                 height={1086}
-                className="h-auto w-full rounded-xl"
+                className="h-auto w-full rounded-xl object-contain"
                 sizes="(max-width: 1024px) 100vw, 520px"
                 priority
               />
@@ -201,7 +228,7 @@ export function TutorialArticle({
         ) : null}
 
         <div className="mx-auto mt-10 max-w-[860px]">
-          <TableOfContents items={body.toc} />
+          <TableOfContents items={body.toc} defaultOpen={false} />
         </div>
       </Section>
 
@@ -223,7 +250,9 @@ export function TutorialArticle({
           ))}
         </div>
         {body.info.closing ? (
-          <p className="prose-exact mt-6 max-w-[760px]">{body.info.closing}</p>
+          <p className="prose-exact mt-6 max-w-[760px]">
+            <ProseText text={body.info.closing} />
+          </p>
         ) : null}
       </Section>
 
@@ -231,13 +260,21 @@ export function TutorialArticle({
         <Section id={body.materials.id} tone="mint">
           <div className="mx-auto max-w-[760px] prose-exact">
             <h2 className="heading-section toc-target">{body.materials.title}</h2>
-            <p>{body.materials.note}</p>
+            <p>
+              <ProseText text={body.materials.note} />
+            </p>
             <ul>
               {body.materials.items.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}>
+                  <ProseText text={item} />
+                </li>
               ))}
             </ul>
-            {body.materials.extra ? <p>{body.materials.extra}</p> : null}
+            {body.materials.extra ? (
+              <p>
+                <ProseText text={body.materials.extra} />
+              </p>
+            ) : null}
           </div>
         </Section>
       ) : null}
@@ -251,7 +288,7 @@ export function TutorialArticle({
           <h2 className="heading-section toc-target">{body.steps.title}</h2>
           {body.steps.intro.map((paragraph) => (
             <p key={paragraph} className="mt-4 text-muted">
-              {paragraph}
+              <ProseText text={paragraph} />
             </p>
           ))}
         </div>
@@ -268,13 +305,14 @@ export function TutorialArticle({
                     src={step.image.src}
                     alt={step.image.alt}
                     title={
-                      index === body.steps.items.length - 1
+                      step.image.title ??
+                      (index === body.steps.items.length - 1
                         ? meta.featuredImageTitle
-                        : undefined
+                        : undefined)
                     }
                     width={step.image.width}
                     height={step.image.height}
-                    className="h-auto w-full rounded-xl"
+                    className="h-auto w-full rounded-xl object-contain"
                     sizes="(max-width: 1024px) 100vw, 520px"
                   />
                 </div>
@@ -289,16 +327,24 @@ export function TutorialArticle({
                   <h3 className="heading-card">{step.title}</h3>
                 </div>
                 {step.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                  <p key={paragraph}>
+                    <ProseText text={paragraph} />
+                  </p>
                 ))}
                 {step.bullets ? (
                   <ul>
                     {step.bullets.map((item) => (
-                      <li key={item}>{item}</li>
+                      <li key={item}>
+                        <ProseText text={item} />
+                      </li>
                     ))}
                   </ul>
                 ) : null}
-                {step.closing ? <p>{step.closing}</p> : null}
+                {step.closing ? (
+                  <p>
+                    <ProseText text={step.closing} />
+                  </p>
+                ) : null}
               </div>
             </article>
           ))}
@@ -309,53 +355,61 @@ export function TutorialArticle({
         <ProseSectionBlock key={section.id} section={section} index={index} />
       ))}
 
-      <Section id={body.worksheet.id} tone="sky">
-        <div className="feature-frame grid gap-10 overflow-hidden bg-gradient-to-br from-mint-light/55 via-white to-sky-light/70 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="relative mx-auto w-full max-w-[420px]">
-            <div className="decoration-hide-mobile pointer-events-none absolute -left-2 -top-3 z-10">
-              <PaperTape rotate={-10} />
+      {body.worksheet && meta.worksheetImage && meta.worksheetPDF ? (
+        <Section id={body.worksheet.id} tone="sky">
+          <div className="feature-frame grid gap-10 overflow-hidden bg-gradient-to-br from-mint-light/55 via-white to-sky-light/70 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="relative mx-auto w-full max-w-[420px]">
+              <div className="decoration-hide-mobile pointer-events-none absolute -left-2 -top-3 z-10">
+                <PaperTape rotate={-10} />
+              </div>
+              <div className="image-frame overflow-hidden p-3 shadow-[var(--shadow-feature)]">
+                <Image
+                  src={meta.worksheetImage}
+                  alt={body.worksheet.imageAlt}
+                  title={body.worksheet.imageTitle}
+                  width={body.worksheet.imageWidth}
+                  height={body.worksheet.imageHeight}
+                  className="mx-auto h-auto w-full"
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                />
+              </div>
             </div>
-            <div className="image-frame overflow-hidden p-3 shadow-[var(--shadow-feature)]">
-              <Image
-                src={meta.worksheetImage}
-                alt={body.worksheet.imageAlt}
-                title={body.worksheet.imageTitle}
-                width={body.worksheet.imageWidth}
-                height={body.worksheet.imageHeight}
-                className="mx-auto h-auto w-full"
-                sizes="(max-width: 1024px) 100vw, 420px"
-              />
+            <div className="prose-exact">
+              <h2 className="heading-section toc-target">{body.worksheet.title}</h2>
+              {body.worksheet.intro.map((paragraph) => (
+                <p key={paragraph}>
+                  <ProseText text={paragraph} />
+                </p>
+              ))}
+              {body.worksheet.includes.length > 0 ? (
+                <ul>
+                  {body.worksheet.includes.map((item) => (
+                    <li key={item}>
+                      <ProseText text={item} />
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              {body.worksheet.closing.map((paragraph) => (
+                <p key={paragraph}>
+                  <ProseText text={paragraph} />
+                </p>
+              ))}
+              <div className="mt-6 flex flex-wrap gap-3">
+                <ButtonLink href={meta.worksheetPDF} variant="download" download>
+                  Download Free Worksheet
+                </ButtonLink>
+                <ButtonLink href={meta.worksheetPDF} variant="print" newTab>
+                  Print Now
+                </ButtonLink>
+                <ButtonLink href="/worksheets/" variant="sky">
+                  Browse Drawing Worksheets
+                </ButtonLink>
+              </div>
             </div>
           </div>
-          <div className="prose-exact">
-            <h2 className="heading-section toc-target">{body.worksheet.title}</h2>
-            {body.worksheet.intro.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-            {body.worksheet.includes.length > 0 ? (
-              <ul>
-                {body.worksheet.includes.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            ) : null}
-            {body.worksheet.closing.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-            <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink href={meta.worksheetPDF} variant="download" download>
-                Download Free Worksheet
-              </ButtonLink>
-              <ButtonLink href={meta.worksheetPDF} variant="print" newTab>
-                Print Now
-              </ButtonLink>
-              <ButtonLink href="/worksheets/" variant="sky">
-                Browse Drawing Worksheets
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      </Section>
+        </Section>
+      ) : null}
 
       {meta.faqs.length > 0 ? (
         <Section id={body.faqId} tone="lavender">
@@ -377,14 +431,20 @@ export function TutorialArticle({
           <h2 className="heading-section toc-target text-paper">{body.cta.title}</h2>
           {body.cta.paragraphs.map((paragraph) => (
             <p key={paragraph} className="mx-auto mt-4 max-w-[640px] text-white/75">
-              {paragraph}
+              <ProseText text={paragraph} />
             </p>
           ))}
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/flower-drawing/">Start Drawing</ButtonLink>
-            <ButtonLink href={meta.worksheetPDF} variant="download" download>
-              Download Worksheet
-            </ButtonLink>
+            {meta.worksheetPDF ? (
+              <ButtonLink href={meta.worksheetPDF} variant="download" download>
+                Download Worksheet
+              </ButtonLink>
+            ) : (
+              <ButtonLink href="/worksheets/" variant="sky">
+                View Practice Worksheets
+              </ButtonLink>
+            )}
           </div>
         </div>
 

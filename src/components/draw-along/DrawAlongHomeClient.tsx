@@ -62,6 +62,7 @@ export function DrawAlongHomeClient({ tutorials }: DrawAlongHomeClientProps) {
               <Image
                 src={tutorial.featuredImage}
                 alt={tutorial.featuredImageAlt}
+                title={tutorial.featuredImageTitle}
                 width={1448}
                 height={1086}
                 className="da-home-card__image"

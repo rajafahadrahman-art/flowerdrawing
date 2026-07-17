@@ -1,7 +1,7 @@
 export const roseTocItems = [
   { id: "rose-drawing-tutorial-information", label: "Rose Drawing Tutorial Information" },
   { id: "materials-you-need", label: "Materials You Need" },
-  { id: "rose-drawing-step-by-step", label: "Rose Drawing Step by Step" },
+  { id: "how-to-draw-a-rose-step-by-step", label: "How to Draw a Rose Step by Step" },
   { id: "simple-rose-drawing-tips-for-beginners", label: "Simple Rose Drawing Tips for Beginners" },
   { id: "how-to-create-outline", label: "How to Create Outline" },
   { id: "basic-outline", label: "Basic Outline", level: 3 as const },

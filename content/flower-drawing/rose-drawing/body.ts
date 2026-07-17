@@ -91,8 +91,8 @@ export const roseBody: TutorialBody = {
     extra: roseMaterialsExtra,
   },
   steps: {
-    id: "rose-drawing-step-by-step",
-    title: "Rose Drawing Step by Step",
+    id: "how-to-draw-a-rose-step-by-step",
+    title: "How to Draw a Rose Step by Step",
     intro: [...roseStepsIntro],
     items: roseSteps.map((step, index): TutorialStep => {
       const item: TutorialStep = {

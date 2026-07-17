@@ -3,7 +3,7 @@ import { hibiscusTocItems } from "@/lib/tutorials/hibiscus-toc";
 
 export const hibiscusIntro = [
   "A hibiscus is one of the most recognizable flowers to sketch because of its wide petals, trumpet-like shape, and long stamen extending from the center. Although the bloom contains several details, a hibiscus flower drawing becomes much easier when you first understand its main shapes.",
-  "This tutorial is designed for beginners, students, kids, and anyone who wants to practice floral illustration. You will begin with the flower center, build five large petals, add the stamen, and finish the drawing with a stem, leaves, clean outlines, and optional shading.",
+  "This tutorial is designed for beginners, students, kids, and anyone who wants to practice [flower drawing](/) and floral illustration. You will begin with the flower center, build five large petals, add the stamen, and finish the drawing with a stem, leaves, clean outlines, and optional shading.",
   "The goal is not to copy every tiny detail immediately. Instead, this guide shows how to simplify the flower into manageable stages while keeping the final result natural and recognizable.",
 ] as const;
 
@@ -65,7 +65,8 @@ export const hibiscusSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-1.webp",
-      alt: "Mark the hibiscus flower center",
+      alt: "sketch hibiscus flower drawing",
+      title: "hibiscus flower simple drawing",
       width: 1448,
       height: 1086,
     },
@@ -79,7 +80,8 @@ export const hibiscusSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-2.webp",
-      alt: "Draw the first hibiscus petal",
+      alt: "easy outline hibiscus flower drawing",
+      title: "hibiscus flower line drawing",
       width: 1448,
       height: 1086,
     },
@@ -93,7 +95,8 @@ export const hibiscusSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-3.webp",
-      alt: "Add the side hibiscus petals",
+      alt: "pink hibiscus flower drawing",
+      title: "drawing of a hibiscus flower",
       width: 1448,
       height: 1086,
     },
@@ -107,7 +110,8 @@ export const hibiscusSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-4.webp",
-      alt: "Complete the five-petal hibiscus shape",
+      alt: "flower hibiscus drawing",
+      title: "hibiscus flower drawing simple",
       width: 1448,
       height: 1086,
     },
@@ -121,7 +125,8 @@ export const hibiscusSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-5.webp",
-      alt: "Refine the wavy hibiscus petal edges",
+      alt: "hibiscus flower drawing step by step",
+      title: "drawing hibiscus flower",
       width: 1448,
       height: 1086,
     },
@@ -136,7 +141,8 @@ export const hibiscusSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-6.webp",
-      alt: "Draw the long hibiscus stamen",
+      alt: "hawaiian hibiscus flower drawing",
+      title: "easy hibiscus flower easy drawing",
       width: 1448,
       height: 1086,
     },
@@ -150,7 +156,8 @@ export const hibiscusSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-7.webp",
-      alt: "Add the hibiscus stem and leaves",
+      alt: "easy hibiscus flower drawing",
+      title: "outline hibiscus flower drawing",
       width: 1448,
       height: 1086,
     },
@@ -165,7 +172,8 @@ export const hibiscusSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing-step-8.webp",
-      alt: "Clean the hibiscus outline",
+      alt: "flower drawing hibiscus",
+      title: "hibiscus flower easy drawing",
       width: 1448,
       height: 1086,
     },
@@ -188,7 +196,8 @@ export const hibiscusSteps: TutorialStep[] = [
       "Leave the outer petal surfaces lighter to create contrast. This final stage transforms the basic sketch into a finished hibiscus flower drawing with greater depth and dimension.",
     image: {
       src: "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing.webp",
-      alt: "Hibiscus Flower Drawing",
+      alt: "hibiscus flower drawing",
+      title: "hibiscus flower drawing easy",
       width: 1448,
       height: 1086,
     },
@@ -214,7 +223,7 @@ export const hibiscusTips = [
 ] as const;
 
 export const hibiscusTipsClosing =
-  "Beginners often improve more quickly by repeating the basic flower two or three times instead of adding too many details to one drawing.";
+  "Beginners often improve more quickly by repeating the basic flower two or three times instead of adding too many details to one drawing. A [sunflower drawing easy](/flower-drawing/sunflower-drawing/) lesson is another good practice option.";
 
 export const hibiscusOutlineIntro = [
   "An outline drawing is useful for coloring pages, worksheets, classroom projects, Cricut-style references, and simple decorative illustrations.",

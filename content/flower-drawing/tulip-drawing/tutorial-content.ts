@@ -3,9 +3,9 @@ import { tulipTocItems } from "@/lib/tutorials/tulip-toc";
 
 export const tulipIntro = [
   "A tulip has a clean, recognizable shape that makes it a good subject for beginners. Its flower head can be simplified into a rounded cup, while the stem and long leaves are created with smooth curved lines.",
-  "This tulip drawing tutorial will help you build the flower from basic guidelines, shape the overlapping petals, add the stem and leaves, refine the outline, and finish the illustration with pencil shading or color.",
+  "This tulip drawing tutorial, like our [rose drawing easy](/flower-drawing/rose-drawing/) guide, will help you build the flower from basic guidelines, shape the overlapping petals, add the stem and leaves, refine the outline, and finish the illustration with pencil shading or color.",
   "You do not need advanced drawing skills or expensive materials. A pencil, eraser, and clean sheet of paper are enough to begin. The lesson is suitable for students, kids, hobby artists, and anyone practicing botanical illustration.",
-  "A printable worksheet is also included so you can trace the main shapes, follow the drawing sequence, and recreate the flower drawing tulip independently.",
+  "A printable worksheet is also included so you can trace the main shapes, follow the drawing sequence, and recreate the [flower drawing](/) tulip independently.",
 ] as const;
 
 export const tulipWhyIntro = [
@@ -65,7 +65,8 @@ export const tulipSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/tulip-drawing/tulip-drawing-step-1.webp",
-      alt: "Draw the main tulip flower guide",
+      alt: "tulip line drawing",
+      title: "tulip flower drawing easy",
       width: 1448,
       height: 1086,
     },
@@ -80,7 +81,8 @@ export const tulipSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/tulip-drawing/tulip-drawing-step-2.webp",
-      alt: "Shape the bottom of the tulip bloom",
+      alt: "tulip drawing realistic",
+      title: "how to draw a tulip",
       width: 1448,
       height: 1086,
     },
@@ -95,7 +97,8 @@ export const tulipSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/tulip-drawing/tulip-drawing-step-3.webp",
-      alt: "Draw the front tulip petal",
+      alt: "tulip drawing simple",
+      title: "tulip simple drawing",
       width: 1448,
       height: 1086,
     },
@@ -110,7 +113,8 @@ export const tulipSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/tulip-drawing/tulip-drawing-step-4.webp",
-      alt: "Add the side tulip petals",
+      alt: "drawing tulip",
+      title: "drawing of a tulip",
       width: 1448,
       height: 1086,
     },
@@ -125,7 +129,8 @@ export const tulipSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/tulip-drawing/tulip-drawing-step-5.webp",
-      alt: "Add the back tulip petals",
+      alt: "realistic tulip drawing",
+      title: "flower drawing tulip",
       width: 1448,
       height: 1086,
     },
@@ -140,7 +145,8 @@ export const tulipSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/tulip-drawing/tulip-drawing-step-6.webp",
-      alt: "Draw the tulip stem",
+      alt: "tulip easy drawing",
+      title: "simple tulip drawing",
       width: 1448,
       height: 1086,
     },
@@ -162,7 +168,8 @@ export const tulipSteps: TutorialStep[] = [
       "Add a central vein inside each leaf. Avoid drawing many side veins because tulip leaves usually look cleaner than rough or heavily textured leaves.",
     image: {
       src: "/images/flower-drawing/tulip-drawing/tulip-drawing-step-7.webp",
-      alt: "Add the tulip leaves",
+      alt: "tulip flower drawing",
+      title: "easy tulip drawing",
       width: 1448,
       height: 1086,
     },
@@ -185,7 +192,8 @@ export const tulipSteps: TutorialStep[] = [
       "Your final drawing should now have a clear bloom, smooth stem, and balanced leaves.",
     image: {
       src: "/images/flower-drawing/tulip-drawing/tulip-drawing.webp",
-      alt: "Tulip Drawing",
+      alt: "tulip drawing",
+      title: "tulip drawing easy",
       width: 1448,
       height: 1086,
     },

@@ -66,7 +66,13 @@ export function Header() {
               />
             </Link>
           ))}
-          <Link href="/worksheets/" className="btn btn-download ml-2 !min-h-10 !px-4 !text-sm">
+          <Link
+            href="/tools/draw-along/"
+            className="btn btn-sky ml-2 !min-h-10 !px-4 !text-sm"
+          >
+            Draw Along
+          </Link>
+          <Link href="/worksheets/" className="btn btn-download ml-1.5 !min-h-10 !px-4 !text-sm">
             Worksheets
           </Link>
         </nav>
@@ -98,6 +104,13 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/tools/draw-along/"
+              className="btn btn-sky mt-2 w-full"
+              onClick={() => setOpen(false)}
+            >
+              Draw Along
+            </Link>
             <Link
               href="/worksheets/"
               className="btn btn-download mt-2 w-full"

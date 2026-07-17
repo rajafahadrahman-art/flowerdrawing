@@ -14,8 +14,8 @@ export const meta: TutorialMeta = {
   stepCount: 9,
   featuredImage:
     "/images/flower-drawing/hibiscus-flower-drawing/hibiscus-flower-drawing.webp",
-  featuredImageAlt: "Hibiscus Flower Drawing",
-  featuredImageTitle: "easy hibiscus flower drawing",
+  featuredImageAlt: "hibiscus flower drawing",
+  featuredImageTitle: "hibiscus flower drawing easy",
   worksheetImage:
     "/downloads/hibiscus-flower-drawing/hibiscus-flower-drawing-worksheet.webp",
   worksheetPDF:
@@ -75,8 +75,8 @@ export const meta: TutorialMeta = {
     },
   ],
   relatedTutorials: [
-    "rose-drawing",
-    "tulip-drawing",
+    "lily-flower-drawing",
     "sunflower-drawing",
+    "rose-drawing",
   ],
 };

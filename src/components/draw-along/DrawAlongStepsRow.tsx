@@ -48,7 +48,8 @@ export function DrawAlongStepsRow({
             <span className="da-step-chip__thumb">
               <Image
                 src={step.image}
-                alt=""
+                alt={step.alt}
+                title={step.imageTitle}
                 width={120}
                 height={90}
                 className="da-step-chip__image"

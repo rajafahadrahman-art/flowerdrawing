@@ -5,6 +5,7 @@ export type RoseStep = {
   image?: {
     src: string;
     alt: string;
+    title?: string;
     width: number;
     height: number;
   };
@@ -13,7 +14,7 @@ export type RoseStep = {
 export const roseIntro = [
   "A rose may look complicated because its petals overlap and curl in different directions, but the basic structure is easier to understand when you draw it one layer at a time. This beginner-friendly rose drawing easy tutorial will help you create the center, build the surrounding petals, refine the outline, and complete the stem and leaves.",
   "You do not need advanced art supplies or previous experience. A pencil, an eraser, and a clean sheet of paper are enough to begin. By starting with light shapes and gradually adding detail, you can turn a small spiral into a complete drawing of a rose.",
-  "The tutorial also includes practice tips, outline ideas, shading guidance, and a printable worksheet. Follow the visual stages slowly, and do not worry if your petals are not perfectly symmetrical. Natural roses also have uneven folds, varied edges, and overlapping forms.",
+  "The tutorial also includes practice tips, outline ideas, shading guidance, and a printable worksheet for [flower drawing](/). Follow the visual stages slowly, and do not worry if your petals are not perfectly symmetrical. Natural roses also have uneven folds, varied edges, and overlapping forms.",
 ] as const;
 
 export const roseInfo = {
@@ -44,7 +45,8 @@ export const roseSteps: RoseStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing-step-1.webp",
-      alt: "Draw the rose center",
+      alt: "drawing of rose",
+      title: "rose line drawing",
       width: 1448,
       height: 1086,
     },
@@ -58,7 +60,8 @@ export const roseSteps: RoseStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing-step-2.webp",
-      alt: "Add the first folded petals",
+      alt: "sketch rose drawing",
+      title: "rose simple drawing",
       width: 1448,
       height: 1086,
     },
@@ -72,7 +75,8 @@ export const roseSteps: RoseStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing-step-3.webp",
-      alt: "Build the middle petals",
+      alt: "cute rose drawing easy",
+      title: "a rose drawing",
       width: 1448,
       height: 1086,
     },
@@ -86,7 +90,8 @@ export const roseSteps: RoseStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing-step-4.webp",
-      alt: "Add the outer petals",
+      alt: "rose drawing simple",
+      title: "drawing a rose",
       width: 1448,
       height: 1086,
     },
@@ -100,7 +105,8 @@ export const roseSteps: RoseStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing-step-5.webp",
-      alt: "Refine the petal edges",
+      alt: "rose easy drawing",
+      title: "drawing rose",
       width: 1448,
       height: 1086,
     },
@@ -114,7 +120,8 @@ export const roseSteps: RoseStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing-step-6.webp",
-      alt: "Draw the stem and sepals",
+      alt: "realistic rose drawing",
+      title: "rose drawing outline",
       width: 1448,
       height: 1086,
     },
@@ -128,7 +135,8 @@ export const roseSteps: RoseStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing-step-7.webp",
-      alt: "Add rose leaves",
+      alt: "drawing of a rose",
+      title: "rose flower drawing",
       width: 1448,
       height: 1086,
     },
@@ -149,7 +157,8 @@ export const roseSteps: RoseStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing-step-8.webp",
-      alt: "Clean the final outline",
+      alt: "easy rose drawing",
+      title: "simple rose drawing",
       width: 1448,
       height: 1086,
     },
@@ -171,6 +180,7 @@ export const roseSteps: RoseStep[] = [
     image: {
       src: "/images/flower-drawing/rose-drawing/rose-drawing.webp",
       alt: "rose drawing",
+      title: "rose drawing easy",
       width: 1448,
       height: 1086,
     },
@@ -202,7 +212,7 @@ export const roseTips = [
 ] as const;
 
 export const roseTipsClosing =
-  "Keeping your rose drawing simple does not mean the result must look unfinished. Clear shapes, controlled lines, and a balanced composition can create an attractive drawing without complicated details.";
+  "Keeping your rose drawing simple does not mean the result must look unfinished. After this lesson, try a [tulip drawing easy](/flower-drawing/tulip-drawing/) guide for another beginner bloom. Clear shapes, controlled lines, and a balanced composition can create an attractive drawing without complicated details.";
 
 export const roseOutlineSection = {
   intro: [

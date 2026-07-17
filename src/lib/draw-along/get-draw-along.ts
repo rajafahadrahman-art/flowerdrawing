@@ -34,7 +34,10 @@ function isNonEmptyString(value: unknown): value is string {
 }
 
 function buildStepsFromBody(
-  items: { title: string; image?: { src: string; alt: string } }[],
+  items: {
+    title: string;
+    image?: { src: string; alt: string; title?: string };
+  }[],
 ): DrawingStep[] {
   const steps: DrawingStep[] = [];
 
@@ -50,11 +53,16 @@ function buildStepsFromBody(
       ? item.image.alt.trim()
       : title;
 
+    const imageTitle = isNonEmptyString(item.image.title)
+      ? item.image.title.trim()
+      : undefined;
+
     steps.push({
       id: steps.length + 1,
       title,
       image: item.image.src,
       alt,
+      ...(imageTitle ? { imageTitle } : {}),
     });
   }
 
@@ -107,6 +115,9 @@ function toDrawingTutorial(
     title: focusKeyword,
     featuredImage: meta.featuredImage,
     featuredImageAlt: meta.featuredImageAlt,
+    featuredImageTitle: isNonEmptyString(meta.featuredImageTitle)
+      ? meta.featuredImageTitle
+      : undefined,
     articleUrl: `/flower-drawing/${meta.slug}/`,
     worksheetUrl: isNonEmptyString(meta.worksheetPDF)
       ? meta.worksheetPDF
@@ -125,7 +136,11 @@ export function getFlowerDrawingTutorial(): DrawingTutorial | null {
   const steps = buildStepsFromBody(
     homepageSteps.map((step) => ({
       title: step.title,
-      image: step.image,
+      image: {
+        src: step.image.src,
+        alt: step.image.alt,
+        title: "title" in step.image ? step.image.title : undefined,
+      },
     })),
   );
 
@@ -135,6 +150,7 @@ export function getFlowerDrawingTutorial(): DrawingTutorial | null {
     title: "Flower Drawing",
     featuredImage: "/images/flower-drawing/home/flower-drawing.webp",
     featuredImageAlt: "flower drawing",
+    featuredImageTitle: "flower drawing easy",
     articleUrl: "/",
     worksheetUrl: "/downloads/flower-drawing-worksheet.pdf",
     steps,

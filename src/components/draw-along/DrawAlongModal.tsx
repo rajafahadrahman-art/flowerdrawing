@@ -265,6 +265,7 @@ export function DrawAlongModal({
                     key={currentStep.image}
                     src={currentStep.image}
                     alt={currentStep.alt}
+                    title={currentStep.imageTitle}
                     fill
                     priority
                     className="da-main-image"
