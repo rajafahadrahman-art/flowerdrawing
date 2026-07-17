@@ -3,6 +3,7 @@ import type { TocItem } from "@/components/tutorial/TableOfContents";
 export type TutorialStepImage = {
   src: string;
   alt: string;
+  title?: string;
   width: number;
   height: number;
 };
@@ -99,7 +100,8 @@ export type TutorialBody = {
   steps: TutorialStepsBlock;
   /** Sections that appear after the step-by-step block. */
   sections: TutorialProseSection[];
-  worksheet: TutorialWorksheetBlock;
+  /** Omit when the tutorial has no printable worksheet download. */
+  worksheet?: TutorialWorksheetBlock;
   faqTitle: string;
   faqId: string;
   cta: TutorialCtaBlock;

@@ -22,7 +22,9 @@ export type TutorialMeta = {
   featuredImage: string;
   featuredImageAlt: string;
   featuredImageTitle: string;
+  /** Empty string when the tutorial has no printable worksheet. */
   worksheetImage: string;
+  /** Empty string when the tutorial has no printable worksheet. */
   worksheetPDF: string;
   publishedDate: string;
   updatedDate: string;

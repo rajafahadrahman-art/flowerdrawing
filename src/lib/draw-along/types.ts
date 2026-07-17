@@ -3,6 +3,7 @@ export type DrawingStep = {
   title: string;
   image: string;
   alt: string;
+  imageTitle?: string;
 };
 
 export type DrawingTutorial = {
@@ -11,6 +12,7 @@ export type DrawingTutorial = {
   title: string;
   featuredImage: string;
   featuredImageAlt: string;
+  featuredImageTitle?: string;
   articleUrl: string;
   worksheetUrl?: string;
   steps: DrawingStep[];

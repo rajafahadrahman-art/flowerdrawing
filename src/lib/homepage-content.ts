@@ -47,7 +47,8 @@ export const homepageSteps = [
     ],
     image: {
       src: "/images/flower-drawing/home/flower-drawing-step-1.webp",
-      alt: "Mark the flower center",
+      alt: "drawing easy flower",
+      title: "drawing flowers for beginners",
       width: 1254,
       height: 1254,
     },
@@ -60,7 +61,8 @@ export const homepageSteps = [
     ],
     image: {
       src: "/images/flower-drawing/home/flower-drawing-step-2.webp",
-      alt: "Add the first petals",
+      alt: "How to draw a flower",
+      title: "flowers for drawing",
       width: 1254,
       height: 1254,
     },
@@ -73,7 +75,8 @@ export const homepageSteps = [
     ],
     image: {
       src: "/images/flower-drawing/home/flower-drawing-step-3.webp",
-      alt: "Fill the remaining spaces",
+      alt: "easy drawing of a flower",
+      title: "flower drawing ideas easy",
       width: 1254,
       height: 1254,
     },
@@ -86,7 +89,8 @@ export const homepageSteps = [
     ],
     image: {
       src: "/images/flower-drawing/home/flower-drawing-step-4.webp",
-      alt: "Draw the stem",
+      alt: "drawing flowers step by step",
+      title: "simple flowers drawing",
       width: 1254,
       height: 1254,
     },
@@ -99,7 +103,8 @@ export const homepageSteps = [
     ],
     image: {
       src: "/images/flower-drawing/home/flower-drawing-step-5.webp",
-      alt: "Add leaves",
+      alt: "basic flower drawing",
+      title: "beginner simple flower designs for pencil drawing",
       width: 1254,
       height: 1254,
     },
@@ -111,8 +116,8 @@ export const homepageSteps = [
     ],
     image: {
       src: "/images/flower-drawing/home/flower-drawing.webp",
-      alt: "flower drawing",
-      title: "easy flower drawing",
+      alt: "a flower drawing",
+      title: "easy flowers drawing",
       width: 1254,
       height: 1254,
     },
@@ -124,10 +129,11 @@ export const homepageSteps = [
       "Place darker values near overlapping petals and underneath the flower center. Leave some areas lighter to create contrast.",
     ],
     // Identical to featured flower-drawing.webp — reuse that public file (no duplicate copy).
+    // Featured-image SEO applies when this final step reuses the featured file.
     image: {
       src: "/images/flower-drawing/home/flower-drawing.webp",
-      alt: "How to Draw flower",
-      title: "Draw a flower",
+      alt: "flower drawing",
+      title: "flower drawing easy",
       width: 1254,
       height: 1254,
     },

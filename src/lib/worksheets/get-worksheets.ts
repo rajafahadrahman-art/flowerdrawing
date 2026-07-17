@@ -34,7 +34,9 @@ const homepageWorksheet: WorksheetCollectionItem = {
   tutorialLabel: "View on Homepage",
 };
 
-function tutorialWorksheet(tutorial: TutorialMeta): WorksheetCollectionItem {
+function tutorialWorksheet(tutorial: TutorialMeta): WorksheetCollectionItem | null {
+  if (!tutorial.worksheetImage || !tutorial.worksheetPDF) return null;
+
   return {
     id: tutorial.slug,
     title: `${tutorial.focusKeyword} Worksheet`,
@@ -54,5 +56,8 @@ function tutorialWorksheet(tutorial: TutorialMeta): WorksheetCollectionItem {
 
 export async function getWorksheetCollection(): Promise<WorksheetCollectionItem[]> {
   const tutorials = await getAllTutorials();
-  return [homepageWorksheet, ...tutorials.map(tutorialWorksheet)];
+  const tutorialWorksheets = tutorials
+    .map(tutorialWorksheet)
+    .filter((item): item is WorksheetCollectionItem => Boolean(item));
+  return [homepageWorksheet, ...tutorialWorksheets];
 }

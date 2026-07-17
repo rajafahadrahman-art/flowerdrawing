@@ -14,8 +14,8 @@ export const meta: TutorialMeta = {
   estimatedTime: "8 minutes",
   stepCount: 9,
   featuredImage: "/images/flower-drawing/sunflower-drawing/sunflower-drawing.webp",
-  featuredImageAlt: "Sunflower drawing",
-  featuredImageTitle: "easy sunflower drawing",
+  featuredImageAlt: "sunflower drawing",
+  featuredImageTitle: "sunflower drawing easy",
   worksheetImage: "/downloads/sunflower-drawing/sunflower-drawing-worksheet.webp",
   worksheetPDF: "/downloads/sunflower-drawing/sunflower-drawing-worksheet.pdf",
   publishedDate: "2026-07-15",
@@ -81,8 +81,8 @@ export const meta: TutorialMeta = {
     },
   ],
   relatedTutorials: [
-    "rose-drawing",
-    "tulip-drawing",
     "hibiscus-flower-drawing",
+    "lily-flower-drawing",
+    "tulip-drawing",
   ],
 };

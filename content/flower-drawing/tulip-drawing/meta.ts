@@ -13,8 +13,8 @@ export const meta: TutorialMeta = {
   estimatedTime: "12 minutes",
   stepCount: 8,
   featuredImage: "/images/flower-drawing/tulip-drawing/tulip-drawing.webp",
-  featuredImageAlt: "Tulip Drawing",
-  featuredImageTitle: "easy tulip drawing",
+  featuredImageAlt: "tulip drawing",
+  featuredImageTitle: "tulip drawing easy",
   worksheetImage: "/downloads/tulip-drawing/tulip-drawing-worksheet.webp",
   worksheetPDF: "/downloads/tulip-drawing/tulip-drawing-worksheet.pdf",
   publishedDate: "2026-07-15",
@@ -81,7 +81,7 @@ export const meta: TutorialMeta = {
   ],
   relatedTutorials: [
     "rose-drawing",
+    "lily-flower-drawing",
     "sunflower-drawing",
-    "hibiscus-flower-drawing",
   ],
 };

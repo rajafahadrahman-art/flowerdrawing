@@ -4,7 +4,7 @@ import { sunflowerTocItems } from "@/lib/tutorials/sunflower-toc";
 export const sunflowerIntro = [
   "A sunflower is an enjoyable subject for beginners because its main structure is built from clear shapes: a round center, long petals, a sturdy stem, and broad leaves. Once these parts are placed correctly, a sunflower drawing can be developed with texture, shading, and color.",
   "This tutorial explains the full process from the first circle to the finished flower. You will learn how to arrange the petals, create a believable seed pattern, draw the stem and leaves, clean the outline, and add simple pencil shading.",
-  "The lesson is suitable for students, kids, beginners, and anyone looking for an approachable floral sketch. You can follow the complete tutorial or use the downloadable worksheet for tracing and independent practice.",
+  "The lesson is suitable for students, kids, beginners, and anyone looking for an approachable [flower drawing](/) sketch. You can follow the complete tutorial or use the downloadable worksheet for tracing and independent practice.",
 ] as const;
 
 export const sunflowerAnatomyIntro = [
@@ -65,7 +65,8 @@ export const sunflowerSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-1.webp",
-      alt: "Draw the main sunflower center circle",
+      alt: "beautiful sunflower drawing",
+      title: "drawing a sunflower",
       width: 1448,
       height: 1086,
     },
@@ -80,7 +81,8 @@ export const sunflowerSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-2.webp",
-      alt: "Add a second sunflower center ring",
+      alt: "sunflower seeds drawing",
+      title: "sketch sunflower drawing",
       width: 1448,
       height: 1086,
     },
@@ -95,7 +97,8 @@ export const sunflowerSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-3.webp",
-      alt: "Place the first sunflower petals",
+      alt: "sunflower line drawing",
+      title: "easy sunflower pencil drawing",
       width: 1448,
       height: 1086,
     },
@@ -106,11 +109,12 @@ export const sunflowerSteps: TutorialStep[] = [
       "Fill the spaces between the first four petals.",
       "Add more long petals around the center until the flower head feels complete. Vary their widths, lengths, and directions slightly.",
       "Some petals can curve to the left or right. Others may tilt forward or appear partly hidden behind nearby shapes.",
-      "A simple sunflower drawing becomes more interesting when the petals are balanced without looking mechanically repeated.",
+      "A simple sunflower drawing becomes more interesting when the petals are balanced without looking mechanically repeated. For another open bloom, try a [hibiscus flower drawing easy](/flower-drawing/hibiscus-flower-drawing/) tutorial next.",
     ],
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-4.webp",
-      alt: "Complete the main sunflower petal layer",
+      alt: "realistic sunflower drawing",
+      title: "sunflower drawing realistic",
       width: 1448,
       height: 1086,
     },
@@ -126,7 +130,8 @@ export const sunflowerSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-5.webp",
-      alt: "Add smaller overlapping sunflower petals",
+      alt: "drawing of sunflower",
+      title: "sunflower drawing simple",
       width: 1448,
       height: 1086,
     },
@@ -142,7 +147,8 @@ export const sunflowerSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-6.webp",
-      alt: "Create the sunflower seed pattern",
+      alt: "simple sunflower drawing",
+      title: "drawing of a sunflower",
       width: 1448,
       height: 1086,
     },
@@ -165,7 +171,8 @@ export const sunflowerSteps: TutorialStep[] = [
       "A clear sunflower leaves drawing helps balance the large flower head and makes the full plant feel complete.",
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-7.webp",
-      alt: "Draw the sunflower stem and leaves",
+      alt: "drawing sunflower",
+      title: "outline sunflower drawing",
       width: 1448,
       height: 1086,
     },
@@ -180,7 +187,8 @@ export const sunflowerSteps: TutorialStep[] = [
     ],
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing-step-8.webp",
-      alt: "Refine the final sunflower outline",
+      alt: "easy sunflower drawing",
+      title: "sunflower easy drawing",
       width: 1448,
       height: 1086,
     },
@@ -203,7 +211,8 @@ export const sunflowerSteps: TutorialStep[] = [
       "Leave the petal tips lighter to create contrast. This final stage turns the outline into a finished drawing with greater depth and texture.",
     image: {
       src: "/images/flower-drawing/sunflower-drawing/sunflower-drawing.webp",
-      alt: "Sunflower drawing",
+      alt: "sunflower drawing",
+      title: "sunflower drawing easy",
       width: 1448,
       height: 1086,
     },

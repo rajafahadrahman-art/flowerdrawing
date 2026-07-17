@@ -20,6 +20,8 @@ export function DrawAlongCompletion({
   const finalStep = tutorial.steps[tutorial.steps.length - 1];
   const previewSrc = finalStep?.image ?? tutorial.featuredImage;
   const previewAlt = finalStep?.alt ?? tutorial.featuredImageAlt;
+  const previewTitle =
+    finalStep?.imageTitle ?? tutorial.featuredImageTitle ?? undefined;
   const worksheetName = tutorial.worksheetUrl
     ? `${tutorial.slug}-worksheet.pdf`
     : undefined;
@@ -33,6 +35,7 @@ export function DrawAlongCompletion({
           <Image
             src={previewSrc}
             alt={previewAlt}
+            title={previewTitle}
             fill
             className="da-main-image"
             sizes="(max-width: 768px) 92vw, 560px"

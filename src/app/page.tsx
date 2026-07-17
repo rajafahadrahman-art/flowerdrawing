@@ -168,8 +168,8 @@ export default async function HomePage() {
                 <div className="image-frame overflow-hidden shadow-[var(--shadow-feature)]">
                   <Image
                     src="/images/flower-drawing/home/flower-drawing-hero.webp"
-                    alt="simple flower drawing"
-                    title="flower drawing easy"
+                    alt="easy flower drawing"
+                    title="simple flower drawing"
                     width={1734}
                     height={907}
                     priority
@@ -217,8 +217,8 @@ export default async function HomePage() {
       <section className="w-full">
         <Image
           src="/images/flower-drawing/home/homepagebanner2.webp"
-          alt="Realistic Flower Drawing"
-          title="flowers drawing"
+          alt="flower drawing easy and beautiful"
+          title="flower drawing simple"
           width={1774}
           height={887}
           className="h-auto w-full"
@@ -252,7 +252,15 @@ export default async function HomePage() {
             </p>
             <p>
               You can keep your flower drawing simple for a quick activity or follow a more detailed
-              tutorial when you are ready for an extra challenge.
+              tutorial when you are ready for an extra challenge. Many learners begin with a{" "}
+              <Link href="/flower-drawing/rose-drawing/" className="prose-inline-link">
+                rose drawing
+              </Link>{" "}
+              or a{" "}
+              <Link href="/flower-drawing/tulip-drawing/" className="prose-inline-link">
+                tulip drawing
+              </Link>{" "}
+              before trying wider open blooms.
             </p>
           </div>
           <div className="relative">
@@ -263,10 +271,10 @@ export default async function HomePage() {
               <Image
                 src="/images/flower-drawing/home/flower-drawing.webp"
                 alt="flower drawing"
-                title="easy flower drawing"
+                title="flower drawing easy"
                 width={1254}
                 height={1254}
-                className="h-auto w-full rounded-[0.85rem]"
+                className="h-auto w-full rounded-[0.85rem] object-contain"
                 sizes="(max-width: 1024px) 100vw, 560px"
               />
             </div>
@@ -587,7 +595,22 @@ export default async function HomePage() {
           <p className="mt-4">
             Browse our growing collection of individual flower tutorials. Each post focuses on one
             flower and includes a finished reference, visual drawing steps, simple instructions,
-            practice tips, and a printable worksheet where available.
+            practice tips, and a printable worksheet where available. You can practise a{" "}
+            <Link href="/flower-drawing/sunflower-drawing/" className="prose-inline-link">
+              sunflower drawing
+            </Link>
+            , a{" "}
+            <Link
+              href="/flower-drawing/hibiscus-flower-drawing/"
+              className="prose-inline-link"
+            >
+              hibiscus flower drawing
+            </Link>
+            , or a{" "}
+            <Link href="/flower-drawing/lily-flower-drawing/" className="prose-inline-link">
+              lily flower drawing
+            </Link>{" "}
+            using the same beginner-friendly approach.
           </p>
           <p className="mt-3">
             New tutorials will be added regularly, giving you more petal shapes, plant forms,

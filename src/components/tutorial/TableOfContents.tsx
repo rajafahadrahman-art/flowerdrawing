@@ -10,7 +10,7 @@ type TableOfContentsProps = {
   items: TocItem[];
   ariaLabel?: string;
   className?: string;
-  /** Tutorial pages stay open by default; homepage uses collapsed. */
+  /** Homepage and tutorial posts start collapsed; visitors can expand. */
   defaultOpen?: boolean;
 };
 
@@ -26,13 +26,13 @@ export function slugifyHeading(text: string): string {
 /**
  * Closable Table of Contents.
  * Uses native <details>/<summary> so it works without JavaScript.
- * Tutorial pages default to open; homepage passes defaultOpen={false}.
+ * Homepage and tutorial posts pass defaultOpen={false}.
  */
 export function TableOfContents({
   items,
   ariaLabel = "Table of Contents",
   className = "",
-  defaultOpen = true,
+  defaultOpen = false,
 }: TableOfContentsProps) {
   if (items.length === 0) return null;
 

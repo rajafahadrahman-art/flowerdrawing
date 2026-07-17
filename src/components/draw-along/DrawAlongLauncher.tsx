@@ -50,6 +50,7 @@ export function DrawAlongLauncher({ tutorial }: DrawAlongLauncherProps) {
         <Image
           src={tutorial.featuredImage}
           alt={tutorial.featuredImageAlt}
+          title={tutorial.featuredImageTitle}
           width={1448}
           height={1086}
           className="da-launcher__image"

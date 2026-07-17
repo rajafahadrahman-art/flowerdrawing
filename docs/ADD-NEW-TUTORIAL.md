@@ -140,7 +140,7 @@ The shared tutorial page adds:
 
 Add a TOC file such as `src/lib/tutorials/[slug]-toc.ts` built from real H2/H3 headings.
 
-The shared `TableOfContents` component is open by default (`<details open>`), closable, and highlights `:target` sections after click.
+The shared `TableOfContents` component starts collapsed by default on the homepage and tutorial posts (`defaultOpen={false}`), remains closable/expandable, and highlights `:target` sections after click.
 
 ## 10. Validate and publish
 
