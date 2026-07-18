@@ -84,8 +84,8 @@ About the Author:
 | Download Practice Worksheets | `/worksheets/` |
 | View Step-by-Step Drawing Guides | `/flower-drawing/` |
 | Browse Drawing Worksheets | `/worksheets/` |
-| Download Free Worksheet | matching worksheet PDF |
-| Print Now | matching worksheet PDF (new tab) |
+| Download Free Worksheet | `/api/worksheets/[slug]/` (direct attachment download) |
+| Print Now | `/print/worksheet/[slug]/` (new tab; print-only view) |
 | View All Flower Tutorials | `/flower-drawing/` |
 | Start Drawing | `/flower-drawing/` |
 | View Practice Worksheets | `/worksheets/` |

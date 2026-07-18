@@ -45,7 +45,10 @@ export function ButtonLink({
   const resolvedIcon = icon ?? defaultIcon[variant] ?? "none";
   const classes = `btn ${variantClass[variant]} ${className}`.trim();
   const isExternal = href.startsWith("http") || href.startsWith("mailto:");
-  const isFile = href.endsWith(".pdf") || href.endsWith(".webp");
+  const isFile =
+    href.endsWith(".pdf") ||
+    href.endsWith(".webp") ||
+    href.startsWith("/api/worksheets/");
 
   const content = (
     <>

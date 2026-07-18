@@ -666,4 +666,100 @@
       animation: none;
     }
   }
+
+  /* Worksheet print view — hide main site chrome without restructuring layouts */
+  body:has([data-worksheet-print]) > a[href="#main-content"],
+  body:has([data-worksheet-print]) > header,
+  body:has([data-worksheet-print]) > footer,
+  body:has([data-worksheet-print]) > .back-to-top-btn {
+    display: none !important;
+  }
+
+  body:has([data-worksheet-print]) {
+    background: #ffffff;
+  }
+
+  body:has([data-worksheet-print]) #main-content {
+    min-height: 100dvh;
+  }
+
+  .worksheet-print {
+    min-height: 100dvh;
+    background: #ffffff;
+    color: var(--color-ink);
+    padding: clamp(1rem, 3vw, 1.75rem);
+  }
+
+  .worksheet-print__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .worksheet-print__hint {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .worksheet-print__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .worksheet-print__sheet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: min(80dvh, 900px);
+    background: #ffffff;
+  }
+
+  .worksheet-print__image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: min(85dvh, 1100px);
+    object-fit: contain;
+  }
+
+  .worksheet-print__missing {
+    margin: 0;
+    max-width: 28rem;
+    text-align: center;
+    color: var(--color-muted);
+  }
+
+  @media print {
+    body:has([data-worksheet-print]) {
+      background: #ffffff !important;
+    }
+
+    .worksheet-print {
+      padding: 0;
+      min-height: auto;
+    }
+
+    .worksheet-print__controls {
+      display: none !important;
+    }
+
+    .worksheet-print__sheet {
+      min-height: auto;
+      display: block;
+    }
+
+    .worksheet-print__image {
+      width: 100%;
+      max-width: 100%;
+      max-height: 100vh;
+      height: auto;
+      object-fit: contain;
+      page-break-inside: avoid;
+    }
+  }
 }

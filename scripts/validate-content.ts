@@ -107,8 +107,17 @@ async function validateHomepage() {
   );
 
   const pageSource = await read("src/app/page.tsx");
+  const worksheetActionsSource = await read("src/components/worksheets/WorksheetActions.tsx");
   for (const label of pageButtons) {
-    assert(pageSource.includes(label), `Homepage page includes button label: ${label}`);
+    const presentInPage = pageSource.includes(label);
+    const presentInSharedActions =
+      (label === "Download Free Worksheet" || label === "Print Now") &&
+      pageSource.includes("WorksheetActions") &&
+      worksheetActionsSource.includes(label);
+    assert(
+      presentInPage || presentInSharedActions,
+      `Homepage page includes button label: ${label}`,
+    );
   }
 
   assert(pageSource.includes('href="/worksheets/"'), "Homepage links to /worksheets/");
@@ -374,6 +383,9 @@ async function validateInternalLinks() {
     "content/flower-drawing/lily-flower-drawing/tutorial-content.ts",
     "src/app/page.tsx",
     "src/components/layout/Header.tsx",
+    "src/components/worksheets/WorksheetActions.tsx",
+    "src/components/worksheets/WorksheetCard.tsx",
+    "src/components/tutorial/TutorialArticle.tsx",
   ];
 
   for (const file of contentFiles) {
@@ -384,6 +396,9 @@ async function validateInternalLinks() {
     for (const href of [...hrefs, ...mdLinks]) {
       if (!href.startsWith("/")) continue;
       if (href.startsWith("/#") || href === "/") continue;
+      if (href.startsWith("/api/worksheets/") || href.startsWith("/print/worksheet/")) {
+        continue;
+      }
       if (href.startsWith("/downloads/")) {
         assert(await exists(`public${href.split("?")[0]}`), `Download exists for ${href} in ${file}`);
         continue;
@@ -441,8 +456,27 @@ async function validateWorksheets() {
   }
   assert(!ids.includes("lily-flower-drawing"), "Lily without worksheet is excluded from collection");
 
+  assert(
+    await exists("src/app/api/worksheets/[slug]/route.ts"),
+    "Shared worksheet download API route exists",
+  );
+  assert(
+    await exists("src/app/print/worksheet/[slug]/page.tsx"),
+    "Shared worksheet print page exists",
+  );
+  assert(
+    await exists("src/components/worksheets/WorksheetActions.tsx"),
+    "Shared worksheet actions component exists",
+  );
+  const actions = await read("src/components/worksheets/WorksheetActions.tsx");
+  assert(actions.includes("Download Free Worksheet"), "Shared actions keep Download label");
+  assert(actions.includes("Print Now"), "Shared actions keep Print Now label");
+  assert(actions.includes("worksheetDownloadPath"), "Shared actions use download helper");
+  assert(actions.includes("worksheetPrintPath"), "Shared actions use print helper");
+
   const sitemap = await read("src/app/sitemap.ts");
   assert(sitemap.includes("/worksheets/"), "Sitemap includes /worksheets/");
+  assert(!sitemap.includes("/print/worksheet/"), "Sitemap excludes worksheet print routes");
   assert(
     !sitemap.includes("/privacy-policy/") || sitemap.includes("noIndexImportantPaths"),
     "Legal pages remain excluded via filter",

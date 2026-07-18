@@ -10,6 +10,8 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ProseText } from "@/components/ui/ProseText";
 import { Section } from "@/components/ui/Section";
+import { WorksheetActions } from "@/components/worksheets/WorksheetActions";
+import { worksheetDownloadPath } from "@/lib/worksheets/resolve-worksheet";
 import type { DrawingTutorial } from "@/lib/draw-along/types";
 import type {
   TutorialBody,
@@ -395,17 +397,11 @@ export function TutorialArticle({
                   <ProseText text={paragraph} />
                 </p>
               ))}
-              <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href={meta.worksheetPDF} variant="download" download>
-                  Download Free Worksheet
-                </ButtonLink>
-                <ButtonLink href={meta.worksheetPDF} variant="print" newTab>
-                  Print Now
-                </ButtonLink>
+              <WorksheetActions slug={meta.slug} className="mt-6">
                 <ButtonLink href="/worksheets/" variant="sky">
                   Browse Drawing Worksheets
                 </ButtonLink>
-              </div>
+              </WorksheetActions>
             </div>
           </div>
         </Section>
@@ -436,8 +432,8 @@ export function TutorialArticle({
           ))}
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/flower-drawing/">Start Drawing</ButtonLink>
-            {meta.worksheetPDF ? (
-              <ButtonLink href={meta.worksheetPDF} variant="download" download>
+            {meta.worksheetImage || meta.worksheetPDF ? (
+              <ButtonLink href={worksheetDownloadPath(meta.slug)} variant="download" download>
                 Download Worksheet
               </ButtonLink>
             ) : (

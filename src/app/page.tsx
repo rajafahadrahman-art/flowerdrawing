@@ -17,6 +17,8 @@ import { Section } from "@/components/ui/Section";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { TutorialCard } from "@/components/tutorials/TutorialCard";
 import { TableOfContents } from "@/components/tutorial/TableOfContents";
+import { WorksheetActions } from "@/components/worksheets/WorksheetActions";
+import { FLOWER_DRAWING_SLUG } from "@/lib/draw-along/types";
 import { getFlowerDrawingTutorial } from "@/lib/draw-along/get-draw-along";
 import {
   beginnerHabits,
@@ -525,21 +527,11 @@ export default async function HomePage() {
               again without tracing. This turns a guided activity into an independent drawing
               exercise.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink
-                href="/downloads/flower-drawing-worksheet.pdf"
-                variant="download"
-                download
-              >
-                Download Free Worksheet
-              </ButtonLink>
-              <ButtonLink href="/downloads/flower-drawing-worksheet.pdf" variant="print" newTab>
-                Print Now
-              </ButtonLink>
+            <WorksheetActions slug={FLOWER_DRAWING_SLUG} className="mt-6">
               <ButtonLink href="/worksheets/" variant="sky">
                 Browse Drawing Worksheets
               </ButtonLink>
-            </div>
+            </WorksheetActions>
           </div>
         </div>
       </Section>
