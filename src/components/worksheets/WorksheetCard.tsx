@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { WorksheetCollectionItem } from "@/lib/worksheets/get-worksheets";
-import { ButtonLink } from "@/components/ui/ButtonLink";
+import { WorksheetActions } from "@/components/worksheets/WorksheetActions";
 
 type WorksheetCardProps = {
   worksheet: WorksheetCollectionItem;
@@ -30,13 +30,7 @@ export function WorksheetCard({ worksheet }: WorksheetCardProps) {
             <p className="text-sm font-medium text-ink/80">{worksheet.stepCount} steps</p>
           ) : null}
         </div>
-        <div className="flex flex-wrap gap-3">
-          <ButtonLink href={worksheet.worksheetPDF} variant="download" download>
-            Download Free Worksheet
-          </ButtonLink>
-          <ButtonLink href={worksheet.worksheetPDF} variant="print" newTab>
-            Print Now
-          </ButtonLink>
+        <WorksheetActions slug={worksheet.id}>
           {worksheet.tutorialHref ? (
             <Link
               href={worksheet.tutorialHref}
@@ -45,7 +39,7 @@ export function WorksheetCard({ worksheet }: WorksheetCardProps) {
               {worksheet.tutorialLabel ?? "View Tutorial"}
             </Link>
           ) : null}
-        </div>
+        </WorksheetActions>
       </div>
     </article>
   );

@@ -119,9 +119,11 @@ function toDrawingTutorial(
       ? meta.featuredImageTitle
       : undefined,
     articleUrl: `/flower-drawing/${meta.slug}/`,
-    worksheetUrl: isNonEmptyString(meta.worksheetPDF)
-      ? meta.worksheetPDF
-      : undefined,
+    worksheetUrl: isNonEmptyString(meta.worksheetImage)
+      ? meta.worksheetImage
+      : isNonEmptyString(meta.worksheetPDF)
+        ? meta.worksheetPDF
+        : undefined,
     steps,
   };
 
@@ -152,7 +154,7 @@ export function getFlowerDrawingTutorial(): DrawingTutorial | null {
     featuredImageAlt: "flower drawing",
     featuredImageTitle: "flower drawing easy",
     articleUrl: "/",
-    worksheetUrl: "/downloads/flower-drawing-worksheet.pdf",
+    worksheetUrl: "/downloads/flower-drawing-worksheet.webp",
     steps,
   };
 

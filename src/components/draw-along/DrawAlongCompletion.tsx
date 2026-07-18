@@ -22,8 +22,8 @@ export function DrawAlongCompletion({
   const previewAlt = finalStep?.alt ?? tutorial.featuredImageAlt;
   const previewTitle =
     finalStep?.imageTitle ?? tutorial.featuredImageTitle ?? undefined;
-  const worksheetName = tutorial.worksheetUrl
-    ? `${tutorial.slug}-worksheet.pdf`
+  const worksheetHref = tutorial.worksheetUrl
+    ? `/api/worksheets/${tutorial.slug}/`
     : undefined;
 
   return (
@@ -58,12 +58,8 @@ export function DrawAlongCompletion({
         <Link href={tutorial.articleUrl} className="da-btn da-btn--secondary">
           View Tutorial
         </Link>
-        {tutorial.worksheetUrl ? (
-          <a
-            href={tutorial.worksheetUrl}
-            className="da-btn da-btn--accent"
-            download={worksheetName}
-          >
+        {worksheetHref ? (
+          <a href={worksheetHref} className="da-btn da-btn--accent" download>
             Download Worksheet
           </a>
         ) : null}
