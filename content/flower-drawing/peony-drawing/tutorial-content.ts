@@ -220,11 +220,27 @@ export const peonySimpleVsDetailedIntro = [
 export const peonySimpleVsDetailedCards = [
   {
     title: "Easy Drawing",
-    text: "For an easy drawing, use fewer inner petals, six to eight clear outer petals, minimal fold lines, one stem, and two simple leaf groups. This version is easier for children and first-time artists.",
+    text: "For an easy drawing, use:",
+    bullets: [
+      "Fewer inner petals",
+      "Six to eight clear outer petals",
+      "Minimal fold lines",
+      "One stem",
+      "Two simple leaf groups",
+    ],
+    closing: "This version is easier for children and first-time artists.",
   },
   {
     title: "Detailed Drawing",
-    text: "For a more advanced flower, add several small curled centre petals, use more overlapping layers, vary individual petal edges, add subtle graphite shading, and include more complex leaves. Both versions can still follow the same basic construction.",
+    text: "For a more advanced flower:",
+    bullets: [
+      "Add several small curled centre petals",
+      "Use more overlapping layers",
+      "Vary individual petal edges",
+      "Add subtle graphite shading",
+      "Include more complex leaves",
+    ],
+    closing: "Both versions can still follow the same basic construction.",
   },
 ] as const;
 
@@ -446,6 +462,8 @@ export const peonyBody: TutorialBody = {
         title: card.title,
         id: slug(card.title),
         text: card.text,
+        bullets: [...card.bullets],
+        closing: card.closing,
       })),
     },
     {

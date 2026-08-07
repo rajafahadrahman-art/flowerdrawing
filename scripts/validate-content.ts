@@ -1,9 +1,11 @@
+import { execFileSync } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { homepageFaqs, homepageSteps } from "../src/lib/homepage-content";
 import { homepageSeo } from "../src/lib/site";
 import { meta as hibiscusMeta } from "../content/flower-drawing/hibiscus-flower-drawing/meta";
 import { meta as lilyMeta } from "../content/flower-drawing/lily-flower-drawing/meta";
+import { meta as orchidMeta } from "../content/flower-drawing/orchid-drawing/meta";
 import { meta as peonyMeta } from "../content/flower-drawing/peony-drawing/meta";
 import { meta as roseMeta } from "../content/flower-drawing/rose-drawing/meta";
 import { meta as sunflowerMeta } from "../content/flower-drawing/sunflower-drawing/meta";
@@ -34,6 +36,27 @@ async function exists(relativePath: string) {
 
 async function read(relativePath: string) {
   return fs.readFile(path.join(root, relativePath), "utf8");
+}
+
+/** Read plain-text or Word (.docx disguised as .txt) tutorial source content. */
+async function readSourceContent(relativePath: string) {
+  const absolutePath = path.join(root, relativePath);
+  const bytes = await fs.readFile(absolutePath);
+  const isZip = bytes[0] === 0x50 && bytes[1] === 0x4b;
+  if (!isZip) {
+    return bytes.toString("utf8");
+  }
+
+  const xml = execFileSync("unzip", ["-p", absolutePath, "word/document.xml"], {
+    encoding: "utf8",
+  });
+  return xml
+    .replace(/<\/w:p>/g, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/\n{3,}/g, "\n\n");
 }
 
 function parseSourceMeta(source: string) {
@@ -150,6 +173,7 @@ async function validateHomepage() {
     ["hibiscus flower drawing", "/flower-drawing/hibiscus-flower-drawing/"],
     ["lily flower drawing", "/flower-drawing/lily-flower-drawing/"],
     ["peony drawing", "/flower-drawing/peony-drawing/"],
+    ["orchid drawing", "/flower-drawing/orchid-drawing/"],
   ];
   for (const [anchor, href] of homepageTutorialLinks) {
     assert(
@@ -254,7 +278,7 @@ type TutorialCheck = {
 
 async function validateTutorial(check: TutorialCheck) {
   console.log(`\n=== ${check.slug} validation ===`);
-  const source = await read(check.sourcePath);
+  const source = await readSourceContent(check.sourcePath);
   const parsed = parseSourceMeta(source);
 
   if (parsed.focus) {
@@ -405,6 +429,7 @@ async function validateInternalLinks() {
     "content/flower-drawing/hibiscus-flower-drawing/tutorial-content.ts",
     "content/flower-drawing/lily-flower-drawing/tutorial-content.ts",
     "content/flower-drawing/peony-drawing/tutorial-content.ts",
+    "content/flower-drawing/orchid-drawing/tutorial-content.ts",
     "src/app/page.tsx",
     "src/components/layout/Header.tsx",
     "src/components/worksheets/WorksheetActions.tsx",
@@ -465,8 +490,8 @@ async function validateWorksheets() {
 
   const worksheets = await getWorksheetCollection();
   assert(
-    worksheets.length === 6,
-    "Worksheet collection includes homepage + 5 tutorials with worksheets",
+    worksheets.length === 7,
+    "Worksheet collection includes homepage + 6 tutorials with worksheets",
   );
   const ids = worksheets.map((item) => item.id);
   for (const id of [
@@ -476,6 +501,7 @@ async function validateWorksheets() {
     "sunflower-drawing",
     "hibiscus-flower-drawing",
     "peony-drawing",
+    "orchid-drawing",
   ]) {
     assert(ids.includes(id), `Worksheet collection includes ${id}`);
   }
@@ -531,7 +557,7 @@ async function validateRegistry() {
     assert(registry.includes(slug), `Registry references ${slug}`);
     assert(bodyRegistry.includes(slug), `Body registry references ${slug}`);
   }
-  assert(tutorialOrder.length === 6, "Exactly six genuine tutorials are registered");
+  assert(tutorialOrder.length === 7, "Exactly seven genuine tutorials are registered");
   assert(
     tutorialOrder.includes("lily-flower-drawing"),
     "Lily is included in tutorialOrder",
@@ -539,6 +565,10 @@ async function validateRegistry() {
   assert(
     tutorialOrder.includes("peony-drawing"),
     "Peony is included in tutorialOrder",
+  );
+  assert(
+    tutorialOrder.includes("orchid-drawing"),
+    "Orchid is included in tutorialOrder",
   );
 }
 
@@ -567,6 +597,10 @@ async function main() {
   assert(
     await exists("source-assets/peony-drawing/peony-drawing-content.txt"),
     "Peony source content exists",
+  );
+  assert(
+    await exists("source-assets/orchid-drawing/orchid-drawing-content.txt"),
+    "Orchid source content exists",
   );
   assert(!(await exists("assets")), "Legacy assets/ folder is not the primary source");
 
@@ -638,6 +672,17 @@ async function main() {
     featuredImageTitle: "peony drawing easy",
     hasWorksheet: true,
     separateFinalStepImage: true,
+  });
+  await validateTutorial({
+    slug: "orchid-drawing",
+    sourcePath: "source-assets/orchid-drawing/orchid-drawing-content.txt",
+    meta: orchidMeta,
+    stepCount: 8,
+    finalStepTitleIncludes: "Step 8: Refine the Final Orchid Drawing",
+    featuredFile: "orchid-drawing.webp",
+    featuredImageAlt: "orchid drawing",
+    featuredImageTitle: "orchid drawing easy",
+    hasWorksheet: true,
   });
   await validateInternalLinks();
   await validateWorksheets();

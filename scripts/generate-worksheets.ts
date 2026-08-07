@@ -37,6 +37,11 @@ const worksheets = [
     webpOut: "public/downloads/peony-drawing/peony-drawing-worksheet.webp",
     pdfOut: "public/downloads/peony-drawing/peony-drawing-worksheet.pdf",
   },
+  {
+    source: "source-assets/orchid-drawing/orchid-drawing-worksheet.webp",
+    webpOut: "public/downloads/orchid-drawing/orchid-drawing-worksheet.webp",
+    pdfOut: "public/downloads/orchid-drawing/orchid-drawing-worksheet.pdf",
+  },
 ];
 
 async function ensureDir(dir: string) {

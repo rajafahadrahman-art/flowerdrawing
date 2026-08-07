@@ -160,9 +160,25 @@ function ProseSectionBlock({
                     className={`surface-card toc-target p-5 ${cardTone(cardIndex)}`}
                   >
                     <h3 className="heading-card">{card.title}</h3>
-                    <p>
-                      <ProseText text={card.text} />
-                    </p>
+                    {card.text ? (
+                      <p>
+                        <ProseText text={card.text} />
+                      </p>
+                    ) : null}
+                    {card.bullets && card.bullets.length > 0 ? (
+                      <ul>
+                        {card.bullets.map((item) => (
+                          <li key={item}>
+                            <ProseText text={item} />
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    {card.closing ? (
+                      <p>
+                        <ProseText text={card.closing} />
+                      </p>
+                    ) : null}
                   </div>
                 ))}
               </div>

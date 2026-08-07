@@ -19,7 +19,12 @@ export type TutorialStep = {
 export type TutorialCardItem = {
   title: string;
   id: string;
+  /** Lead-in or body prose for the card. */
   text: string;
+  /** Optional semantic list items that follow the card text. */
+  bullets?: string[];
+  /** Optional closing prose after bullets. */
+  closing?: string;
 };
 
 export type TutorialCardVariant = "default" | "outline" | "mistake" | "tip";
