@@ -457,6 +457,7 @@ export const lilyBody: TutorialBody = {
       title: "Lily Flower Outline Drawing",
       intro: [...lilyOutlineIntro],
       bullets: [...lilyOutlineBullets],
+      ordered: true,
       closing: lilyOutlineClosing,
     },
     {

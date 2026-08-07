@@ -471,6 +471,7 @@ export const peonyBody: TutorialBody = {
       title: "Peony Line Drawing and Outline Styles",
       intro: [...peonyOutlineIntro],
       bullets: [...peonyOutlineBullets],
+      ordered: true,
       closing: peonyOutlineClosing,
     },
     {

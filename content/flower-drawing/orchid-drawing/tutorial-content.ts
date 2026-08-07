@@ -500,6 +500,7 @@ export const orchidBody: TutorialBody = {
       tone: "mint",
       intro: [...orchidPracticeIntro],
       bullets: [...orchidPracticeBullets],
+      ordered: true,
       closing: [...orchidPracticeClosing],
     },
     {

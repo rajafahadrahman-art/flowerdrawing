@@ -12,6 +12,8 @@ export type TutorialStep = {
   title: string;
   paragraphs: string[];
   bullets?: string[];
+  /** When true, step bullets render as an ordered list. */
+  ordered?: boolean;
   closing?: string;
   image?: TutorialStepImage;
 };
@@ -47,6 +49,8 @@ export type TutorialProseSection = {
   intro?: string[];
   paragraphs?: string[];
   bullets?: string[];
+  /** When true, section bullets render as an ordered list. */
+  ordered?: boolean;
   checklist?: string[];
   closing?: string | string[];
   cards?: TutorialCardItem[];

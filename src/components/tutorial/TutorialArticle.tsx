@@ -85,6 +85,25 @@ function renderClosing(closing?: string | string[]) {
   ));
 }
 
+function ProseList({
+  items,
+  ordered = false,
+}: {
+  items: string[];
+  ordered?: boolean;
+}) {
+  const ListTag = ordered ? "ol" : "ul";
+  return (
+    <ListTag>
+      {items.map((item) => (
+        <li key={item}>
+          <ProseText text={item} />
+        </li>
+      ))}
+    </ListTag>
+  );
+}
+
 function ProseSectionBlock({
   section,
   index,
@@ -143,13 +162,7 @@ function ProseSectionBlock({
               </p>
             ))}
             {section.bullets ? (
-              <ul>
-                {section.bullets.map((item) => (
-                  <li key={item}>
-                    <ProseText text={item} />
-                  </li>
-                ))}
-              </ul>
+              <ProseList items={section.bullets} ordered={section.ordered} />
             ) : null}
             {section.cards ? (
               <div className="mt-6 space-y-4">
@@ -350,13 +363,7 @@ export function TutorialArticle({
                   </p>
                 ))}
                 {step.bullets ? (
-                  <ul>
-                    {step.bullets.map((item) => (
-                      <li key={item}>
-                        <ProseText text={item} />
-                      </li>
-                    ))}
-                  </ul>
+                  <ProseList items={step.bullets} ordered={step.ordered} />
                 ) : null}
                 {step.closing ? (
                   <p>
