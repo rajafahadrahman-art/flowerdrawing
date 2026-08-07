@@ -45,6 +45,11 @@ const tutorialImages: TutorialImageCopy[] = [
     publicDir: "public/images/flower-drawing/lily-flower-drawing",
     featuredFile: "lily-flower-drawing.webp",
   },
+  {
+    sourceDir: "source-assets/peony-drawing",
+    publicDir: "public/images/flower-drawing/peony-drawing",
+    featuredFile: "peony-drawing.webp",
+  },
 ];
 
 async function copyTutorialImages(config: TutorialImageCopy) {
