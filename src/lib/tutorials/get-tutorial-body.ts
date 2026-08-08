@@ -1,6 +1,8 @@
 import { roseBody } from "@content/flower-drawing/rose-drawing/body";
 import { hibiscusBody } from "@content/flower-drawing/hibiscus-flower-drawing/tutorial-content";
 import { lilyBody } from "@content/flower-drawing/lily-flower-drawing/tutorial-content";
+import { orchidBody } from "@content/flower-drawing/orchid-drawing/tutorial-content";
+import { peonyBody } from "@content/flower-drawing/peony-drawing/tutorial-content";
 import { sunflowerBody } from "@content/flower-drawing/sunflower-drawing/tutorial-content";
 import { tulipBody } from "@content/flower-drawing/tulip-drawing/tutorial-content";
 import type { TutorialBody } from "@/lib/tutorials/body-types";
@@ -11,6 +13,8 @@ const bodyRegistry: Record<string, TutorialBody> = {
   "sunflower-drawing": sunflowerBody,
   "hibiscus-flower-drawing": hibiscusBody,
   "lily-flower-drawing": lilyBody,
+  "peony-drawing": peonyBody,
+  "orchid-drawing": orchidBody,
 };
 
 export async function getTutorialBody(slug: string): Promise<TutorialBody | null> {

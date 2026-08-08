@@ -587,7 +587,7 @@ export default async function HomePage() {
           <p className="mt-4">
             Browse our growing collection of individual flower tutorials. Each post focuses on one
             flower and includes a finished reference, visual drawing steps, simple instructions,
-            practice tips, and a printable worksheet where available. You can practise a{" "}
+            practice tips, and a printable worksheet where available.             You can practise a{" "}
             <Link href="/flower-drawing/sunflower-drawing/" className="prose-inline-link">
               sunflower drawing
             </Link>
@@ -598,9 +598,17 @@ export default async function HomePage() {
             >
               hibiscus flower drawing
             </Link>
-            , or a{" "}
+            , a{" "}
             <Link href="/flower-drawing/lily-flower-drawing/" className="prose-inline-link">
               lily flower drawing
+            </Link>
+            , a{" "}
+            <Link href="/flower-drawing/peony-drawing/" className="prose-inline-link">
+              peony drawing
+            </Link>
+            , or an{" "}
+            <Link href="/flower-drawing/orchid-drawing/" className="prose-inline-link">
+              orchid drawing
             </Link>{" "}
             using the same beginner-friendly approach.
           </p>

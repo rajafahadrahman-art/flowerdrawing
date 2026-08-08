@@ -85,6 +85,25 @@ function renderClosing(closing?: string | string[]) {
   ));
 }
 
+function ProseList({
+  items,
+  ordered = false,
+}: {
+  items: string[];
+  ordered?: boolean;
+}) {
+  const ListTag = ordered ? "ol" : "ul";
+  return (
+    <ListTag>
+      {items.map((item) => (
+        <li key={item}>
+          <ProseText text={item} />
+        </li>
+      ))}
+    </ListTag>
+  );
+}
+
 function ProseSectionBlock({
   section,
   index,
@@ -143,13 +162,7 @@ function ProseSectionBlock({
               </p>
             ))}
             {section.bullets ? (
-              <ul>
-                {section.bullets.map((item) => (
-                  <li key={item}>
-                    <ProseText text={item} />
-                  </li>
-                ))}
-              </ul>
+              <ProseList items={section.bullets} ordered={section.ordered} />
             ) : null}
             {section.cards ? (
               <div className="mt-6 space-y-4">
@@ -160,9 +173,25 @@ function ProseSectionBlock({
                     className={`surface-card toc-target p-5 ${cardTone(cardIndex)}`}
                   >
                     <h3 className="heading-card">{card.title}</h3>
-                    <p>
-                      <ProseText text={card.text} />
-                    </p>
+                    {card.text ? (
+                      <p>
+                        <ProseText text={card.text} />
+                      </p>
+                    ) : null}
+                    {card.bullets && card.bullets.length > 0 ? (
+                      <ul>
+                        {card.bullets.map((item) => (
+                          <li key={item}>
+                            <ProseText text={item} />
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    {card.closing ? (
+                      <p>
+                        <ProseText text={card.closing} />
+                      </p>
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -334,13 +363,7 @@ export function TutorialArticle({
                   </p>
                 ))}
                 {step.bullets ? (
-                  <ul>
-                    {step.bullets.map((item) => (
-                      <li key={item}>
-                        <ProseText text={item} />
-                      </li>
-                    ))}
-                  </ul>
+                  <ProseList items={step.bullets} ordered={step.ordered} />
                 ) : null}
                 {step.closing ? (
                   <p>

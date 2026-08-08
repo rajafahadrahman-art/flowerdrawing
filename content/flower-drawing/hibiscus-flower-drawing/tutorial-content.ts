@@ -436,6 +436,7 @@ export const hibiscusBody: TutorialBody = {
       tone: "coral",
       intro: [...hibiscusHawaiianIntro],
       bullets: [...hibiscusHawaiianBullets],
+      ordered: true,
       closing: [...hibiscusHawaiianClosing],
     },
     {

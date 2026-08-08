@@ -12,6 +12,8 @@ export type TutorialStep = {
   title: string;
   paragraphs: string[];
   bullets?: string[];
+  /** When true, step bullets render as an ordered list. */
+  ordered?: boolean;
   closing?: string;
   image?: TutorialStepImage;
 };
@@ -19,7 +21,12 @@ export type TutorialStep = {
 export type TutorialCardItem = {
   title: string;
   id: string;
+  /** Lead-in or body prose for the card. */
   text: string;
+  /** Optional semantic list items that follow the card text. */
+  bullets?: string[];
+  /** Optional closing prose after bullets. */
+  closing?: string;
 };
 
 export type TutorialCardVariant = "default" | "outline" | "mistake" | "tip";
@@ -42,6 +49,8 @@ export type TutorialProseSection = {
   intro?: string[];
   paragraphs?: string[];
   bullets?: string[];
+  /** When true, section bullets render as an ordered list. */
+  ordered?: boolean;
   checklist?: string[];
   closing?: string | string[];
   cards?: TutorialCardItem[];

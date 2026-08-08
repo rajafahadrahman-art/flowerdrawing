@@ -32,6 +32,16 @@ const worksheets = [
       "public/downloads/hibiscus-flower-drawing/hibiscus-flower-drawing-worksheet.webp",
     pdfOut: "public/downloads/hibiscus-flower-drawing/hibiscus-flower-drawing-worksheet.pdf",
   },
+  {
+    source: "source-assets/peony-drawing/peony-drawing-worksheet.webp",
+    webpOut: "public/downloads/peony-drawing/peony-drawing-worksheet.webp",
+    pdfOut: "public/downloads/peony-drawing/peony-drawing-worksheet.pdf",
+  },
+  {
+    source: "source-assets/orchid-drawing/orchid-drawing-worksheet.webp",
+    webpOut: "public/downloads/orchid-drawing/orchid-drawing-worksheet.webp",
+    pdfOut: "public/downloads/orchid-drawing/orchid-drawing-worksheet.pdf",
+  },
 ];
 
 async function ensureDir(dir: string) {
