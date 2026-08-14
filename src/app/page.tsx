@@ -606,9 +606,17 @@ export default async function HomePage() {
             <Link href="/flower-drawing/peony-drawing/" className="prose-inline-link">
               peony drawing
             </Link>
-            , or an{" "}
+            , an{" "}
             <Link href="/flower-drawing/orchid-drawing/" className="prose-inline-link">
               orchid drawing
+            </Link>
+            , a{" "}
+            <Link href="/flower-drawing/lotus-flower-drawing/" className="prose-inline-link">
+              lotus flower drawing
+            </Link>
+            , or a{" "}
+            <Link href="/flower-drawing/daisy-drawing/" className="prose-inline-link">
+              daisy drawing
             </Link>{" "}
             using the same beginner-friendly approach.
           </p>
