@@ -42,6 +42,16 @@ const worksheets = [
     webpOut: "public/downloads/orchid-drawing/orchid-drawing-worksheet.webp",
     pdfOut: "public/downloads/orchid-drawing/orchid-drawing-worksheet.pdf",
   },
+  {
+    source: "source-assets/lotus-flower-drawing/lotus-flower-drawing-worksheet.webp",
+    webpOut: "public/downloads/lotus-flower-drawing/lotus-flower-drawing-worksheet.webp",
+    pdfOut: "public/downloads/lotus-flower-drawing/lotus-flower-drawing-worksheet.pdf",
+  },
+  {
+    source: "source-assets/daisy-drawing/daisy-drawing-step-worksheet.webp",
+    webpOut: "public/downloads/daisy-drawing/daisy-drawing-worksheet.webp",
+    pdfOut: "public/downloads/daisy-drawing/daisy-drawing-worksheet.pdf",
+  },
 ];
 
 async function ensureDir(dir: string) {

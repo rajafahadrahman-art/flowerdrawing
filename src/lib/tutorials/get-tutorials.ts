@@ -1,5 +1,7 @@
+import { meta as daisyDrawing } from "@content/flower-drawing/daisy-drawing/meta";
 import { meta as hibiscusDrawing } from "@content/flower-drawing/hibiscus-flower-drawing/meta";
 import { meta as lilyDrawing } from "@content/flower-drawing/lily-flower-drawing/meta";
+import { meta as lotusDrawing } from "@content/flower-drawing/lotus-flower-drawing/meta";
 import { meta as orchidDrawing } from "@content/flower-drawing/orchid-drawing/meta";
 import { meta as peonyDrawing } from "@content/flower-drawing/peony-drawing/meta";
 import { meta as roseDrawing } from "@content/flower-drawing/rose-drawing/meta";
@@ -16,6 +18,8 @@ export const tutorialOrder = [
   "lily-flower-drawing",
   "peony-drawing",
   "orchid-drawing",
+  "lotus-flower-drawing",
+  "daisy-drawing",
 ] as const;
 
 const tutorialRegistry: Record<string, TutorialMeta> = {
@@ -26,6 +30,8 @@ const tutorialRegistry: Record<string, TutorialMeta> = {
   [lilyDrawing.slug]: lilyDrawing,
   [peonyDrawing.slug]: peonyDrawing,
   [orchidDrawing.slug]: orchidDrawing,
+  [lotusDrawing.slug]: lotusDrawing,
+  [daisyDrawing.slug]: daisyDrawing,
 };
 
 function sortByCollectionOrder(tutorials: TutorialMeta[]): TutorialMeta[] {

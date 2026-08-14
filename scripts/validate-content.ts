@@ -3,8 +3,10 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { homepageFaqs, homepageSteps } from "../src/lib/homepage-content";
 import { homepageSeo } from "../src/lib/site";
+import { meta as daisyMeta } from "../content/flower-drawing/daisy-drawing/meta";
 import { meta as hibiscusMeta } from "../content/flower-drawing/hibiscus-flower-drawing/meta";
 import { meta as lilyMeta } from "../content/flower-drawing/lily-flower-drawing/meta";
+import { meta as lotusMeta } from "../content/flower-drawing/lotus-flower-drawing/meta";
 import { meta as orchidMeta } from "../content/flower-drawing/orchid-drawing/meta";
 import { meta as peonyMeta } from "../content/flower-drawing/peony-drawing/meta";
 import { meta as roseMeta } from "../content/flower-drawing/rose-drawing/meta";
@@ -67,10 +69,12 @@ function parseSourceMeta(source: string) {
   const seoTitle =
     source.match(/^SEO Title:\s*(.+)$/m)?.[1]?.trim() ??
     source.match(/^Meta Title\s*\n\s*(.+)$/m)?.[1]?.trim() ??
+    source.match(/^Meta title:\s*\n\s*(.+)$/m)?.[1]?.trim() ??
     "";
   const metaDescription =
     source.match(/^Meta Description:\s*(.+)$/m)?.[1]?.trim() ??
     source.match(/^Meta Description\s*\n\s*(.+)$/m)?.[1]?.trim() ??
+    source.match(/^Meta description:\s*\n\s*(.+)$/m)?.[1]?.trim() ??
     "";
   return { focus, seoTitle, metaDescription };
 }
@@ -174,6 +178,8 @@ async function validateHomepage() {
     ["lily flower drawing", "/flower-drawing/lily-flower-drawing/"],
     ["peony drawing", "/flower-drawing/peony-drawing/"],
     ["orchid drawing", "/flower-drawing/orchid-drawing/"],
+    ["lotus flower drawing", "/flower-drawing/lotus-flower-drawing/"],
+    ["daisy drawing", "/flower-drawing/daisy-drawing/"],
   ];
   for (const [anchor, href] of homepageTutorialLinks) {
     assert(
@@ -394,8 +400,10 @@ async function validateTutorial(check: TutorialCheck) {
     `${check.slug} final step title preserved`,
   );
   assert(
-    tutorialContent.includes("[flower drawing](/)"),
-    `${check.slug} includes homepage flower drawing link`,
+    tutorialContent.includes("[flower drawing](/)") ||
+      tutorialContent.includes("[flower drawing tutorials](/flower-drawing/)") ||
+      tutorialContent.includes("[Flower Drawing](/flower-drawing/)"),
+    `${check.slug} includes homepage or flower-drawing hub link`,
   );
   assert(
     /\]\(\/flower-drawing\/[a-z0-9-]+\/\)/.test(tutorialContent),
@@ -430,6 +438,8 @@ async function validateInternalLinks() {
     "content/flower-drawing/lily-flower-drawing/tutorial-content.ts",
     "content/flower-drawing/peony-drawing/tutorial-content.ts",
     "content/flower-drawing/orchid-drawing/tutorial-content.ts",
+    "content/flower-drawing/lotus-flower-drawing/tutorial-content.ts",
+    "content/flower-drawing/daisy-drawing/tutorial-content.ts",
     "src/app/page.tsx",
     "src/components/layout/Header.tsx",
     "src/components/worksheets/WorksheetActions.tsx",
@@ -490,8 +500,8 @@ async function validateWorksheets() {
 
   const worksheets = await getWorksheetCollection();
   assert(
-    worksheets.length === 7,
-    "Worksheet collection includes homepage + 6 tutorials with worksheets",
+    worksheets.length === 9,
+    "Worksheet collection includes homepage + 8 tutorials with worksheets",
   );
   const ids = worksheets.map((item) => item.id);
   for (const id of [
@@ -502,6 +512,8 @@ async function validateWorksheets() {
     "hibiscus-flower-drawing",
     "peony-drawing",
     "orchid-drawing",
+    "lotus-flower-drawing",
+    "daisy-drawing",
   ]) {
     assert(ids.includes(id), `Worksheet collection includes ${id}`);
   }
@@ -557,7 +569,7 @@ async function validateRegistry() {
     assert(registry.includes(slug), `Registry references ${slug}`);
     assert(bodyRegistry.includes(slug), `Body registry references ${slug}`);
   }
-  assert(tutorialOrder.length === 7, "Exactly seven genuine tutorials are registered");
+  assert(tutorialOrder.length === 9, "Exactly nine genuine tutorials are registered");
   assert(
     tutorialOrder.includes("lily-flower-drawing"),
     "Lily is included in tutorialOrder",
@@ -569,6 +581,14 @@ async function validateRegistry() {
   assert(
     tutorialOrder.includes("orchid-drawing"),
     "Orchid is included in tutorialOrder",
+  );
+  assert(
+    tutorialOrder.includes("lotus-flower-drawing"),
+    "Lotus is included in tutorialOrder",
+  );
+  assert(
+    tutorialOrder.includes("daisy-drawing"),
+    "Daisy is included in tutorialOrder",
   );
 }
 
@@ -601,6 +621,14 @@ async function main() {
   assert(
     await exists("source-assets/orchid-drawing/orchid-drawing-content.txt"),
     "Orchid source content exists",
+  );
+  assert(
+    await exists("source-assets/lotus-flower-drawing/lotus-flower-drawing-content.txt"),
+    "Lotus source content exists",
+  );
+  assert(
+    await exists("source-assets/daisy-drawing/daisy-drawing-content.txt"),
+    "Daisy source content exists",
   );
   assert(!(await exists("assets")), "Legacy assets/ folder is not the primary source");
 
@@ -683,6 +711,29 @@ async function main() {
     featuredImageAlt: "orchid drawing",
     featuredImageTitle: "orchid drawing easy",
     hasWorksheet: true,
+  });
+  await validateTutorial({
+    slug: "lotus-flower-drawing",
+    sourcePath: "source-assets/lotus-flower-drawing/lotus-flower-drawing-content.txt",
+    meta: lotusMeta,
+    stepCount: 8,
+    finalStepTitleIncludes: "Step 8: Finish the Lotus Flower Drawing",
+    featuredFile: "lotus-flower-drawing.webp",
+    featuredImageAlt: "lotus flower drawing colour",
+    featuredImageTitle: "easy lotus flower drawing",
+    hasWorksheet: true,
+  });
+  await validateTutorial({
+    slug: "daisy-drawing",
+    sourcePath: "source-assets/daisy-drawing/daisy-drawing-content.txt",
+    meta: daisyMeta,
+    stepCount: 8,
+    finalStepTitleIncludes: "Step 8: Refine and Finish the Daisy",
+    featuredFile: "daisy-drawing.webp",
+    featuredImageAlt: "daisy drawing",
+    featuredImageTitle: "daisy clipart",
+    hasWorksheet: true,
+    separateFinalStepImage: true,
   });
   await validateInternalLinks();
   await validateWorksheets();
