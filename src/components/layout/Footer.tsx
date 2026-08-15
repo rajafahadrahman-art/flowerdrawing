@@ -32,6 +32,15 @@ export function Footer() {
             <BrandMark size="md" inverted />
           </Link>
           <p className="max-w-md text-sm leading-relaxed text-white/75">{siteConfig.description}</p>
+          <a
+            href={siteConfig.pinterestUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow Flower Drawing Guides on Pinterest"
+            className="inline-flex min-h-11 items-center text-sm text-white/85 transition hover:text-yellow"
+          >
+            Follow us on Pinterest
+          </a>
         </div>
 
         <div>
