@@ -8,6 +8,7 @@ export function buildWebsiteJsonLd() {
     name: siteConfig.name,
     url: siteConfig.url,
     description: homepageSeo.description,
+    sameAs: [siteConfig.pinterestUrl],
   };
 }
 
@@ -100,6 +101,7 @@ export function buildArticleJsonLd({
         "@type": "ImageObject",
         url: `${siteConfig.url}${siteConfig.logo.src}`,
       },
+      sameAs: [siteConfig.pinterestUrl],
     },
     mainEntityOfPage: {
       "@type": "WebPage",

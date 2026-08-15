@@ -16,6 +16,7 @@ export const siteConfig = {
     image: "/images/authors/alexarts-placeholder.svg",
     imageAlt: "AlexArts",
   },
+  pinterestUrl: "https://www.pinterest.com/FlowerDrawingGuides/",
 } as const;
 
 export const homepageSeo = {

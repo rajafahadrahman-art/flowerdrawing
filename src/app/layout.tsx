@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { PinterestFollowCta } from "@/components/layout/PinterestFollowCta";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { homepageSeo, siteConfig } from "@/lib/site";
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SkipLink />
         <Header />
         <main id="main-content">{children}</main>
+        <PinterestFollowCta />
         <Footer />
         <BackToTop />
       </body>
